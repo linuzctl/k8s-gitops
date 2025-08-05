@@ -6,11 +6,11 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10m0s
   ref:
     branch: main
   secretRef:
-    name: flux-system
+    name: github-ssh
   url: ssh://git@github.com/linuzctl/k8s-gitops
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -25,3 +25,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: cluster-vars
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age

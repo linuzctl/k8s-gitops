@@ -4,3 +4,4 @@ resources:
   - flux-system
   - kustomizations
   - helmrepositories
+  - cluster-vars.sops.yaml
