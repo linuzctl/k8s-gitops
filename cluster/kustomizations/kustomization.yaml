@@ -6,4 +6,5 @@ resources:
   - cilium.yaml
   - coredns.yaml
   - crds.yaml
+  - ingress-nginx.yaml
   - metrics-server.yaml
