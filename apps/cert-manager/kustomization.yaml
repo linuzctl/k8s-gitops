@@ -6,4 +6,4 @@ resources:
   - clusterissuer.yaml
   - helmrelease.yaml
   - namespace.yaml
-  - secret.sops.yml
+  - secret.sops.yaml
