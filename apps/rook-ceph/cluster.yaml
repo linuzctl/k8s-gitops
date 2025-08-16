@@ -22,9 +22,6 @@ spec:
       dashboard:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-          nginx.ingress.kubernetes.io/server-snippet: |
-            proxy_ssl_verify off;
         host:
           name: rook-ceph.${DOMAIN}
           path: /
@@ -41,6 +38,9 @@ spec:
           bdev_async_discard_threads: "1"
           osd_class_update_on_start: "false"
           device_failure_prediction_mode: local
+      dashboard:
+        enabled: true
+        ssl: false
       network:
         provider: host
         connections:
