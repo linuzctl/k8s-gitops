@@ -5,4 +5,4 @@ metadata:
   name: ingress-nginx
 spec:
   blocks:
-    - cidr: ${INGRESS_NGINX_IP}
+    - cidr: "${INGRESS_NGINX_IP}"
