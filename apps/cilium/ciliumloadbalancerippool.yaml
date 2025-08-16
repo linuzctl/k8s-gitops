@@ -1,0 +1,8 @@
+---
+apiVersion: "cilium.io/v2"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: ingress-nginx
+spec:
+  blocks:
+    - cidr: ${INGRESS_NGINX_IP}
