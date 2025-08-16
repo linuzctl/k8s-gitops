@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - cert-manager.yaml
   - cilium.yaml
+  - cloudnative-pg.yaml
   - coredns.yaml
   - crds.yaml
   - ingress-nginx.yaml
