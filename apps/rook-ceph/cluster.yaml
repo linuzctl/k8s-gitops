@@ -28,7 +28,7 @@ spec:
         host:
           name: rook-ceph.${DOMAIN}
           path: /
-          pathType: PathPrefix
+          pathType: Prefix
         tls:
           - secretName: rook-ceph-${DOMAIN/./-}-tls
             hosts:
