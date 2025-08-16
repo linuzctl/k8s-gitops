@@ -12,4 +12,5 @@ resources:
   - metrics-server.yaml
   - oauth2-proxy.yaml
   - prometheus-community.yaml
+  - rook-release.yaml
   - vmware-tanzu.yaml

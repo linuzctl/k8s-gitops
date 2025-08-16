@@ -9,3 +9,4 @@ metrics-server https://kubernetes-sigs.github.io/metrics-server
 oauth2-proxy https://oauth2-proxy.github.io/manifests
 prometheus-community https://prometheus-community.github.io/helm-charts
 vmware-tanzu https://vmware-tanzu.github.io/helm-charts
+rook-release https://charts.rook.io/release
