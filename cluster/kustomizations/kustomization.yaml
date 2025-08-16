@@ -11,3 +11,4 @@ resources:
   - keycloak.yaml
   - metrics-server.yaml
   - rook-ceph.yaml
+  - vaultwarden.yaml

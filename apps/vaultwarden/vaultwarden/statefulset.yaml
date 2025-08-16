@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+  labels:
+    app.kubernetes.io/component: vaultwarden
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/instance: vaultwarden
+spec:
+  serviceName: vaultwarden
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: vaultwarden
+      app.kubernetes.io/name: vaultwarden
+      app.kubernetes.io/instance: vaultwarden
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: vaultwarden
+        app.kubernetes.io/name: vaultwarden
+        app.kubernetes.io/instance: vaultwarden
+    spec:
+      serviceAccountName: vaultwarden
+      containers:
+        - image: docker.io/vaultwarden/server:1.34.3-alpine
+          imagePullPolicy: IfNotPresent
+          name: vaultwarden
+          envFrom:
+            - configMapRef:
+                name: vaultwarden
+          env:
+            - name: ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: ADMIN_TOKEN
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden-postgres-17-app
+                  key: uri
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /alive
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /alive
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: vaultwarden-data

@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+  labels:
+    app.kubernetes.io/component: vaultwarden
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/instance: vaultwarden
+spec:
+  selector:
+    app.kubernetes.io/component: vaultwarden
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/instance: vaultwarden
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080

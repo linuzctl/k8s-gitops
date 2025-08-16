@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+  labels:
+    app.kubernetes.io/component: vaultwarden
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/instance: vaultwarden
+data:
+  TZ: Europe/Zurich
+  DOMAIN: "https://vault.${DOMAIN}"
+  ROCKET_ADDRESS: "0.0.0.0"
+  ROCKET_PORT: "8080"
+  ROCKET_WORKERS: "10"
+  SHOW_PASSWORD_HINT: "false"
+  SIGNUPS_ALLOWED: "true"
+  INVITATIONS_ALLOWED: "true"
+  SIGNUPS_VERIFY: "true"
+  WEB_VAULT_ENABLED: "true"
+  DB_CONNECTION_RETRIES: "15"
+  DATABASE_MAX_CONNS: "10"
+  INVITATION_ORG_NAME: "Vaultwarden"
+  ICON_BLACKLIST_NON_GLOBAL_IPS: "true"
+  IP_HEADER: "X-Real-IP"
+  ORG_EVENTS_ENABLED: "false"
+  ORG_GROUPS_ENABLED: "false"
+  SENDS_ALLOWED: "true"
+  EMERGENCY_ACCESS_ALLOWED: "true"
+  EMERGENCY_NOTIFICATION_REMINDER_SCHEDULE: "0 3 * * * *"
+  EMERGENCY_REQUEST_TIMEOUT_SCHEDULE: "0 7 * * * *"
+  EXTENDED_LOGGING: "true"
+  LOG_TIMESTAMP_FORMAT: "%Y-%m-%d %H:%M:%S.%3f"
+  ICON_SERVICE: "internal"
+  ICON_REDIRECT_CODE: "302"
+  INVITATION_EXPIRATION_HOURS: "120"
+  REQUIRE_DEVICE_EMAIL: "false"
+  TRASH_AUTO_DELETE_DAYS: ""
+  EMAIL_CHANGE_ALLOWED: "true"
+  ADMIN_RATELIMIT_SECONDS: "300"
+  ADMIN_RATELIMIT_MAX_BURST: "3"
