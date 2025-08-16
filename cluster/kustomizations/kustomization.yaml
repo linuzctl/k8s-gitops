@@ -8,5 +8,6 @@ resources:
   - coredns.yaml
   - crds.yaml
   - ingress-nginx.yaml
+  - keycloak.yaml
   - metrics-server.yaml
   - rook-ceph.yaml

@@ -1,0 +1,15 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: keycloak-postgres-17
+  namespace: keycloak
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5-22
+  storage:
+    storageClass: ceph-block
+    size: 2Gi
+  bootstrap:
+    initdb:
+      database: keycloak
