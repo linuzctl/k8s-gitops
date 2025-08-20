@@ -1,0 +1,131 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 76.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 30m
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+        ingressClassName: nginx
+        hosts:
+          - alertmanager.${KUBEAPI}
+        pathType: Prefix
+        paths:
+          - /
+        tls:
+          - secretName: alertmanager-${KUBEAPI/./-}-tls
+            hosts:
+              - alertmanager.${KUBEAPI}
+    kubeControllerManager:
+      enabled: true
+    kubeEtcd:
+      enabled: true
+    kubeScheduler:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    grafana:
+      assertNoLeakedSecrets: false
+      enabled: true
+      defaultDashboardsTimezone: browser
+      envFromSecret: kube-prometheus-stack-grafana-sso
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+        hosts:
+          - grafana.${DOMAIN}
+        path: /
+        tls:
+          - secretName: grafana-${DOMAIN/./-}-tls
+            hosts:
+              - grafana.${DOMAIN}
+      grafana.ini:
+        analytics:
+          check_for_updates: false
+          reporting_enabled: false
+        auth:
+          disable_login_form: true
+          oauth_auto_login: true
+        auth.generic_oauth:
+          name: Single Sign On
+          enabled: true
+          allow_sign_up: true
+          auto_login: true
+          client_id: $__env{GRAFANA_AUTH_CLIENT_ID}
+          client_secret: $__env{GRAFANA_AUTH_CLIENT_SECRET}
+          scopes: openid email profile offline_access roles
+          auth_url: https://auth.${DOMAIN}/realms/auth/protocol/openid-connect/auth
+          token_url: https://auth.${DOMAIN}/realms/auth/protocol/openid-connect/token
+          signout_redirect_url: https://auth.${DOMAIN}/realms/auth/protocol/openid-connect/logout
+          email_attribute_path: email
+          login_attribute_path: username
+          name_attribute_path: full_name
+          # groups_attribute_path: groups
+          role_attribute_path: contains(resource_access.grafana.roles[*], 'grafanaadmin') && 'GrafanaAdmin' || contains(resource_access.grafana.roles[*], 'admin') && 'Admin' || contains(resource_access.grafana.roles[*], 'editor') && 'Editor' || 'Viewer'
+          allow_assign_grafana_admin: true
+          role_attribute_strict: true
+          use_refresh_token: true
+        server:
+          root_url: https://grafana.${DOMAIN}
+      sidecar:
+        dashboards:
+          enabled: true
+          searchNamespace: ALL
+          resource: configmap
+        datasources:
+          enabled: true
+          searchNamespace: ALL
+          resource: configmap
+      serviceMonitor:
+        enabled: true
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+        hosts:
+          - prometheus.${KUBEAPI}
+        pathType: Prefix
+        paths:
+          - /
+        tls:
+          - secretName: prometheus-${KUBEAPI/./-}-tls
+            hosts:
+              - prometheus.${KUBEAPI}
+      prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        retention: 14d
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 20Gi

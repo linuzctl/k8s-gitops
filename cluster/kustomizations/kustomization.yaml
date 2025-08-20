@@ -10,5 +10,6 @@ resources:
   - ingress-nginx.yaml
   - keycloak.yaml
   - metrics-server.yaml
+  - monitoring.yaml
   - rook-ceph.yaml
   - vaultwarden.yaml
