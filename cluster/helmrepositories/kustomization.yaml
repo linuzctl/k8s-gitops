@@ -5,11 +5,13 @@ resources:
   - cilium.yaml
   - cloudnative-pg.yaml
   - coredns.yaml
+  - dragonfly.yaml
   - falcosecurity.yaml
   - gitlab.yaml
   - ingress-nginx.yaml
   - jetstack.yaml
   - metrics-server.yaml
+  - minio.yaml
   - oauth2-proxy.yaml
   - prometheus-community.yaml
   - rook-release.yaml

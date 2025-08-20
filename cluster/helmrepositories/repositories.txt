@@ -10,3 +10,5 @@ oauth2-proxy https://oauth2-proxy.github.io/manifests
 prometheus-community https://prometheus-community.github.io/helm-charts
 vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 rook-release https://charts.rook.io/release
+minio https://charts.min.io/
+dragonfly https://dragonflyoss.github.io/helm-charts/
