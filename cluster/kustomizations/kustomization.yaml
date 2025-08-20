@@ -13,3 +13,4 @@ resources:
   - monitoring.yaml
   - rook-ceph.yaml
   - vaultwarden.yaml
+  - velero.yaml
