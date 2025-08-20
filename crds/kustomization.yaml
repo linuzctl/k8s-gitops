@@ -6,3 +6,4 @@ resources:
   - cloudnative-pg
   - keycloak
   - kube-prometheus-stack
+  - velero
