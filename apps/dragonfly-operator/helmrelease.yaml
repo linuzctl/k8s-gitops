@@ -6,10 +6,15 @@ metadata:
   namespace: dragonfly-operator-system
 spec:
   interval: 30m
-  chartRef:
-    kind: OCIRepository
-    name: dragonfly-operator
-    namespace: flux-system
+  chart:
+    spec:
+      chart: dragonfly-operator
+      version: 1.2.1
+      sourceRef:
+        kind: OCIRepository
+        name: dragonfly-operator
+        namespace: flux-system
+      interval: 20m
   install:
     crds: Skip
   upgrade:
