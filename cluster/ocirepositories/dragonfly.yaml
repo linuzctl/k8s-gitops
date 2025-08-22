@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: ci://ghcr.io/dragonflydb/dragonfly/helm/dragonfly
+  url: oci://ghcr.io/dragonflydb/dragonfly/helm/dragonfly
   ref:
     tag: v1.2.1
   timeout: 3m
