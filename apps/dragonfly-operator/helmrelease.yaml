@@ -8,7 +8,7 @@ spec:
   interval: 30m
   chartRef:
     kind: OCIRepository
-    name: dragonfly
+    name: dragonfly-operator
     namespace: flux-system
   install:
     crds: Skip

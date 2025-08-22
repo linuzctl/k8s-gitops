@@ -2,11 +2,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: dragonfly
+  name: dragonfly-operator
   namespace: flux-system
 spec:
   interval: 30m
-  url: oci://ghcr.io/dragonflydb/dragonfly/helm/dragonfly
+  url: oci://ghcr.io/dragonflydb/dragonfly-operator/helm
   ref:
     tag: v1.2.1
   timeout: 3m
