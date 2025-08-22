@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: dragonfly-operator
+  namespace: dragonfly-operator-system
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: dragonfly
+    namespace: flux-system
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
+  values:
+    crds:
+      install: true
+    serviceMonitor:
+      enabled: true
+    grafanaDashboard:
+      enabled: true

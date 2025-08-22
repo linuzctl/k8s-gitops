@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - cloudnative-pg
+  - dragonfly
   - keycloak
   - kube-prometheus-stack
   - velero

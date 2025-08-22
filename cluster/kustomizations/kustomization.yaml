@@ -7,6 +7,7 @@ resources:
   - cloudnative-pg.yaml
   - coredns.yaml
   - crds.yaml
+  - dragonfly-operator.yaml
   - ingress-nginx.yaml
   - keycloak.yaml
   - metrics-server.yaml
