@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/instance: vaultwarden
 data:
   TZ: Europe/Zurich
-  DOMAIN: "https://vault.${DOMAIN}"
+  DOMAIN: https://vault.${DOMAIN}
   ROCKET_ADDRESS: "0.0.0.0"
   ROCKET_PORT: "8080"
   ROCKET_WORKERS: "10"
