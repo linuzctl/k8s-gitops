@@ -7,6 +7,4 @@ metadata:
 spec:
   interval: 30m
   url: oci://ghcr.io/dragonflydb/dragonfly-operator/helm
-  ref:
-    tag: v1.2.1
   timeout: 3m
