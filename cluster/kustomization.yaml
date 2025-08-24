@@ -6,3 +6,4 @@ resources:
   - helmrepositories
   - ocirepositories
   - cluster-vars.sops.yaml
+  - secret.sops.yaml
