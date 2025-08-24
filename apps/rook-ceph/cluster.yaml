@@ -8,6 +8,8 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
+  dependsOn:
+    - name: rook-ceph
   chart:
     spec:
       chart: rook-ceph-cluster
@@ -84,3 +86,6 @@ spec:
           name: csi-ceph-blockpool
           isDefault: false
           deletionPolicy: Delete
+    monitoring:
+      enabled: true
+      createPrometheusRules: true
