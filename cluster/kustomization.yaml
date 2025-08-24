@@ -4,6 +4,5 @@ resources:
   - flux-system
   - kustomizations
   - helmrepositories
-  - ocirepositories
   - cluster-vars.sops.yaml
   - secret.sops.yaml
