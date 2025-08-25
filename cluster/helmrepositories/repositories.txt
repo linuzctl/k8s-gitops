@@ -11,3 +11,5 @@ prometheus-community https://prometheus-community.github.io/helm-charts
 vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 rook-release https://charts.rook.io/release
 minio https://charts.min.io/
+stakater https://stakater.github.io/stakater-charts
+
