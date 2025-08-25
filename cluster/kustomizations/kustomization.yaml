@@ -12,6 +12,7 @@ resources:
   - keycloak.yaml
   - metrics-server.yaml
   - monitoring.yaml
+  - reloader.yaml
   - rook-ceph.yaml
   - vaultwarden.yaml
   - velero.yaml
