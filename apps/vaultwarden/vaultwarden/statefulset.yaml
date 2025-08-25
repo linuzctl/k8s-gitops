@@ -4,6 +4,8 @@ kind: StatefulSet
 metadata:
   name: vaultwarden
   namespace: vaultwarden
+  annotations:
+    reloader.stakater.com/auto: "true"
   labels:
     app.kubernetes.io/component: vaultwarden
     app.kubernetes.io/name: vaultwarden
