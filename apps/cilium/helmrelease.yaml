@@ -58,6 +58,10 @@ spec:
           annotations:
           hosts:
             - hubble.${DOMAIN}
+          tls:
+            - secretName: hubble-${DOMAIN/./-}-tls
+              hosts:
+                - hubble.${DOMAIN}
     prometheus:
       enabled: true
       serviceMonitor:
