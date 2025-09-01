@@ -18,8 +18,15 @@ spec:
         namespace: flux-system
       interval: 30m
   values:
+    replicaCount: 2
     k8sAppLabelOverride: kube-dns
     service:
       clusterIP: ${COREDNS_IP}
     serviceAccount:
       create: true
+    prometheus:
+      service:
+        enabled: true
+      monitor:
+        enabled: true
+
