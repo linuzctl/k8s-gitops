@@ -15,4 +15,5 @@ resources:
   - prometheus-community.yaml
   - rook-release.yaml
   - stakater.yaml
+  - unpoller.yaml
   - vmware-tanzu.yaml
