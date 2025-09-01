@@ -1,0 +1,47 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: falco
+  namespace: falco
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: falco
+      version: 6.2.5
+      sourceRef:
+        kind: HelmRepository
+        name: falcosecurity
+        namespace: flux-system
+      interval: 20m
+  values:
+    driver:
+      kind: modern_ebpf
+    collectors:
+      containerEngine:
+        enabled: true
+      kubernetes:
+        enabled: true
+    falcosidekick:
+      enabled: true
+      replicaCount: 1
+      webui:
+        enabled: true
+        replicaCount: 1
+        disableauth: true
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+          hosts:
+            - host: falco.${DOMAIN}
+              paths:
+                - path: /
+          tls:
+            - secretName: falco-${DOMAIN\.\-}-tls
+              hosts:
+                - falco.${DOMAIN}

@@ -8,6 +8,7 @@ resources:
   - coredns.yaml
   - crds.yaml
   - dragonfly-operator.yaml
+  - falco.yaml
   - ingress-nginx.yaml
   - keycloak.yaml
   - metrics-server.yaml
