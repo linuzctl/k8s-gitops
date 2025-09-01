@@ -34,6 +34,8 @@ spec:
       enabled: true
     nodePort:
       enabled: false
+    bpf:
+      masquerade: true
     hubble:
       enabled: true
       metrics:
