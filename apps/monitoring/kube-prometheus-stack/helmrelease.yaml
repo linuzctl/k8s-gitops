@@ -29,14 +29,14 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-prod
         ingressClassName: nginx
         hosts:
-          - alertmanager.${KUBEAPI}
+          - alertmanager.${DOMAIN}
         pathType: Prefix
         paths:
           - /
         tls:
-          - secretName: alertmanager-${KUBEAPI/./-}-tls
+          - secretName: alertmanager-${DOMAIN\.\-}-tls
             hosts:
-              - alertmanager.${KUBEAPI}
+              - alertmanager.${DOMAIN}
     kubeControllerManager:
       enabled: true
     kubeEtcd:
@@ -108,14 +108,14 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
         hosts:
-          - prometheus.${KUBEAPI}
+          - prometheus.${DOMAIN}
         pathType: Prefix
         paths:
           - /
         tls:
-          - secretName: prometheus-${KUBEAPI/./-}-tls
+          - secretName: prometheus-${DOMAIN\.\-}-tls
             hosts:
-              - prometheus.${KUBEAPI}
+              - prometheus.${DOMAIN}
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
