@@ -34,7 +34,7 @@ spec:
         paths:
           - /
         tls:
-          - secretName: alertmanager-${DOMAIN\.\-}-tls
+          - secretName: alertmanager-${DOMAIN/./-}-tls
             hosts:
               - alertmanager.${DOMAIN}
     kubeControllerManager:
@@ -113,7 +113,7 @@ spec:
         paths:
           - /
         tls:
-          - secretName: prometheus-${DOMAIN\.\-}-tls
+          - secretName: prometheus-${DOMAIN/./-}-tls
             hosts:
               - prometheus.${DOMAIN}
       prometheusSpec:
@@ -129,3 +129,4 @@ spec:
               resources:
                 requests:
                   storage: 20Gi
+
