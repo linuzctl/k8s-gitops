@@ -15,5 +15,6 @@ resources:
   - monitoring.yaml
   - reloader.yaml
   - rook-ceph.yaml
+  - stirling-pdf.yaml
   - vaultwarden.yaml
   - velero.yaml
