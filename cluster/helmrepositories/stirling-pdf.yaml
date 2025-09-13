@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: stirling-pdf
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: https://stirling-tools.github.io/Stirling-PDF-chart
+  timeout: 3m
