@@ -35,7 +35,7 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - name: pdf.${DOMAIN/./-}
+        - name: pdf.${DOMAIN}
           path: /
           tls: true
           tlsSecret: pdf-${DOMAIN/./-}-tls
