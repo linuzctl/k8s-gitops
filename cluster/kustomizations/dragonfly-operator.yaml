@@ -5,6 +5,8 @@ metadata:
   name: dragonfly-operator
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: crds
   interval: 1h
   path: ./apps/dragonfly-operator
   prune: true

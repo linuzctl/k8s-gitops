@@ -5,6 +5,8 @@ metadata:
   name: cloudnative-pg
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: crds
   interval: 1h
   path: ./apps/cloudnative-pg
   prune: true

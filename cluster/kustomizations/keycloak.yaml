@@ -5,6 +5,8 @@ metadata:
   name: keycloak
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: crds
   interval: 1h
   path: ./apps/keycloak
   prune: true
