@@ -44,6 +44,36 @@ spec:
                 secretKeyRef:
                   name: vaultwarden-postgres-17-app
                   key: uri
+            - name: SMTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: SMTP_HOST
+            - name: SMTP_FROM
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: SMTP_FROM
+            - name: SMTP_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: ADMIN_TOKEN
+            - name: SMTP_SECURITY
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: SMTP_SECURITY
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: SMTP_USERNAME
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden
+                  key: SMTP_PASSWORD
           ports:
             - name: http
               containerPort: 8080
