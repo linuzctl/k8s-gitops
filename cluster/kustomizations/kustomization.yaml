@@ -9,6 +9,7 @@ resources:
   - crds.yaml
   - dragonfly-operator.yaml
   - falco.yaml
+  - iframely.yaml
   - ingress-nginx.yaml
   - keycloak.yaml
   - metrics-server.yaml

@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iframely
+  namespace: iframely
+  labels:
+    app.kubernetes.io/component: iframely
+    app.kubernetes.io/name: iframely
+    app.kubernetes.io/instance: iframely
+spec:
+  selector:
+    app.kubernetes.io/component: iframely
+    app.kubernetes.io/name: iframely
+    app.kubernetes.io/instance: iframely
+  ports:
+    - name: http
+      port: 8061
+      protocol: TCP
+      targetPort: 8061
