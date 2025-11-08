@@ -12,6 +12,7 @@ resources:
   - iframely.yaml
   - ingress-nginx.yaml
   - keycloak.yaml
+  - minio-operator.yaml
   - metrics-server.yaml
   - monitoring.yaml
   - reloader.yaml
