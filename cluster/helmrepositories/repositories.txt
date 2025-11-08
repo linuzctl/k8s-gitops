@@ -6,7 +6,8 @@ gitlab https://charts.gitlab.io
 ingress-nginx https://kubernetes.github.io/ingress-nginx
 jetstack https://charts.jetstack.io
 metrics-server https://kubernetes-sigs.github.io/metrics-server
-minio https://charts.min.io/
+minio-community https://charts.min.io/
+minio https://operator.min.io/
 oauth2-proxy https://oauth2-proxy.github.io/manifests
 prometheus-community https://prometheus-community.github.io/helm-charts
 rook-release https://charts.rook.io/release

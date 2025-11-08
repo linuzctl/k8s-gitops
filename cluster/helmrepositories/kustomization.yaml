@@ -10,6 +10,7 @@ resources:
   - ingress-nginx.yaml
   - jetstack.yaml
   - metrics-server.yaml
+  - minio-community.yaml
   - minio.yaml
   - oauth2-proxy.yaml
   - prometheus-community.yaml
