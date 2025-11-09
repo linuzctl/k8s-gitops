@@ -5,6 +5,7 @@ resources:
   - cilium.yaml
   - cloudnative-pg.yaml
   - coredns.yaml
+  - csi-driver-nfs.yaml
   - falcosecurity.yaml
   - gitlab.yaml
   - ingress-nginx.yaml
