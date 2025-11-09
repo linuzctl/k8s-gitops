@@ -22,14 +22,12 @@ spec:
       replicas: 2
     externalSnapshotter:
       enabled: true
-    storageClass:
-      create: true
     storageClasses:
       - name: nfs-delete
         parameters:
           server: ${NFS_IP}
           share: ${NFS_SHARE}
-          mountPermissions: 0777
+        mountPermissions: "0777"
         reclaimPolicy: Delete
         volumeBindingMode: Immediate
         mountOptions:
@@ -39,7 +37,7 @@ spec:
         parameters:
           server: ${NFS_IP}
           share: ${NFS_SHARE}
-          mountPermissions: 0777
+        mountPermissions: "0777"
         reclaimPolicy: Retain
         volumeBindingMode: Immediate
         mountOptions:
