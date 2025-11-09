@@ -22,6 +22,8 @@ spec:
       replicas: 2
     externalSnapshotter:
       enabled: true
+    driver:
+      mountPermissions: 511
     storageClasses:
       - name: nfs-delete
         parameters:
