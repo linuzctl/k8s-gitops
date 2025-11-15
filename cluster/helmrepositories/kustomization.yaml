@@ -10,6 +10,7 @@ resources:
   - gitlab.yaml
   - ingress-nginx.yaml
   - jetstack.yaml
+  - metallb.yaml
   - metrics-server.yaml
   - minio-community.yaml
   - minio.yaml
