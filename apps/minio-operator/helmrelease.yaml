@@ -17,3 +17,10 @@ spec:
         name: minio
         namespace: flux-system
       interval: 20m
+  values:
+    operator:
+      env:
+        - name: PROMETHEUS_NAMESPACE
+          value: "monitoring"
+        - name: PROMETHEUS_NAME
+          value: "kube-prometheus-stack-prometheus"
