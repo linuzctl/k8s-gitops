@@ -11,15 +11,56 @@ spec:
   chart:
     spec:
       chart: velero
-      version: 10.1.0
+      version: 11.2.0
       sourceRef:
         kind: HelmRepository
         name: vmware-tanzu
         namespace: flux-system
       interval: 30m
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
+  valuesFrom:
+    - kind: Secret
+      name: velero-values
   values:
-    upgradeCRDs: true
+    upgradeCRDs: false
+    cleanUpCRDs: false
     metrics:
       enabled: true
       serviceMonitor:
-        enabled: false
+        enabled: true
+      prometheusRule:
+        enabled: true
+    initContainers:
+      - name: velero-plugin-for-aws
+        image: velero/velero-plugin-for-aws:v1.13.1
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+      - name: kubevirt-velero-plugin
+        image: quay.io/kubevirt/kubevirt-velero-plugin:v0.8.0
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+    configuration:
+      backupStorageLocation:
+        - name: minio-backup
+          provider: aws
+          bucket: backup-velero
+          accessMode: ReadWrite
+          default: true
+          config:
+            region: us-east-1
+            s3ForcePathStyle: true
+            s3Url: http://minio.minio-backup.svc.cluster.local
+            publicUrl: https://backup.minio.${DOMAIN}
+      volumeSnapshotLocation:
+        - name: minio-backup
+          provider: aws
+          config:
+            region: us-east-1
+    deployNodeAgent: true
