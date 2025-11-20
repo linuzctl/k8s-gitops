@@ -36,6 +36,16 @@ spec:
       prometheusOperator: true
       certificate:
         requestAutoCert: false
+      buckets:
+        - name: backup-cnpg
+          objectLock: false
+          region: us-east-1
+        - name: minio-cnpg
+          objectLock: false
+          region: us-east-1
+        - name: temp
+          objectLock: false
+          region: us-east-1
       env:
         - name: TZ
           value: Europe/Zurich
@@ -55,7 +65,6 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
-          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
         host: backup.minio.${DOMAIN}
         path: /
@@ -69,7 +78,6 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
-          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
         host: console.backup.minio.${DOMAIN}
         path: /
