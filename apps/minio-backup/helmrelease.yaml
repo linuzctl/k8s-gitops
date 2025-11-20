@@ -34,7 +34,8 @@ spec:
         port: 9000
         protocol: http
       prometheusOperator: true
-      disableAutoCert: true
+      certificate:
+        requestAutoCert: false
       env:
         - name: TZ
           value: Europe/Zurich
