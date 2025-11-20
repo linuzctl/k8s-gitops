@@ -40,7 +40,7 @@ spec:
         - name: backup-cnpg
           objectLock: false
           region: us-east-1
-        - name: minio-cnpg
+        - name: backup-velero
           objectLock: false
           region: us-east-1
         - name: temp
