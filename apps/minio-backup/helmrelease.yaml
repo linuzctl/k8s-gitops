@@ -1,0 +1,79 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minio-backup
+  namespace: minio-backup
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: tenant
+      version: 7.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+      interval: 20m
+  valuesFrom:
+    - kind: Secret
+      name: minio-backup-values
+  values:
+    tenant:
+      name: backup
+      pools:
+        - servers: 1
+          name: pool-0
+          volumesPerServer: 1
+          size: 200Gi
+          storageClassName: nfs-retain
+      metrics:
+        enabled: true
+        port: 9000
+        protocol: http
+      prometheusOperator: true
+      disableAutoCert: true
+      env:
+        - name: TZ
+          value: Europe/Zurich
+        - name: MINIO_DRIVE_CHECK_INTERVAL
+          value: 5m
+        - name: MINIO_SERVER_URL
+          value: https://backup.minio.${DOMAIN}
+        - name: MINIO_BROWSER_REDIRECT_URL
+          value: https://console.backup.minio.${DOMAIN}
+        - name: PROMETHEUS_NAMESPACE
+          value: "monitoring"
+        - name: MINIO_PROMETHEUS_URL
+          value: "http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090"
+    ingress:
+      api:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        host: backup.minio.${DOMAIN}
+        path: /
+        pathType: Prefix
+        tls:
+          - secretName: backup-minio-${DOMAIN/./-}-tls
+            hosts:
+              - backup.minio.${DOMAIN}
+      console:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        host: console.backup.minio.${DOMAIN}
+        path: /
+        pathType: Prefix
+        tls:
+          - secretName: console-backup-minio-${DOMAIN/./-}-tls
+            hosts:
+              - console.backup.minio.${DOMAIN}
