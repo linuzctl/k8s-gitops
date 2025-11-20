@@ -9,7 +9,7 @@ spec:
   url: https://github.com/vmware-tanzu/helm-charts.git
   ref:
     # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts chart=velero
-    tag: velero-10.1.0
+    tag: velero-11.2.0
   ignore: |
     # exclude all
     /*
