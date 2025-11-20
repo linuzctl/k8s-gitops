@@ -13,6 +13,7 @@ resources:
   - iframely.yaml
   - ingress-nginx.yaml
   - keycloak.yaml
+  - kubernetes-dashboard.yaml
   - minio-operator.yaml
   - metrics-server.yaml
   - monitoring.yaml
