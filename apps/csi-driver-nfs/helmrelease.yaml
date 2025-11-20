@@ -33,7 +33,7 @@ spec:
         reclaimPolicy: Delete
         volumeBindingMode: Immediate
         mountOptions:
-          - nfsvers=4.1
+          - rw
           - nconnect=16
       - name: nfs-retain
         parameters:
@@ -43,5 +43,5 @@ spec:
         reclaimPolicy: Retain
         volumeBindingMode: Immediate
         mountOptions:
-          - nfsvers=4.1
+          - rw
           - nconnect=16
