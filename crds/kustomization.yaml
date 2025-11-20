@@ -7,4 +7,5 @@ resources:
   - dragonfly-operator
   - keycloak
   - kube-prometheus-stack
+  - plugin-barman-cloud
   - velero
