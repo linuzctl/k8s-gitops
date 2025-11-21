@@ -13,3 +13,10 @@ spec:
   bootstrap:
     initdb:
       database: vaultwarden
+  enablePDB: false
+  plugins:
+    - enabled: true
+      isWALArchiver: true
+      name: barman-cloud.cloudnative-pg.io
+      parameters:
+        barmanObjectName: minio-backup

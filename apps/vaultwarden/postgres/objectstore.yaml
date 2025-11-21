@@ -1,0 +1,20 @@
+---
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: minio-backup
+  namespace: vaultwarden
+spec:
+  configuration:
+    destinationPath: s3://backup-cnpg/
+    endpointURL: http://minio.minio-backup.svc.cluster.local
+    s3Credentials:
+      accessKeyId:
+        name: cnpg-s3-backup-credentials
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: cnpg-s3-backup-credentials
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
+  retentionPolicy: 30d
