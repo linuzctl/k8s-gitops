@@ -9,7 +9,7 @@ spec:
   url: https://github.com/keycloak/keycloak-k8s-resources.git
   ref:
     # renovate: datasource=github-tags depName=keycloak/keycloak-k8s-resources
-    tag: 26.4.2
+    tag: 26.4.5
   ignore: |
     # exclude all
     /*
