@@ -21,9 +21,6 @@ spec:
     crds: Skip
   upgrade:
     crds: Skip
-  valuesFrom:
-    - kind: Secret
-      name: velero-values
   values:
     upgradeCRDs: false
     cleanUpCRDs: false
@@ -51,8 +48,11 @@ spec:
         - name: minio-backup
           provider: aws
           bucket: backup-velero
-          accessMode: ReadWrite
           default: true
+          accessMode: ReadWrite
+          credential:
+            name: velero-minio-backup-credentials
+            key: cloud
           config:
             region: us-east-1
             s3ForcePathStyle: true
@@ -63,4 +63,6 @@ spec:
           provider: aws
           config:
             region: us-east-1
+    credentials:
+      useSecret: false
     deployNodeAgent: true
