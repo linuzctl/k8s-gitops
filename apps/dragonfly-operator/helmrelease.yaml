@@ -16,7 +16,7 @@ spec:
     crds: Skip
   values:
     crds:
-      install: true
+      install: false
     serviceMonitor:
       enabled: true
     grafanaDashboard:
