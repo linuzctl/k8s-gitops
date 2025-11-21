@@ -13,3 +13,4 @@ spec:
   bootstrap:
     initdb:
       database: keycloak
+  enablePDB: false
