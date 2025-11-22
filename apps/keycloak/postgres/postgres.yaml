@@ -14,3 +14,9 @@ spec:
     initdb:
       database: keycloak
   enablePDB: false
+  plugins:
+    - enabled: true
+      isWALArchiver: true
+      name: barman-cloud.cloudnative-pg.io
+      parameters:
+        barmanObjectName: minio-backup
