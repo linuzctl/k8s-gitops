@@ -7,6 +7,6 @@ metadata:
 spec:
   selector:
     matchLabels:
-      cnpg.io/cluster: outline-postgres-17
+      cnpg.io/cluster: keycloak-postgres-17
   podMetricsEndpoints:
     - port: metrics
