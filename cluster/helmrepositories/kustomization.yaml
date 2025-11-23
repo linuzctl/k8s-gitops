@@ -17,6 +17,7 @@ resources:
   - minio.yaml
   - oauth2-proxy.yaml
   - prometheus-community.yaml
+  - renovate.yaml
   - rook-release.yaml
   - stakater.yaml
   - stirling-pdf.yaml

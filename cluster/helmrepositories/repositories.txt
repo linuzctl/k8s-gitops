@@ -13,6 +13,7 @@ minio-community https://charts.min.io/
 minio https://operator.min.io/
 oauth2-proxy https://oauth2-proxy.github.io/manifests
 prometheus-community https://prometheus-community.github.io/helm-charts
+renovate https://docs.renovatebot.com/helm-charts
 rook-release https://charts.rook.io/release
 stakater https://stakater.github.io/stakater-charts
 stirling-pdf https://stirling-tools.github.io/Stirling-PDF-chart
