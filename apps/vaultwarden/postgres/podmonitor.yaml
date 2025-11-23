@@ -2,11 +2,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: outline-postgres-17
+  name: vaultwarden-postgres-17
   namespace: vaultwarden
 spec:
   selector:
     matchLabels:
-      cnpg.io/cluster: outline-postgres-17
+      cnpg.io/cluster: vaultwarden-postgres-17
   podMetricsEndpoints:
     - port: metrics
