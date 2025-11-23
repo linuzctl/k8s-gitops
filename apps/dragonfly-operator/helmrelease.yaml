@@ -17,7 +17,13 @@ spec:
   values:
     crds:
       install: false
-    serviceMonitor:
-      enabled: true
+    additionalLabels:
+      grafana_dashboard: "1"
     grafanaDashboard:
+      enabled: true
+      labels:
+        name: dashboard_name
+    rbacProxy:
+      enabled: false
+    serviceMonitor:
       enabled: true
