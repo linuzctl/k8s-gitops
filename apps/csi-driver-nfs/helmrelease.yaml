@@ -20,8 +20,6 @@ spec:
   values:
     controller:
       replicas: 2
-    externalSnapshotter:
-      enabled: true
     driver:
       mountPermissions: 511
     storageClasses:
