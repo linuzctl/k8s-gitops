@@ -7,7 +7,7 @@ metadata:
 spec:
   cluster:
     name: keycloak-postgres-17
-  schedule: "0 10 * * *"  # At 10:00 every day
+  schedule: "0 0 10 * * *"  # At 10:00 every day
   method: plugin
   pluginConfiguration:
     name: barman-cloud.cloudnative-pg.io

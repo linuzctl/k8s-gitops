@@ -9,7 +9,7 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17.6
   storage:
     storageClass: ceph-block
-    size: 2Gi
+    size: 5Gi
   bootstrap:
     initdb:
       database: keycloak
