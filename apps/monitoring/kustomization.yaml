@@ -5,4 +5,5 @@ resources:
   - flux-system
   - kube-prometheus-stack
   - prometheus-smartctl-exporter
+  - rook-ceph
   - namespace.yaml
