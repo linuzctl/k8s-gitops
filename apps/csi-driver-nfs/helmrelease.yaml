@@ -22,6 +22,14 @@ spec:
       replicas: 2
     driver:
       mountPermissions: 511
+    externalSnapshotter:
+      enabled: false
+      customResourceDefinitions:
+        enabled: false
+    volumeSnapshotClass:
+      create: false
+      name: csi-nfs-snapclass
+      deletionPolicy: Delete
     storageClasses:
       - name: nfs-delete
         parameters:
