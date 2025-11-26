@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - flux-system
   - kube-prometheus-stack
+  - minio
   - prometheus-smartctl-exporter
   - rook-ceph
   - namespace.yaml
