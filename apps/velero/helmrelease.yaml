@@ -44,6 +44,7 @@ spec:
           - mountPath: /target
             name: plugins
     configuration:
+      features: EnableCSI
       backupStorageLocation:
         - name: minio-backup
           provider: aws
@@ -59,10 +60,14 @@ spec:
             s3Url: http://minio.minio-backup.svc.cluster.local
             publicUrl: https://backup.minio.${DOMAIN}
       volumeSnapshotLocation:
-        - name: minio-backup
-          provider: aws
+        - name: ceph-block
+          provider: csi
           config:
-            region: us-east-1
+            snapshotClassName: ceph-block
+        - name: ceph-filesystem
+          provider: csi
+          config:
+            snapshotClassName: ceph-filesystem
     credentials:
       useSecret: false
     deployNodeAgent: true
