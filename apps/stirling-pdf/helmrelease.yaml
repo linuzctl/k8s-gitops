@@ -27,15 +27,17 @@ spec:
         value: "https://pdf.${DOMAIN}"
       - name: SECURITY_ENABLELOGIN
         value: "false"
-      - name: UI_APP_NAME
+      - name: UI_APPNAME
         value: "Stirling PDF"
-      - name: UI_HOME_DESCRIPTION
+      - name: UI_HOMEDESCRIPTION
         value: "PDF Management"
-      - name: UI_APP_NAVBAR_NAME
+      - name: UI_APPNAVBARNAME
         value: "Stirling PDF"
+      - name: SYSTEM_ENABLEANALYTICS
+        value: "false"
       - name: ALLOW_GOOGLE_VISIBILITY
         value: "false"
-      - name: APP_LOCALE
+      - name: SYSTEM_DEFAULTLOCALE
         value: "en_GB"
     ingress:
       enabled: true
