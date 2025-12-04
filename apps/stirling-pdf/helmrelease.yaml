@@ -19,13 +19,13 @@ spec:
       interval: 30m
   values:
     image:
-      tag: 2.0.2
+      tag: 2.1.0
     envs:
       - name: SYSTEM_FRONTENDURL
         value: "pdf.${DOMAIN}"
       - name: SYSTEM_CORSALLOWEDORIGINS
         value: "https://pdf.${DOMAIN}"
-      - name: SECURITY_OAUTH2_ENABLED
+      - name: SECURITY_ENABLELOGIN
         value: "false"
       - name: UI_APP_NAME
         value: "Stirling PDF"
