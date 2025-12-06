@@ -11,7 +11,6 @@ metallb https://metallb.github.io/metallb
 metrics-server https://kubernetes-sigs.github.io/metrics-server
 minio-community https://charts.min.io/
 minio https://operator.min.io/
-oauth2-proxy https://oauth2-proxy.github.io/manifests
 prometheus-community https://prometheus-community.github.io/helm-charts
 renovate https://docs.renovatebot.com/helm-charts
 rook-release https://charts.rook.io/release
