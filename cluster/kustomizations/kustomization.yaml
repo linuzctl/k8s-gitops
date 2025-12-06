@@ -19,6 +19,7 @@ resources:
   - metrics-server.yaml
   - monitoring.yaml
   - ocis.yaml
+  - outline.yaml
   - reloader.yaml
   - rook-ceph.yaml
   - stirling-pdf.yaml

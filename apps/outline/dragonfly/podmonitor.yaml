@@ -1,0 +1,14 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: outline-dragonfly
+  namespace: outline
+spec:
+  selector:
+    matchLabels:
+      app: outline-dragonfly
+  podTargetLabels:
+    - app
+  podMetricsEndpoints:
+    - port: admin

@@ -1,0 +1,13 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: outline-postgres-backup
+  namespace: outline
+spec:
+  cluster:
+    name: outline-postgres-17
+  schedule: "0 0 2 * * *"  # At 02:00 every day
+  method: plugin
+  pluginConfiguration:
+    name: barman-cloud.cloudnative-pg.io

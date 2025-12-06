@@ -1,0 +1,29 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: outline-server
+  namespace: outline
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: outline
+    app.kubernetes.io/instance: outline
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: outline.${DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: outline-server
+                port:
+                  name: http
+  tls:
+    - secretName: outline-${DOMAIN/./-}-tls
+      hosts:
+        - outline.${DOMAIN}
