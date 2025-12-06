@@ -1,0 +1,14 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: gitlab-dragonfly
+  namespace: gitlab
+spec:
+  selector:
+    matchLabels:
+      app: gitlab-dragonfly
+  podTargetLabels:
+    - app
+  podMetricsEndpoints:
+    - port: admin

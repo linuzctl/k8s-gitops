@@ -1,0 +1,115 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gitlab-minio
+  namespace: gitlab
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: tenant
+      version: 7.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+      interval: 20m
+  valuesFrom:
+    - kind: Secret
+      name: gitlab-minio-values
+  values:
+    tenant:
+      name: gitlab-minio
+      pools:
+        - servers: 1
+          name: pool-0
+          volumesPerServer: 1
+          size: 10Gi
+          storageClassName: ceph-block
+      metrics:
+        enabled: true
+        port: 9000
+        protocol: http
+      prometheusOperator: true
+      certificate:
+        requestAutoCert: false
+      buckets:
+        - name: gitlab-artifacts-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-backup-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-tmp-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-ci-secure-files-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-dependency-proxy
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-external-diffs
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-lfs-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-packages-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-terraform-state-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-uploads-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-pages-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-registry-storage
+          objectLock: false
+          region: us-east-1
+      users:
+        - name: gitlab-minio-user-gitlab
+      env:
+        - name: TZ
+          value: Europe/Zurich
+        - name: MINIO_SERVER_URL
+          value: https://minio.git.${DOMAIN}
+        - name: MINIO_BROWSER_REDIRECT_URL
+          value: https://console.minio.git.${DOMAIN}
+        - name: PROMETHEUS_NAMESPACE
+          value: "monitoring"
+        - name: MINIO_PROMETHEUS_URL
+          value: "http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090"
+    ingress:
+      api:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        host: minio.git.${DOMAIN}
+        path: /
+        pathType: Prefix
+        tls:
+          - secretName: minio-git-${DOMAIN/./-}-tls
+            hosts:
+              - minio.git.${DOMAIN}
+      console:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        host: console.minio.git.${DOMAIN}
+        path: /
+        pathType: Prefix
+        tls:
+          - secretName: console-minio-git-${DOMAIN/./-}-tls
+            hosts:
+              - console.minio.git.${DOMAIN}

@@ -10,6 +10,7 @@ resources:
   - csi-driver-nfs.yaml
   - dragonfly-operator.yaml
   - falco.yaml
+  - gitlab.yaml
   - iframely.yaml
   - ingress-nginx.yaml
   - keycloak.yaml

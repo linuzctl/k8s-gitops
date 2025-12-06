@@ -1,0 +1,178 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: gitlab
+      version: 9.6.1
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab
+        namespace: flux-system
+      interval: 30m
+  values:
+    installCertmanager: false
+    gitlab:
+      gitlab-exporter:
+        enabled: false
+      gitlab-shell:
+        maxReplicas: 1
+        minReplicas: 1
+      migrations:
+        enabled: true
+      sidekiq:
+        deployment:
+          strategy:
+            type: Recreate
+        maxReplicas: 1
+        minReplicas: 1
+      toolbox:
+        backups:
+          objectStorage:
+            config:
+              secret: s3cmd-config
+              key: config
+          cron:
+            enabled: true
+            schedule: 0 1 * * *
+            successfulJobsHistoryLimit: 1
+      webservice:
+        deployment:
+          strategy:
+            type: Recreate
+        maxReplicas: 1
+        minReplicas: 1
+        ingress:
+          tls:
+            secretName: git-${DOMAIN/./-}-tls
+    gitlab-runner:
+      install: false
+    global:
+      psql:
+        host: gitlab-postgres-17-rw.gitlab.svc.cluster.local
+        password:
+          key: password
+          secret: gitlab-postgres-17-app
+      kas:
+        enabled: false
+      appConfig:
+        omniauth:
+          enabled: true
+          allowSingleSignOn:
+            - openid_connect
+          syncProfileFromProvider:
+            - openid_connect
+          syncProfileAttributes:
+            - email
+          autoSignInWithProvider: openid_connect
+          autoLinkUser: true
+          blockAutoCreatedUsers: false
+          providers:
+            - secret: gitlab-oidc-sso
+        artifacts:
+          bucket: gitlab-artifacts-storage
+        backups:
+          bucket: gitlab-backup-storage
+          tmpBucket: gitlab-tmp-storage
+        ciSecureFiles:
+          bucket: gitlab-ci-secure-files-storage
+          enabled: true
+        dependencyProxy:
+          bucket: gitlab-dependency-proxy
+          enabled: true
+        externalDiffs:
+          bucket: gitlab-external-diffs
+          enabled: true
+        lfs:
+          bucket: gitlab-lfs-storage
+        object_store:
+          connection:
+            secret: gitlab-object-storage
+          enabled: true
+          proxy_download: false
+        packages:
+          bucket: gitlab-packages-storage
+        terraformState:
+          bucket: gitlab-terraform-state-storage
+          enabled: true
+        uploads:
+          bucket: gitlab-uploads-storage
+      edition: ce
+      email:
+        display_name: GitLab@${DOMAIN}
+        from: git@${DOMAIN}
+        reply_to: git@${DOMAIN}
+        subject_suffix: null
+      grafana:
+        enabled: false
+      hosts:
+        domain: ${DOMAIN}
+        gitlab:
+          name: git.${DOMAIN}
+        minio:
+          name: minio.git.${DOMAIN}
+        registry:
+          name: registry.git.${DOMAIN}
+      ingress:
+        configureCertmanager: false
+        enabled: true
+        class: nginx
+        tls:
+          enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+      smtp:
+        address: mail.${DOMAIN}
+        user_name: git@${DOMAIN}
+        authentication: login
+        enabled: true
+        openssl_verify_mode: peer
+        password:
+          key: password
+          secret: gitlab-mail-password
+        port: 587
+        starttls_auto: true
+      time_zone: Europe/Zurich
+      minio:
+        enabled: false
+      pages:
+        enabled: true
+        objectStore:
+          enabled: true
+          bucket: gitlab-pages-storage
+          connection:
+            secret: objectstore-pages
+      registry:
+        bucket: gitlab-registry-storage
+      redis:
+        host: gitlab-dragonfly.gitlab.svc.cluster.local
+        auth:
+          enabled: false
+    nginx-ingress:
+      enabled: false
+    postgresql:
+      install: false
+    prometheus:
+      install: false
+    redis:
+      install: false
+    registry:
+      hpa:
+        maxReplicas: 1
+        minReplicas: 1
+      maintenance:
+        readonly:
+          enabled: false
+      storage:
+        secret: registry-storage
+        key: config
+      ingress:
+        tls:
+          secretName: registry-git-${DOMAIN/./-}-tls
