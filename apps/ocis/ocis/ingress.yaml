@@ -1,0 +1,30 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ocis
+  namespace: ocis
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  labels:
+    app.kubernetes.io/component: ocis
+    app.kubernetes.io/name: ocis
+    app.kubernetes.io/instance: ocis
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ocis.${DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ocis
+                port:
+                  name: http
+  tls:
+    - secretName: ocis-${DOMAIN/./-}-tls
+      hosts:
+        - ocis.${DOMAIN}

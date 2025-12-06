@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocis-tika
+  namespace: ocis
+  labels:
+    app.kubernetes.io/name: ocis
+    app.kubernetes.io/instance: ocis
+    app.kubernetes.io/component: tika
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9998
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: ocis
+    app.kubernetes.io/instance: ocis
+    app.kubernetes.io/component: tika

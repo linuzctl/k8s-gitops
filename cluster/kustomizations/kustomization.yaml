@@ -18,6 +18,7 @@ resources:
   - minio-operator.yaml
   - metrics-server.yaml
   - monitoring.yaml
+  - ocis.yaml
   - reloader.yaml
   - rook-ceph.yaml
   - stirling-pdf.yaml

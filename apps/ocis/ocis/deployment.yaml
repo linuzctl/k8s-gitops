@@ -1,0 +1,153 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocis
+  namespace: ocis
+  labels:
+    app.kubernetes.io/component: ocis
+    app.kubernetes.io/name: ocis
+    app.kubernetes.io/instance: ocis
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: ocis
+      app.kubernetes.io/name: ocis
+      app.kubernetes.io/instance: ocis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: ocis
+        app.kubernetes.io/name: ocis
+        app.kubernetes.io/instance: ocis
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: external-sites
+          image: owncloud/web-extensions:external-sites-0.2.0
+          command:
+            - cp
+            - -R
+            - /var/lib/nginx/html/external-sites/
+            - /apps
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
+        - name: unzip
+          image: owncloud/web-extensions:unzip-0.4.2
+          command:
+            - cp
+            - -R
+            - /var/lib/nginx/html/unzip/
+            - /apps
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
+        - name: json-viewer
+          image: owncloud/web-extensions:json-viewer-0.3.2
+          command:
+            - cp
+            - -R
+            - /var/lib/nginx/html/json-viewer/
+            - /apps
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
+        - name: draw-io
+          image: owncloud/web-extensions:draw-io-0.3.2
+          command:
+            - cp
+            - -R
+            - /var/lib/nginx/html/draw-io/
+            - /apps
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
+        - name: dicom-viewer
+          image: owncloud/web-app-dicom-viewer:latest
+          command:
+            - cp
+            - -R
+            - /app/
+            - /apps/dicom-viewer/
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
+      containers:
+        - name: ocis
+          image: owncloud/ocis:7.3.1
+          command: ["/bin/sh", "-c", "ocis init || true; exec ocis server"]
+          env:
+            - name: PROXY_AUTOPROVISION_ACCOUNTS
+              value: "true"
+            - name: PROXY_ROLE_ASSIGNMENT_DRIVER
+              value: "oidc"
+            - name: KEYCLOAK_DOMAIN
+              value: "auth.${DOMAIN}"
+            - name: OCIS_OIDC_ISSUER
+              value: "https://auth.${DOMAIN}/realms/auth"
+            - name: PROXY_OIDC_REWRITE_WELLKNOWN
+              value: "true"
+            - name: WEB_OIDC_CLIENT_ID
+              value: "ocis-web"
+            - name: PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM
+              value: "roles"
+            - name: OCIS_URL
+              value: "https://ocis.${DOMAIN}"
+            - name: OCIS_LOG_LEVEL
+              value: "info"
+            - name: OCIS_LOG_COLOR
+              value: "false"
+            - name: PROXY_TLS
+              value: "false"
+            - name: PROXY_USER_OIDC_CLAIM
+              value: "preferred_username"
+            - name: PROXY_USER_CS3_CLAIM
+              value: "username"
+            - name: OCIS_INSECURE
+              value: "false"
+            - name: OCIS_ADMIN_USER_ID
+              value: ""
+            - name: OCIS_EXCLUDE_RUN_SERVICES
+              value: "idp"
+            - name: GRAPH_ASSIGN_DEFAULT_USER_ROLE
+              value: "false"
+            - name: GRAPH_USERNAME_MATCH
+              value: "none"
+            - name: PROXY_CSP_CONFIG_FILE_LOCATION
+              value: "/etc/ocis/csp.yaml"
+            - name: OCIS_MFA_ENABLED
+              value: "false"
+            - name: WEB_OIDC_SCOPE
+              value: "openid profile email"
+          ports:
+            - name: http
+              containerPort: 9200
+            - name: metrics
+              containerPort: 9205
+          volumeMounts:
+            - name: etc
+              mountPath: /etc/ocis
+            - name: csp
+              mountPath: /etc/ocis/csp.yaml
+              subPath: csp.yaml
+            - name: apps
+              mountPath: /var/lib/ocis/web/assets/apps
+            - name: data
+              mountPath: /var/lib/ocis
+      volumes:
+        - name: etc
+          persistentVolumeClaim:
+            claimName: ocis-etc
+        - name: csp
+          configMap:
+            name: ocis-csp
+        - name: apps
+          emptyDir: {}
+        - name: data
+          persistentVolumeClaim:
+            claimName: ocis-data

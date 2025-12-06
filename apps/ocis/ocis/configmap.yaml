@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocis-csp
+  namespace: ocis
+  labels:
+    app.kubernetes.io/component: ocis
+    app.kubernetes.io/name: ocis
+    app.kubernetes.io/instance: ocis
+data:
+  csp.yaml: |
+    directives:
+      child-src:
+        - '''self'''
+        - 'data:'
+        - 'blob:'
+      connect-src:
+        - '''self'''
+        - 'data:'
+        - 'blob:'
+        - 'https://raw.githubusercontent.com/owncloud/awesome-ocis/'
+        - 'https://auth.${DOMAIN}/'
+      default-src:
+        - '''none'''
+      font-src:
+        - '''self'''
+      frame-ancestors:
+        - '''none'''
+      frame-src:
+        - '''self'''
+        - 'blob:'
+      img-src:
+        - '''self'''
+        - 'data:'
+        - 'blob:'
+        - 'https://raw.githubusercontent.com/owncloud/awesome-ocis/'
+      manifest-src:
+        - '''self'''
+      media-src:
+        - '''self'''
+      object-src:
+        - '''self'''
+        - 'blob:'
+      script-src:
+        - '''self'''
+        - '''unsafe-inline'''
+        - '''unsafe-eval'''
+      style-src:
+        - '''self'''
+        - '''unsafe-inline'''
+    webapps:
+      - id: "com.github.owncloud.web-app-dicom-viewer"
+        src: "/var/lib/ocis/web/assets/apps/dicom-viewer"
