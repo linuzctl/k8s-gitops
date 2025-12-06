@@ -27,7 +27,7 @@ spec:
       customResourceDefinitions:
         enabled: false
     volumeSnapshotClass:
-      create: false
+      create: true
       name: csi-nfs-snapclass
       deletionPolicy: Delete
     storageClasses:
