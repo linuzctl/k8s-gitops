@@ -9,6 +9,6 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/dragonflydb/dragonfly-operator/helm/dragonfly-operator
   ref:
-    tag: v1.3.0
+    tag: v1.3.1
   secretRef:
     name: ghcr-token
