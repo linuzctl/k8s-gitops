@@ -12,6 +12,8 @@ metadata:
     reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/component: ocis
@@ -124,6 +126,12 @@ spec:
               value: "false"
             - name: WEB_OIDC_SCOPE
               value: "openid profile email"
+            - name: SEARCH_EXTRACTOR_TYPE
+              value: "tika"
+            - name: SEARCH_EXTRACTOR_TIKA_TIKA_URL
+              value: "http://ocis-tika.ocis.svc.cluster.local:9998"
+            - name: FRONTEND_FULL_TEXT_SEARCH_ENABLED
+              value: "true"
           ports:
             - name: http
               containerPort: 9200
