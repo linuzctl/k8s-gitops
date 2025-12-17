@@ -1,0 +1,17 @@
+---
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: ocis-backup
+  namespace: velero
+spec:
+  schedule: '@every 24h'
+  template:
+    csiSnapshotTimeout: 0s
+    includedNamespaces:
+      - ocis
+    snapshotMoveData: true
+    storageLocation: minio-backup
+    volumeSnapshotLocations:
+      - ceph-block
+  useOwnerReferencesInBackup: false

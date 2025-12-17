@@ -5,3 +5,4 @@ resources:
   - ocis
   - tika
   - namespace.yaml
+  - schedule.yaml
