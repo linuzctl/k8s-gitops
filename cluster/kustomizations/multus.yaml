@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: multus
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: ./apps/multus
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

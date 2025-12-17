@@ -19,6 +19,7 @@ resources:
   - minio-operator.yaml
   - metrics-server.yaml
   - monitoring.yaml
+  - multus.yaml
   - ocis.yaml
   - outline.yaml
   - reloader.yaml
