@@ -7,3 +7,4 @@ resources:
   - outline
   - postgres
   - namespace.yaml
+  - schedule.yaml

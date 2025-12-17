@@ -1,0 +1,17 @@
+---
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: outline-backup
+  namespace: velero
+spec:
+  schedule: '@every 24h'
+  template:
+    csiSnapshotTimeout: 0s
+    includedNamespaces:
+      - outline
+    snapshotMoveData: true
+    storageLocation: minio-backup
+    volumeSnapshotLocations:
+      - ceph-block
+  useOwnerReferencesInBackup: false
