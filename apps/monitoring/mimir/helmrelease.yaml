@@ -1,0 +1,221 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mimir
+  namespace: monitoring
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: mimir-distributed
+      version: 6.0.5
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+      interval: 30m
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
+  values:
+    global:
+      extraEnvFrom:
+        - secretRef:
+            name: mimir-bucket-secret
+      dnsService: coredns
+    metaMonitoring:
+      dashboards:
+        enabled: true
+      serviceMonitor:
+        enabled: true
+        labels:
+          release: kube-prometheus-stack
+    mimir:
+      structuredConfig:
+        common:
+          storage:
+            backend: s3
+            s3:
+              endpoint: minio.minio-backup.svc.cluster.local
+              region: us-east-2
+              access_key_id: ${AWS_ACCESS_KEY_ID}
+              secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+              insecure: true
+        blocks_storage:
+          backend: "s3"
+          s3:
+            bucket_name: mimir-blocks
+        ruler_storage:
+          backend: "s3"
+          s3:
+            bucket_name: mimir-ruler
+    runtimeConfig:
+      overrides:
+        monitoring:
+          ingestion_rate: 60000
+          ingestion_burst_size: 600000
+          max_global_series_per_user: 2000000
+    alertmanager:
+      enabled: false
+      persistentVolume:
+        enabled: true
+        storageClass: nfs-delete
+      replicas: 1
+      resources:
+        limits:
+          cpu: 1
+          memory: 1Gi
+        requests:
+          cpu: 1
+          memory: 1Gi
+      statefulSet:
+        enabled: true
+    compactor:
+      persistentVolume:
+        size: 20Gi
+        storageClass: nfs-delete
+      resources:
+        limits:
+          cpu: 1
+          memory: 2Gi
+        requests:
+          cpu: 1
+          memory: 2Gi
+    distributor:
+      replicas: 2
+      resources:
+        limits:
+          cpu: 3
+          memory: 5Gi
+        requests:
+          cpu: 2
+          memory: 4Gi
+    ingester:
+      persistentVolume:
+        size: 50Gi
+        storageClass: nfs-delete
+      replicas: 3
+      resources:
+        limits:
+          cpu: 2
+          memory: 2Gi
+        requests:
+          cpu: 2
+          memory: 1Gi
+      topologySpreadConstraints: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - ingester
+              topologyKey: "kubernetes.io/hostname"
+      zoneAwareReplication:
+        topologyKey: "kubernetes.io/hostname"
+    chunks-cache:
+      enabled: true
+      replicas: 3
+    index-cache:
+      enabled: true
+      replicas: 3
+    metadata-cache:
+      enabled: true
+      replicas: 3
+    results-cache:
+      enabled: true
+      replicas: 3
+    minio:
+      enabled: false
+    overrides_exporter:
+      replicas: 1
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    kafka:
+      enabled: true
+      persistence:
+        enabled: true
+        size: 5Gi
+        storageClassName: nfs-delete
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1Gi
+        limits:
+          cpu: 2
+          memory: 2Gi
+      extraEnv:
+        - name: KAFKA_HEAP_OPTS
+          value: "-Xms512m -Xmx512m"
+    querier:
+      replicas: 1
+      resources:
+        limits:
+          cpu: 2
+          memory: 5Gi
+        requests:
+          cpu: 2
+          memory: 5Gi
+    query_frontend:
+      replicas: 1
+      resources:
+        limits:
+          cpu: 2
+          memory: 2Gi
+        requests:
+          cpu: 2
+          memory: 2Gi
+    ruler:
+      replicas: 1
+      resources:
+        limits:
+          cpu: 1
+          memory: 2Gi
+        requests:
+          cpu: 1
+          memory: 2Gi
+    store_gateway:
+      persistentVolume:
+        size: 10Gi
+        storageClass: nfs-delete
+      replicas: 3
+      resources:
+        limits:
+          cpu: 1
+          memory: 2Gi
+        requests:
+          cpu: 1
+          memory: 2Gi
+      topologySpreadConstraints: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - store-gateway
+              topologyKey: "kubernetes.io/hostname"
+      zoneAwareReplication:
+        topologyKey: "kubernetes.io/hostname"
+    gateway:
+      replicas: 1
+      resources:
+        limits:
+          cpu: 1
+          memory: 731Mi
+        requests:
+          cpu: 1
+          memory: 731Mi

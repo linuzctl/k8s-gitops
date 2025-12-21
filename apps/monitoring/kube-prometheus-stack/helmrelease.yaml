@@ -101,6 +101,14 @@ spec:
           resource: configmap
       serviceMonitor:
         enabled: true
+      additionalDataSources:
+        - name: mimir
+          type: prometheus
+          url: http://mimir-gateway.monitoring.svc.cluster.local:80/prometheus
+          jsonData:
+            httpHeaderName1: X-Scope-OrgID
+          secureJsonData:
+            httpHeaderValue1: monitoring
     prometheus:
       ingress:
         enabled: true
@@ -119,6 +127,10 @@ spec:
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
+        remoteWrite:
+          - url: http://mimir-gateway.monitoring.svc.cluster.local:80/api/v1/push
+            headers:
+              X-Scope-OrgID: monitoring
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         retention: 14d
@@ -129,4 +141,3 @@ spec:
               resources:
                 requests:
                   storage: 20Gi
-

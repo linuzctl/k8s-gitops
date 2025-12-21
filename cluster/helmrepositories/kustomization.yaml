@@ -8,6 +8,7 @@ resources:
   - csi-driver-nfs.yaml
   - falcosecurity.yaml
   - gitlab.yaml
+  - grafana.yaml
   - ingress-nginx.yaml
   - jetstack.yaml
   - kubernetes-dashboard.yaml

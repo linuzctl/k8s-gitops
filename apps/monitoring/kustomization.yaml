@@ -5,6 +5,7 @@ resources:
   - cloudnative-pg
   - flux-system
   - kube-prometheus-stack
+  - mimir
   - minio
   - prometheus-smartctl-exporter
   - rook-ceph
