@@ -19,7 +19,7 @@ spec:
       interval: 30m
   values:
     image:
-      tag: 2.1.1
+      tag: 2.1.5
     envs:
       - name: SYSTEM_FRONTENDURL
         value: "pdf.${DOMAIN}"
