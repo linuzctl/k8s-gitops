@@ -61,87 +61,65 @@ spec:
           max_global_series_per_user: 2000000
     alertmanager:
       enabled: false
-      persistentVolume:
-        enabled: true
-        storageClass: nfs-delete
-      replicas: 1
-      resources:
-        limits:
-          cpu: 1
-          memory: 1Gi
-        requests:
-          cpu: 1
-          memory: 1Gi
-      statefulSet:
-        enabled: true
     compactor:
       persistentVolume:
         size: 20Gi
         storageClass: nfs-delete
       resources:
-        limits:
-          cpu: 1
-          memory: 2Gi
         requests:
-          cpu: 1
-          memory: 2Gi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
     distributor:
-      replicas: 2
+      replicas: 1
       resources:
-        limits:
-          cpu: 3
-          memory: 5Gi
         requests:
-          cpu: 2
-          memory: 4Gi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
     ingester:
       persistentVolume:
-        size: 50Gi
+        size: 20Gi
         storageClass: nfs-delete
-      replicas: 3
+      replicas: 2
       resources:
-        limits:
-          cpu: 2
-          memory: 2Gi
         requests:
-          cpu: 2
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
           memory: 1Gi
       topologySpreadConstraints: {}
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/component
-                    operator: In
-                    values:
-                      - ingester
-              topologyKey: "kubernetes.io/hostname"
+      affinity: {}
       zoneAwareReplication:
         topologyKey: "kubernetes.io/hostname"
     chunks-cache:
       enabled: true
-      replicas: 3
+      replicas: 1
     index-cache:
       enabled: true
-      replicas: 3
+      replicas: 1
     metadata-cache:
       enabled: true
-      replicas: 3
+      replicas: 1
     results-cache:
       enabled: true
-      replicas: 3
+      replicas: 1
     minio:
       enabled: false
     overrides_exporter:
       replicas: 1
       resources:
+        requests:
+          cpu: 50m
+          memory: 128Mi
         limits:
           cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
+          memory: 256Mi
     kafka:
       enabled: true
       persistence:
@@ -150,72 +128,63 @@ spec:
         storageClassName: nfs-delete
       resources:
         requests:
+          cpu: 250m
+          memory: 512Mi
+        limits:
           cpu: 500m
           memory: 1Gi
-        limits:
-          cpu: 2
-          memory: 2Gi
       extraEnv:
         - name: KAFKA_HEAP_OPTS
           value: "-Xms512m -Xmx512m"
     querier:
       replicas: 1
       resources:
-        limits:
-          cpu: 2
-          memory: 5Gi
         requests:
-          cpu: 2
-          memory: 5Gi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
     query_frontend:
       replicas: 1
       resources:
-        limits:
-          cpu: 2
-          memory: 2Gi
         requests:
-          cpu: 2
-          memory: 2Gi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
     ruler:
       replicas: 1
       resources:
-        limits:
-          cpu: 1
-          memory: 2Gi
         requests:
-          cpu: 1
-          memory: 2Gi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
     store_gateway:
       persistentVolume:
         size: 10Gi
         storageClass: nfs-delete
-      replicas: 3
+      replicas: 1
       resources:
-        limits:
-          cpu: 1
-          memory: 2Gi
         requests:
-          cpu: 1
-          memory: 2Gi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
       topologySpreadConstraints: {}
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/component
-                    operator: In
-                    values:
-                      - store-gateway
-              topologyKey: "kubernetes.io/hostname"
+      affinity: {}
       zoneAwareReplication:
         topologyKey: "kubernetes.io/hostname"
     gateway:
       replicas: 1
       resources:
-        limits:
-          cpu: 1
-          memory: 731Mi
         requests:
-          cpu: 1
-          memory: 731Mi
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
