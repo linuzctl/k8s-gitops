@@ -10,6 +10,9 @@ spec:
   storage:
     storageClass: ceph-block
     size: 10Gi
+  walStorage:
+    storageClass: ceph-block
+    size: 3Gi
   bootstrap:
     initdb:
       database: gitlabhq_production
