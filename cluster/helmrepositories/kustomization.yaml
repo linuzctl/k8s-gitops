@@ -6,6 +6,7 @@ resources:
   - cloudnative-pg.yaml
   - coredns.yaml
   - csi-driver-nfs.yaml
+  - descheduler.yaml
   - falcosecurity.yaml
   - gitlab.yaml
   - grafana.yaml
