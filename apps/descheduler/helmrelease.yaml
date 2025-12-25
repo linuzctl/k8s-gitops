@@ -18,5 +18,6 @@ spec:
         namespace: flux-system
       interval: 20m
   values:
+    kind: Deployment
     serviceMonitor:
       enabled: true
