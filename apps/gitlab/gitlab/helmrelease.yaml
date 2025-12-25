@@ -104,6 +104,17 @@ spec:
           enabled: true
         uploads:
           bucket: gitlab-uploads-storage
+        incomingEmail:
+          enabled: true
+          address: git+%{key}@${DOMAIN}
+          host: mail.${DOMAIN}
+          port: 993
+          email: git@${DOMAIN}
+          ssl: true
+          user: git@${DOMAIN}
+          password:
+            key: password
+            secret: gitlab-mail-password
       edition: ce
       email:
         display_name: GitLab@${DOMAIN}
