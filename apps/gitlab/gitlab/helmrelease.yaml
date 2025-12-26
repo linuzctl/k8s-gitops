@@ -117,7 +117,7 @@ spec:
             secret: gitlab-mail-password
       edition: ce
       email:
-        display_name: GitLab@${DOMAIN}
+        display_name: GitLab
         from: git@${DOMAIN}
         reply_to: git@${DOMAIN}
         subject_suffix: null
@@ -140,16 +140,17 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
       smtp:
-        address: mail.${DOMAIN}
-        user_name: git@${DOMAIN}
-        authentication: login
         enabled: true
+        address: mail.${DOMAIN}
+        authentication: login
+        user_name: git@${DOMAIN}
         openssl_verify_mode: peer
         password:
           key: password
           secret: gitlab-mail-password
-        port: 587
-        starttls_auto: true
+        port: 465
+        starttls_auto: false
+        tls: true
       time_zone: Europe/Zurich
       minio:
         enabled: false
