@@ -17,6 +17,10 @@ spec:
         name: csi-driver-nfs
         namespace: flux-system
       interval: 20m
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
   values:
     controller:
       replicas: 2
