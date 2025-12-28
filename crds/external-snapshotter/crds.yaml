@@ -1,0 +1,48 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: external-snapshotter
+  namespace: flux-system
+spec:
+  interval: 20m
+  url: https://github.com/kubernetes-csi/external-snapshotter.git
+  ref:
+    # renovate: kubernetes-csi/external-snapshotter
+    tag: v8.4.0
+  ignore: |
+    # exclude all
+    /*
+    # include deploy crds dir
+    !/client/config/crd
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-snapshotter-crds
+  namespace: flux-system
+spec:
+  interval: 20m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: external-snapshotter
+  healthChecks:
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: volumegroupsnapshotclasses.groupsnapshot.storage.k8s.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: volumegroupsnapshotcontents.groupsnapshot.storage.k8s.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: volumegroupsnapshots.groupsnapshot.storage.k8s.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: volumesnapshotclasses.snapshot.storage.k8s.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: volumesnapshotcontents.snapshot.storage.k8s.io
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: volumesnapshots.snapshot.storage.k8s.io

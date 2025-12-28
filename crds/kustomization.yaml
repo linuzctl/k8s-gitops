@@ -5,6 +5,7 @@ resources:
   - cert-manager
   - cloudnative-pg
   - dragonfly-operator
+  - external-snapshotter
   - keycloak
   - kube-prometheus-stack
   - plugin-barman-cloud
