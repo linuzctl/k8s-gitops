@@ -1,0 +1,14 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: github-status
+  namespace: flux-system
+spec:
+  providerRef:
+    name: github-status
+  eventSeverity: info
+  eventSources:
+    - kind: Kustomization
+      name: "*"
+  suspend: false

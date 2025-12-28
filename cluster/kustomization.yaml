@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - flux-system
   - kustomizations
+  - notifications
   - helmrepositories
   - cluster-vars.sops.yaml
   - secret.sops.yaml
