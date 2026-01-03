@@ -6,7 +6,7 @@ metadata:
   namespace: outline
 spec:
   instances: 1
-  imageName: ghcr.io/cloudnative-pg/postgresql:17.7
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.1
   storage:
     storageClass: ceph-block
     size: 5Gi
