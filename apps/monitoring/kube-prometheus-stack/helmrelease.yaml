@@ -101,14 +101,6 @@ spec:
           resource: configmap
       serviceMonitor:
         enabled: true
-      additionalDataSources:
-        - name: mimir
-          type: prometheus
-          url: http://mimir-gateway.monitoring.svc.cluster.local:80/prometheus
-          jsonData:
-            httpHeaderName1: X-Scope-OrgID
-          secureJsonData:
-            httpHeaderValue1: monitoring
     prometheus:
       ingress:
         enabled: true
