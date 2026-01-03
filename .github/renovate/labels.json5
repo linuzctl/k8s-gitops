@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "labels": [
+        "{{datasource}}",
+        "{{updateType}}"
+      ]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "addLabels": ["container"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "addLabels": ["github-action"]
+    }
+  ]
+}
