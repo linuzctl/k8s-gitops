@@ -110,10 +110,10 @@
     },
     {
       description: 'Ignore Package docker.getoutline.com',
-      'matchPackageNames': [
+      matchPackageNames: [
         'docker.getoutline.com/outlinewiki/outline',
       ],
-      'enabled': false,
+      enabled: false,
     }
   ],
   'pre-commit': {
