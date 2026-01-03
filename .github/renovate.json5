@@ -65,9 +65,10 @@
         '/apps/.+/kustomization\\.ya?ml$/',
       ],
       matchStrings: [
+        'https://raw\\.githubusercontent\\.com/(?<depName>[\\w\\-]+/[\\w\\-]+)/refs/(?<datasource>\\S+)/v?(?<currentValue>[\\d\\.\\-_]+)(?:/|$)',
         'https://raw\\.githubusercontent\\.com/(?<depName>[\\w\\-]+/[\\w\\-]+)/(?:v?(?<currentValue>[\\w\\.\\-_]+))/',
       ],
-      datasourceTemplate: 'github-releases',
+      datasourceTemplate: '{{#if datasource}}github-tags{{else}}github-releases{{/if}}',
       versioningTemplate: 'semver',
     },
   ],
