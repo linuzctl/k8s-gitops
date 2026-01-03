@@ -27,6 +27,7 @@
   flux: {
     managerFilePatterns: [
       '/apps/.+/helmrelease\\.ya?ml$/',
+      '/cluster/helmrepositories/.*\\.ya?ml$/',
     ],
   },
   customManagers: [
