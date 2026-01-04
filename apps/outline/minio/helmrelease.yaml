@@ -37,7 +37,7 @@ spec:
       certificate:
         requestAutoCert: false
       buckets:
-        - name: outline
+        - name: data
           objectLock: false
           region: us-east-1
       users:
