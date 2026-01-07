@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: drawio
+  namespace: drawio
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
+    app.kubernetes.io/name: drawio
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: drawio.${DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: drawio
+                port:
+                  name: http
+  tls:
+    - secretName: drawio-${DOMAIN/./-}-tls
+      hosts:
+        - drawio.${DOMAIN}
