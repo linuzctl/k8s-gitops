@@ -53,6 +53,12 @@ spec:
           backend: "s3"
           s3:
             bucket_name: mimir-ruler
+    runtimeConfig:
+      overrides:
+        monitoring:
+          ingestion_burst_size: 1000000
+          ingestion_rate: 1000000
+          max_global_series_per_user: 1000000
     alertmanager:
       enabled: false
     compactor:
