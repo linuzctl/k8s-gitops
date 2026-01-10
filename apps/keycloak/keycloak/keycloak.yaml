@@ -8,12 +8,12 @@ spec:
   instances: 1
   db:
     vendor: postgres
-    host: keycloak-postgres-17-rw
+    host: keycloak-postgres-rw
     usernameSecret:
-      name: keycloak-postgres-17-app
+      name: keycloak-postgres-app
       key: username
     passwordSecret:
-      name: keycloak-postgres-17-app
+      name: keycloak-postgres-app
       key: password
   http:
     httpEnabled: true
