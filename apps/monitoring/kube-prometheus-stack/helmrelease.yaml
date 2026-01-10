@@ -23,6 +23,8 @@ spec:
     crds: Skip
   values:
     alertmanager:
+      alertmanagerSpec:
+        forceEnableClusterMode: true
       ingress:
         enabled: true
         annotations:
