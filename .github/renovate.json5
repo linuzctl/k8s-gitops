@@ -35,7 +35,7 @@
       customType: 'regex',
       description: 'dependencies cloudnative-pg postgres databases',
       managerFilePatterns: [
-        '/apps/.+/postgres\\.yaml$/',
+        '/apps/.+/cluster\\.yaml$/',
       ],
       matchStrings: [
         'imageName:\\s*(?<depName>\\S+):(?<currentValue>\\S+)',
