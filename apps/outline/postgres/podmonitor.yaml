@@ -2,11 +2,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: outline-postgres-17
+  name: outline-postgres
   namespace: outline
 spec:
   selector:
     matchLabels:
-      cnpg.io/cluster: outline-postgres-17
+      cnpg.io/cluster: outline-postgres
   podMetricsEndpoints:
     - port: metrics

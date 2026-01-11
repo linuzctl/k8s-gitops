@@ -2,11 +2,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: keycloak-postgres-17
+  name: keycloak-postgres
   namespace: keycloak
 spec:
   selector:
     matchLabels:
-      cnpg.io/cluster: keycloak-postgres-17
+      cnpg.io/cluster: keycloak-postgres
   podMetricsEndpoints:
     - port: metrics

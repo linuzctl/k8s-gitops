@@ -6,7 +6,7 @@ metadata:
   namespace: outline
 spec:
   cluster:
-    name: outline-postgres-17
+    name: outline-postgres
   schedule: "0 0 2 * * *"  # At 02:00 every day
   method: plugin
   pluginConfiguration:

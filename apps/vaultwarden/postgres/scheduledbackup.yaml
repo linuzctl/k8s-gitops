@@ -6,7 +6,7 @@ metadata:
   namespace: vaultwarden
 spec:
   cluster:
-    name: vaultwarden-postgres-17
+    name: vaultwarden-postgres
   schedule: "0 10 * * *"  # At 10:00 every day
   method: plugin
   pluginConfiguration:
