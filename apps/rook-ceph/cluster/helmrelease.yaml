@@ -128,6 +128,7 @@ spec:
       name: ceph-filesystem
       isDefault: true
       deletionPolicy: Delete
+    cephObjectStores: {}
     monitoring:
       enabled: true
       createPrometheusRules: true
