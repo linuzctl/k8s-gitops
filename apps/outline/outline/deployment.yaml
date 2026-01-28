@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: outline
-          image: outlinewiki/outline:1.2.0
+          image: outlinewiki/outline:1.4.0
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
