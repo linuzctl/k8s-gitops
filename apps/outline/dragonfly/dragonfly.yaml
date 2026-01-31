@@ -6,7 +6,6 @@ metadata:
   namespace: outline
 spec:
   replicas: 1
-  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.35.1
   args:
     - --cluster_mode=emulated
     - --default_lua_flags=allow-undeclared-keys
