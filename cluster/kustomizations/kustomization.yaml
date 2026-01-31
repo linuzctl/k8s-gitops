@@ -28,6 +28,7 @@ resources:
   - ocis.yaml
   - outline.yaml
   - reloader.yaml
+  - renovate.yaml
   - rook-ceph.yaml
   - spegel.yaml
   - stirling-pdf.yaml
