@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: spegel
+  namespace: spegel
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: spegel
+    namespace: flux-system
+  values:
+    serviceMonitor:
+      enabled: true
+    grafanaDashboard:
+      enabled: true
+      labels:
+        grafana_dashboard: "1"
+      annotations:
+        grafana_folder: "Spegel"

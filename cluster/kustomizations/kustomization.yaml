@@ -29,6 +29,7 @@ resources:
   - outline.yaml
   - reloader.yaml
   - rook-ceph.yaml
+  - spegel.yaml
   - stirling-pdf.yaml
   - vaultwarden.yaml
   - velero.yaml
