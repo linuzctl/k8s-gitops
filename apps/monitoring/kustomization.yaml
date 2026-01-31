@@ -6,7 +6,6 @@ resources:
   - flux-system
   - kube-prometheus-stack
   - loki
-  - mimir
   - minio
   - prometheus-smartctl-exporter
   - promtail

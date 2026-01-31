@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: mimir
-  namespace: monitoring
+  namespace: mimir
 spec:
   interval: 20m
   driftDetection:

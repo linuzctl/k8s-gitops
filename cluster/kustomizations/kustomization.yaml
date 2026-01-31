@@ -19,9 +19,10 @@ resources:
   - ingress-nginx.yaml
   - keycloak.yaml
   - kubevirt.yaml
+  - metrics-server.yaml
+  - mimir.yaml
   - minio-backup.yaml
   - minio-operator.yaml
-  - metrics-server.yaml
   - monitoring.yaml
   - multus.yaml
   - ocis.yaml

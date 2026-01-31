@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: grafana-datasource-mimir
-  namespace: monitoring
+  namespace: mimir
   labels:
     grafana_datasource: "1"
 data:
@@ -13,7 +13,7 @@ data:
       - name: mimir
         type: prometheus
         uid: mimir
-        url: http://mimir-gateway.monitoring.svc.cluster.local:80/prometheus
+        url: http://mimir-gateway.mimir.svc.cluster.local:80/prometheus
         jsonData:
           httpHeaderName1: X-Scope-OrgID
         secureJsonData:
