@@ -8,7 +8,6 @@ gitlab https://charts.gitlab.io
 grafana https://grafana.github.io/helm-charts
 ingress-nginx https://kubernetes.github.io/ingress-nginx
 jetstack https://charts.jetstack.io
-kubernetes-dashboard https://kubernetes.github.io/dashboard/
 metallb https://metallb.github.io/metallb
 metrics-server https://kubernetes-sigs.github.io/metrics-server
 minio-community https://charts.min.io/
