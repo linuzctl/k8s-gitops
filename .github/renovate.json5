@@ -93,9 +93,9 @@
       ],
     },
     {
-      description: 'Auto merge containers',
+      description: 'Auto merge Renovate',
       matchDatasources: [
-        'docker',
+        'helm',
       ],
       automerge: true,
       automergeType: 'branch',
@@ -105,15 +105,8 @@
         'patch',
       ],
       matchPackageNames: [
-        'renovate/renovate',
+        'renovate',
       ],
-    },
-    {
-      description: 'Ignore Package docker.getoutline.com',
-      matchPackageNames: [
-        'docker.getoutline.com/outlinewiki/outline',
-      ],
-      enabled: false,
     }
   ],
   'pre-commit': {
