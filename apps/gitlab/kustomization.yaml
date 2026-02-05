@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - dragonfly
   - gitlab
+  - gitlab-runner
   - minio
   - postgres
   - namespace.yaml

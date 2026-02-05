@@ -73,6 +73,9 @@ spec:
         - name: gitlab-registry-storage
           objectLock: false
           region: us-east-1
+        - name: gitlab-runner-cache
+          objectLock: false
+          region: us-east-1
       users:
         - name: gitlab-minio-user-gitlab
       env:
