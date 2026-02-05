@@ -81,7 +81,7 @@ spec:
               mountPath: /apps
       containers:
         - name: ocis
-          image: owncloud/ocis:7.3.1
+          image: owncloud/ocis:7.3.2
           command: ["/bin/sh", "-c", "ocis init || true; exec ocis server"]
           env:
             - name: PROXY_AUTOPROVISION_ACCOUNTS
