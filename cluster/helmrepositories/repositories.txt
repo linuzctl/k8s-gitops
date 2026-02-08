@@ -16,6 +16,5 @@ prometheus-community https://prometheus-community.github.io/helm-charts
 renovate https://docs.renovatebot.com/helm-charts
 rook-release https://charts.rook.io/release
 stakater https://stakater.github.io/stakater-charts
-stirling-pdf https://stirling-tools.github.io/Stirling-PDF-chart
 unpoller https://unpoller.github.io/helm-chart
 vmware-tanzu https://vmware-tanzu.github.io/helm-charts
