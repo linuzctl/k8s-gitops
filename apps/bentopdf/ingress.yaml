@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bentopdf
+  namespace: bentopdf
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
+    app.kubernetes.io/name: bentopdf
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: pdf.${DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bentopdf
+                port:
+                  name: http
+  tls:
+    - secretName: pdf-${DOMAIN/./-}-tls
+      hosts:
+        - pdf.${DOMAIN}
