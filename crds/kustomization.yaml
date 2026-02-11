@@ -8,5 +8,6 @@ resources:
   - external-snapshotter
   - keycloak
   - kube-prometheus-stack
+  - node-feature-discovery
   - plugin-barman-cloud
   - velero
