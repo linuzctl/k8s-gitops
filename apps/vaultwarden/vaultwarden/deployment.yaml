@@ -28,7 +28,7 @@ spec:
     spec:
       serviceAccountName: vaultwarden
       containers:
-        - image: docker.io/vaultwarden/server:1.35.2-alpine
+        - image: docker.io/vaultwarden/server:1.35.3-alpine
           imagePullPolicy: IfNotPresent
           name: vaultwarden
           envFrom:
