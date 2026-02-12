@@ -13,7 +13,6 @@ metrics-server https://kubernetes-sigs.github.io/metrics-server
 minio-community https://charts.min.io/
 minio https://operator.min.io/
 prometheus-community https://prometheus-community.github.io/helm-charts
-renovate https://docs.renovatebot.com/helm-charts
 rook-release https://charts.rook.io/release
 stakater https://stakater.github.io/stakater-charts
 unpoller https://unpoller.github.io/helm-chart

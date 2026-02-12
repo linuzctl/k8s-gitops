@@ -17,7 +17,6 @@ resources:
   - minio-community.yaml
   - minio.yaml
   - prometheus-community.yaml
-  - renovate.yaml
   - rook-release.yaml
   - stakater.yaml
   - unpoller.yaml

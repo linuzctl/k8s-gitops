@@ -95,7 +95,7 @@
     {
       description: 'Auto merge Renovate',
       matchDatasources: [
-        'helm',
+        'docker',
       ],
       automerge: true,
       automergeType: 'branch',
@@ -105,7 +105,7 @@
         'patch',
       ],
       matchPackageNames: [
-        'renovate',
+        'ghcr.io/renovatebot/charts/renovate',
       ],
     }
   ],

@@ -8,15 +8,14 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: renovate
-      version: 46.8.2
-      sourceRef:
-        kind: HelmRepository
-        name: renovate
-        namespace: flux-system
-      interval: 20m
+  chartRef:
+    kind: OCIRepository
+    name: renovate
+    namespace: flux-system
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
   valuesFrom:
     - kind: Secret
       name: renovate-helm-values
