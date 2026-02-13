@@ -9,4 +9,3 @@ resources:
   - metrics-server.yaml
   - minio-community.yaml
   - minio.yaml
-  - unpoller.yaml
