@@ -11,4 +11,3 @@ minio https://operator.min.io/
 rook-release https://charts.rook.io/release
 stakater https://stakater.github.io/stakater-charts
 unpoller https://unpoller.github.io/helm-chart
-vmware-tanzu https://vmware-tanzu.github.io/helm-charts
