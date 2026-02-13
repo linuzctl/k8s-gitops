@@ -9,7 +9,6 @@ resources:
   - gitlab.yaml
   - grafana.yaml
   - ingress-nginx.yaml
-  - metallb.yaml
   - metrics-server.yaml
   - minio-community.yaml
   - minio.yaml
