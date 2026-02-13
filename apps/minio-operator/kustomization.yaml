@@ -4,3 +4,30 @@ kind: Kustomization
 resources:
   - helmrelease.yaml
   - namespace.yaml
+configMapGenerator:
+  - name: grafana-dashboard-minio-dashboard
+    namespace: minio-operator
+    files:
+      - minio-dashboard.json=https://raw.githubusercontent.com/minio/minio/refs/heads/master/docs/metrics/prometheus/grafana/minio-dashboard.json
+  - name: grafana-dashboard-minio-bucket
+    namespace: minio-operator
+    files:
+      - minio-bucket.json=https://raw.githubusercontent.com/minio/minio/refs/heads/master/docs/metrics/prometheus/grafana/bucket/minio-bucket.json
+  - name: grafana-dashboard-minio-node
+    namespace: minio-operator
+    files:
+      - minio-node.json=https://raw.githubusercontent.com/minio/minio/refs/heads/master/docs/metrics/prometheus/grafana/node/minio-node.json
+  - name: grafana-dashboard-minio-replication-cluster
+    namespace: minio-operator
+    files:
+      - minio-replication-cluster.json=https://raw.githubusercontent.com/minio/minio/refs/heads/master/docs/metrics/prometheus/grafana/replication/minio-replication-cluster.json
+  - name: grafana-dashboard-minio-replication-node.json
+    namespace: minio-operator
+    files:
+      - mminio-replication-node.json=https://raw.githubusercontent.com/minio/minio/refs/heads/master/docs/metrics/prometheus/grafana/replication/minio-replication-node.json
+generatorOptions:
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+  disableNameSuffixHash: true
+  labels:
+    grafana_dashboard: "1"
