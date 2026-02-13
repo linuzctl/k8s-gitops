@@ -9,6 +9,6 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/renovatebot/charts/renovate
   ref:
-    tag: 46.10.2
+    tag: 46.10.3
   secretRef:
     name: ghcr-token
