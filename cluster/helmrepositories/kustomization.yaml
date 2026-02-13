@@ -12,7 +12,6 @@ resources:
   - metrics-server.yaml
   - minio-community.yaml
   - minio.yaml
-  - prometheus-community.yaml
   - rook-release.yaml
   - stakater.yaml
   - unpoller.yaml
