@@ -3,12 +3,10 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: spegel
-  namespace: flux-system
+  namespace: spegel
 spec:
   interval: 1h
   timeout: 3m
   url: oci://ghcr.io/spegel-org/helm-charts/spegel
   ref:
     tag: 0.6.0
-  secretRef:
-    name: ghcr-token
