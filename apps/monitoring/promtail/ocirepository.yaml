@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: promtail
+  namespace: monitoring
+spec:
+  interval: 30m
+  timeout: 3m
+  url: ghcr.io/grafana/helm-charts/promtail
+  ref:
+    tag: 6.17.1
