@@ -1,4 +1,3 @@
-cloudnative-pg https://cloudnative-pg.io/charts/
 csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
 descheduler https://kubernetes-sigs.github.io/descheduler/
 gitlab https://charts.gitlab.io
