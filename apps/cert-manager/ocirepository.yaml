@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: jetstack
+  namespace: cert-manager
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://quay.io/jetstack/charts/cert-manager
+  ref:
+    tag: v1.19.3
