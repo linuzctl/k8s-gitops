@@ -8,15 +8,10 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: velero
-      version: 11.3.2
-      sourceRef:
-        kind: HelmRepository
-        name: vmware-tanzu
-        namespace: flux-system
-      interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: velero
+    namespace: velero
   install:
     crds: Skip
   upgrade:

@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  interval: 1h
+  timeout: 3m
+  url: oci://ghcr.io/vmware-tanzu/charts/velero
+  ref:
+    tag: 11.3.2
