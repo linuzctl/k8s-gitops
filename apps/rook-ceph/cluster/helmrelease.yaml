@@ -8,17 +8,10 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
-  dependsOn:
-    - name: rook-ceph
-  chart:
-    spec:
-      chart: rook-ceph-cluster
-      version: v1.19.1
-      sourceRef:
-        kind: HelmRepository
-        name: rook-release
-        namespace: flux-system
-      interval: 20m
+  chartRef:
+    kind: OCIRepository
+    name: rook-ceph-cluster
+    namespace: rook-ceph
   values:
     toolbox:
       enabled: true

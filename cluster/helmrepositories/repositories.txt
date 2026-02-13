@@ -8,5 +8,4 @@ ingress-nginx https://kubernetes.github.io/ingress-nginx
 metrics-server https://kubernetes-sigs.github.io/metrics-server
 minio-community https://charts.min.io/
 minio https://operator.min.io/
-rook-release https://charts.rook.io/release
 unpoller https://unpoller.github.io/helm-chart

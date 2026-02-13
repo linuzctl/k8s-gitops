@@ -12,5 +12,4 @@ resources:
   - metrics-server.yaml
   - minio-community.yaml
   - minio.yaml
-  - rook-release.yaml
   - unpoller.yaml
