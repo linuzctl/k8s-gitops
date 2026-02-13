@@ -7,6 +7,6 @@ metadata:
 spec:
   interval: 30m
   timeout: 3m
-  url: ghcr.io/grafana/helm-charts/promtail
+  url: oci://ghcr.io/grafana/helm-charts/promtail
   ref:
     tag: 6.17.1
