@@ -13,5 +13,4 @@ resources:
   - minio-community.yaml
   - minio.yaml
   - rook-release.yaml
-  - stakater.yaml
   - unpoller.yaml
