@@ -8,15 +8,10 @@ spec:
   interval: 30m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: cilium
-      version: 1.19.0
-      sourceRef:
-        kind: HelmRepository
-        name: cilium
-        namespace: flux-system
-      interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: cilium
+    namespace: kube-system
   values:
     k8sServiceHost: ${CLUSTER_DOMAIN}
     k8sServicePort: 6443
