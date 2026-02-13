@@ -8,15 +8,10 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: mimir-distributed
-      version: 6.0.5
-      sourceRef:
-        kind: HelmRepository
-        name: grafana
-        namespace: flux-system
-      interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: mimir
+    namespace: mimir
   install:
     crds: Skip
   upgrade:

@@ -5,4 +5,5 @@ resources:
   - configmap.yaml
   - helmrelease.yaml
   - namespace.yaml
+  - ocirepository.yaml
   - secret.sops.yaml

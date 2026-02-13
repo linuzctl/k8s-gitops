@@ -6,7 +6,6 @@ resources:
   - csi-driver-nfs.yaml
   - descheduler.yaml
   - gitlab.yaml
-  - grafana.yaml
   - ingress-nginx.yaml
   - metrics-server.yaml
   - minio-community.yaml
