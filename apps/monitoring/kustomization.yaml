@@ -8,5 +8,4 @@ resources:
   - minio
   - prometheus-smartctl-exporter
   - promtail
-  - rook-ceph
   - namespace.yaml
