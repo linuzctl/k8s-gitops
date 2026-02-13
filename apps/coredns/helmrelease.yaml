@@ -8,15 +8,10 @@ spec:
   interval: 30m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: coredns
-      version: 1.45.2
-      sourceRef:
-        kind: HelmRepository
-        name: coredns
-        namespace: flux-system
-      interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: coredns
+    namespace: kube-system
   values:
     replicaCount: 2
     k8sAppLabelOverride: kube-dns

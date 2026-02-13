@@ -1,5 +1,4 @@
 cloudnative-pg https://cloudnative-pg.io/charts/
-coredns https://coredns.github.io/helm
 csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
 descheduler https://kubernetes-sigs.github.io/descheduler/
 falcosecurity https://falcosecurity.github.io/charts
