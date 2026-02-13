@@ -9,7 +9,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: node-feature-discovery
-    namespace: flux-system
+    namespace: node-feature-discovery
   install:
     crds: Skip
   upgrade:
