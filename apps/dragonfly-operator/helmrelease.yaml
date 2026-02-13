@@ -9,7 +9,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: dragonfly-operator
-    namespace: flux-system
+    namespace: dragonfly-operator-system
   install:
     crds: Skip
   upgrade:
