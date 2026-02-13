@@ -11,7 +11,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: renovate
-    namespace: flux-system
+    namespace: renovate
   install:
     crds: Skip
   upgrade:

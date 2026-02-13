@@ -3,12 +3,10 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: renovate
-  namespace: flux-system
+  namespace: renovate
 spec:
   interval: 30m
   timeout: 3m
   url: oci://ghcr.io/renovatebot/charts/renovate
   ref:
     tag: 46.11.1
-  secretRef:
-    name: ghcr-token
