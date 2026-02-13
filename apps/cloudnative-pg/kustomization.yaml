@@ -5,3 +5,14 @@ resources:
   - cloudnative-pg
   - plugin-barman-cloud
   - namespace.yaml
+configMapGenerator:
+  - name: grafana-dashboard-cnpg-dashboard
+    namespace: cnpg-system
+    files:
+      - grafana-dashboard.json=https://raw.githubusercontent.com/cloudnative-pg/grafana-dashboards/refs/heads/main/charts/cluster/grafana-dashboard.json
+generatorOptions:
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+  disableNameSuffixHash: true
+  labels:
+    grafana_dashboard: "1"
