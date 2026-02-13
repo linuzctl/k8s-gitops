@@ -8,15 +8,10 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: falco
-      version: 8.0.0
-      sourceRef:
-        kind: HelmRepository
-        name: falcosecurity
-        namespace: flux-system
-      interval: 20m
+  chartRef:
+    kind: OCIRepository
+    name: falco
+    namespace: falco
   values:
     driver:
       kind: modern_ebpf

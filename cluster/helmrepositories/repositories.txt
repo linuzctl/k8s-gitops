@@ -1,7 +1,6 @@
 cloudnative-pg https://cloudnative-pg.io/charts/
 csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
 descheduler https://kubernetes-sigs.github.io/descheduler/
-falcosecurity https://falcosecurity.github.io/charts
 gitlab https://charts.gitlab.io
 grafana https://grafana.github.io/helm-charts
 ingress-nginx https://kubernetes.github.io/ingress-nginx

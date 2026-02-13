@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: falco
+  namespace: falco
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/falcosecurity/charts/falco
+  ref:
+    tag: 8.0.0
