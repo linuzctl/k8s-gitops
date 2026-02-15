@@ -10,3 +10,6 @@ spec:
   url: oci://ghcr.io/cloudnative-pg/charts/plugin-barman-cloud
   ref:
     tag: 0.5.0
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
