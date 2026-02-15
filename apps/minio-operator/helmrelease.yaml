@@ -19,6 +19,7 @@ spec:
       interval: 20m
   values:
     operator:
+      replicaCount: 1
       env:
         - name: PROMETHEUS_NAMESPACE
           value: "monitoring"
