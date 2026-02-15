@@ -4,3 +4,23 @@ resources:
   - helmrelease.yaml
   - namespace.yaml
   - ocirepository.yaml
+configMapGenerator:
+  - files:
+      - dashboards/node-feature-discovery.json
+    name: grafana-dashboard-node-feature-discovery
+    namespace: node-feature-discovery
+generatorOptions:
+  disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: add
+        path: "/metadata/labels"
+        value:
+          grafana_dashboard: "1"
+      - op: add
+        path: "/metadata/annotations"
+        value:
+          kustomize.toolkit.fluxcd.io/substitute: disabled
+    target:
+      kind: ConfigMap
+      name: grafana-dashboard-node-feature-discovery
