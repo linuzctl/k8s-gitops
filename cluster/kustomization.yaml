@@ -6,4 +6,3 @@ resources:
   - notifications
   - helmrepositories
   - cluster-vars.sops.yaml
-  - secret.sops.yaml
