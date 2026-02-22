@@ -29,10 +29,10 @@ spec:
     - host: vault.${DOMAIN}
       http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: vaultwarden
-              port:
-                name: http
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vaultwarden
+                port:
+                  name: http
