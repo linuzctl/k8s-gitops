@@ -41,7 +41,7 @@ Secrets are encrypted using [SOPS](https://github.com/getsops/sops) with [age](h
 | HP EliteDesk 800 G4  | 3   | 256GB Samsung NVMe         | -                           | 16GB | Debian 13    | Kubernetes Control Plane        |
 | Minisforum MS-01     | 3   | 1TB Samsung NVMe 990 Pro   | 4TB Samsung NVMe 990 Pro    | 64GB | Debian 13    | Kubernetes Worker Nodes         |
 | Minisforum N5 Pro    | 1   | 1TB Samsung NVMe 990 Pro   | 5x22TB Seagate Exos X22     | 64GB | TrueNAS Core | NAS                             |
-| Raspberry Pi 5       | 1   | 1TB Samsung NVMe 980 Pro   | -                           | 16GB | Debain 12    | Toolbox / Ready to break        |
+| Raspberry Pi 5       | 1   | 1TB Samsung NVMe 980 Pro   | -                           | 16GB | Debian 12    | Toolbox / Ready to break        |
 
 > Note: Hardware was purchased before the AI-driven price explosion
 
