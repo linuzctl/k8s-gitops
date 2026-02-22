@@ -161,10 +161,10 @@ data:
   # OIDC_CLIENT_ID:
   # OIDC_CLIENT_SECRET:
   OIDC_ISSUER_URL: "https://auth.${DOMAIN}/realms/auth"
-  #OIDC_AUTH_URI:
-  #OIDC_TOKEN_URI:
-  #OIDC_USERINFO_URI:
-  #OIDC_LOGOUT_URI:
+  # OIDC_AUTH_URI:
+  # OIDC_TOKEN_URI:
+  # OIDC_USERINFO_URI:
+  # OIDC_LOGOUT_URI:
 
   # Specify which claims to derive user information from
   # Supports any valid JSON path with the JWT payload
@@ -185,10 +185,10 @@ data:
   # email sign-in you'll need to connect an SMTP server. Service can be configured
   # with any service from this list: https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/
   # DOCS: https://docs.getoutline.com/s/hosting/doc/smtp-cqCJyZGMIB
-  #SMTP_SERVICE:
-  #SMTP_USERNAME:
-  #SMTP_PASSWORD:
-  #SMTP_FROM_EMAIL:
+  # SMTP_SERVICE:
+  # SMTP_USERNAME:
+  # SMTP_PASSWORD:
+  # SMTP_FROM_EMAIL:
 
 
   # ––––––––––––––––––––––––––––––––––––––
