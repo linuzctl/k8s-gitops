@@ -82,7 +82,7 @@ data:
         - memcached - https://github.com/3rd-Eden/node-memcached
         */
         CACHE_ENGINE: 'node-cache',
-        CACHE_TTL: 0, // In seconds. 
+        CACHE_TTL: 0, // In seconds.
         // 0 = 'never expire' for memcached & node-cache to let cache engine decide itself when to evict the record
         // 0 = 'no cache' for redis. Use high enough (e.g. 365*24*60*60*1000) ttl for similar 'never expire' approach instead
 
@@ -145,15 +145,15 @@ data:
         // Customize API calls to oembed endpoints.
         // Must have: please add your `access_token` for Facebook and Instagram API calls
         ADD_OEMBED_PARAMS: [{
-            
+
             re: [ // Endpoint's URL regexp array.
                 /^https:\/\/graph\.facebook\.com\/v[0-9\.]+\/instagram_oembed/i
             ],
             params: { // Custom query-string params object.
 
-                // TODO: get your access Insagtam token as described 
-                // on https://developers.facebook.com/docs/instagram/oembed/                
-                access_token: '',   // The simplest way is 
+                // TODO: get your access Insagtam token as described
+                // on https://developers.facebook.com/docs/instagram/oembed/
+                access_token: '',   // The simplest way is
                                     // to use `{app-id}|{app secret}` as access token
 
                 // Add any other optional params
@@ -162,9 +162,9 @@ data:
         }, {
             re: [/^https:\/\/graph\.facebook\.com\/v[0-9\.]+\/oembed_page/i],
             params: {
-                // TODO: get your access token as described 
-                // on https://developers.facebook.com/docs/plugins/oembed                
-                access_token: '',   // The simplest way is 
+                // TODO: get your access token as described
+                // on https://developers.facebook.com/docs/plugins/oembed
+                access_token: '',   // The simplest way is
                                     // to use `{app-id}|{app secret}` as access token
 
                 // Add any other optional params
@@ -184,9 +184,9 @@ data:
             // Facebook https://developers.facebook.com/docs/plugins/oembed/
             re: [/^https:\/\/graph\.facebook\.com\/v[0-9\.]+\/oembed_/i],
             params: {
-                // TODO: get your access token as described 
-                // on https://developers.facebook.com/docs/plugins/oembed                
-                access_token: '',   // The simplest way is 
+                // TODO: get your access token as described
+                // on https://developers.facebook.com/docs/plugins/oembed
+                access_token: '',   // The simplest way is
                                     // to use `{app-id}|{app secret}` as access token
 
                 // Add any other optional params, like skip script tag and fb-root div
@@ -194,7 +194,7 @@ data:
             }
         }],
 
-        /* Configure use of HTTP proxies, headers as needed. 
+        /* Configure use of HTTP proxies, headers as needed.
           You don't have to specify all options per regex - just what you need to override
         */
         /*
@@ -213,8 +213,8 @@ data:
             cache_ttl: 3600  // in seconds, cache response for 1 hour.
         }],
 
-        // Proxy now requires an echo service endpoint. 
-        // See #354 and example code at 
+        // Proxy now requires an echo service endpoint.
+        // See #354 and example code at
         // https://gist.github.com/nleush/7916ee89f7b8d6f0cd478d7335702139
         PROXY_URL: 'http://1.2.3.4:8080?url={url}',  // Iframely will add `?url=...` to this endpoint
         */
@@ -222,8 +222,8 @@ data:
         // Customize API calls to 3rd parties. At the very least - configure required keys.
         // For available provider options - please see the code of its domain plugin.
         providerOptions: {
-            locale: "en_US",    // ISO 639-1 two-letter language code, e.g. en_CA or fr_CH. 
-                                // Will be added as highest priotity in accept-language header with each request. 
+            locale: "en_US",    // ISO 639-1 two-letter language code, e.g. en_CA or fr_CH.
+                                // Will be added as highest priotity in accept-language header with each request.
                                 // Plus is used in FB, YouTube and perhaps other plugins
             "twitter": {
                 "max-width": 550,
@@ -232,7 +232,7 @@ data:
                 hide_thread: false,
                 omit_script: false,
                 center: false,
-                // dnt: true,                
+                // dnt: true,
                 cache_ttl: 100 * 365 * 24 * 3600 // 100 Years.
             },
             readability: {
@@ -251,8 +251,8 @@ data:
                 // https://developers.google.com/maps/documentation/embed/guide#api_key
                 maps_key: "INSERT YOUR VALUE",
                 // If your servers are in EU, google maps will redirect to /consent/ page and the plugins won't work. The option below ignores the redirect.
-                // follow_http_redirect: true 
-            }, 
+                // follow_http_redirect: true
+            },
 
             /*
             // Optional Camo Proxy to wrap all images: https://github.com/atmos/camo
