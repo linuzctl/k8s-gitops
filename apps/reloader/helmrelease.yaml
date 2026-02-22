@@ -17,4 +17,3 @@ spec:
     reloader:
       podMonitor:
         enabled: true
-
