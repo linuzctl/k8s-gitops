@@ -34,4 +34,3 @@ spec:
         enabled: true
         annotations:
           loadbalancer.cilium.io/ipam: ingress-nginx
-
