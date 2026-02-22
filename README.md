@@ -32,6 +32,7 @@ A high-level overview of the repository layout:
 - **.github** directory contains GitHub related files
 
 #### Details
+
 - Each application lives in its own directory under `apps/` and is managed by a Flux Kustomization object located in `cluster/kustomizations`.
 - This setup allows each application to be reconciled independently, so deleting or updating one app does not affect the others.
 - Exceptions occur when an application depends on another; in such cases, dependencies are explicitly specified in the Kustomization configuration.
@@ -58,6 +59,7 @@ This cluster is built and operated by a single person and is tailored to my pers
 The primary objective of this project is learning and experimentation. While the configuration works for my environment, it may not be suitable for yours.
 
 If you plan to build something similar:
+
 - Do not blindly copy & paste
 - Take time to understand what each component does
 - Adapt ideas to your own requirements and constraints

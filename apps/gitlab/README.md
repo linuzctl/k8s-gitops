@@ -12,20 +12,20 @@ GitLab is an outstanding DevOps platform that has transformed the way I manage p
 
 1. Exec into the toolbox pod:
 
-```bash
-kubectl exec -it deployments/gitlab-toolbox -c toolbox -- bash
-```
+   ```bash
+   kubectl exec -it deployments/gitlab-toolbox -c toolbox -- bash
+   ```
 
 2. Open the Rails console:
 
-```bash
-gitlab-rails console
-```
+   ```bash
+   gitlab-rails console
+   ```
 
 3. Find the user and grant admin rights:
 
-```bash
-user = User.find_by(username: 'max.muster')
-user.admin = true
-user.save!
-```
+   ```bash
+   user = User.find_by(username: 'max.muster')
+   user.admin = true
+   user.save!
+   ```

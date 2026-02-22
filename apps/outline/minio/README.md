@@ -7,8 +7,7 @@ These policies are used to configure MinIO access for the Outline Wiki applicati
 
 Together, these policies provide the minimum permissions required for Outline to function correctly with MinIO.
 
-
-#### User Policy
+## User Policy
 
 ```json
 {
@@ -39,7 +38,7 @@ Together, these policies provide the minimum permissions required for Outline to
 }
 ```
 
-#### Bucket Policy
+## Bucket Policy
 
 ```json
 {
