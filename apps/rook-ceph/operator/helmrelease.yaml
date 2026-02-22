@@ -18,4 +18,3 @@ spec:
     csi:
       serviceMonitor:
         enabled: true
-
