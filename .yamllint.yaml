@@ -1,0 +1,23 @@
+---
+extends: default
+ignore: |
+  *.sops.yaml
+  gotk-components.yaml
+rules:
+  truthy:
+    allowed-values:
+      - "true"
+      - "false"
+  line-length: disable
+  comments:
+    min-spaces-from-content: 1
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+  indentation:
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
