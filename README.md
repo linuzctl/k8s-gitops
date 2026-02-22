@@ -10,7 +10,7 @@ Cluster provisioning and lifecycle management are handled using a custom Ansible
 
 ## GitOps
 
-[Flux CD](https://github.com/fluxcd/flux2) deploys all manifests and configurations stored in Git to the Kubernetes cluster.  
+[Flux CD](https://github.com/fluxcd/flux2) deploys all manifests and configurations stored in Git to the Kubernetes cluster.
 
 [Renovate](https://github.com/renovatebot/renovate) is configured to automatically check and update all dependencies and Helm charts in the repository.
 
@@ -22,7 +22,7 @@ A high-level overview of the repository layout:
 📁 k8s-gitops
 ├── 📁 apps                  # applications
 ├── 📁 cluster               # Flux configuration
-│   ├── 📁 kustomizations    # Flux Kustomization objects for applications 
+│   ├── 📁 kustomizations    # Flux Kustomization objects for applications
 │   ├── 📁 flux-system       # Flux bootstrap components (GitOps controllers)
 │   ├── 📁 helmrepositories  # Helm repositories definitions for applications
 │   └── 📁 notifications     # Notification configurations
