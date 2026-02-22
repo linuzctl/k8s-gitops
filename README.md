@@ -1,6 +1,6 @@
 # k8s-gitops
 
-High-availability Kubernetes cluster setup using kubeadm, managed declaratively via GitOps.
+High-availability Kubernetes cluster deployed with kubeadm and managed declaratively through GitOps.
 
 This repository serves as the source of truth for my private Kubernetes cluster.
 
@@ -8,7 +8,13 @@ This repository serves as the source of truth for my private Kubernetes cluster.
 
 Cluster provisioning and lifecycle management are handled using a custom Ansible playbook [kubernetes-ansible](https://github.com/linuzctl/kubernetes-ansible).
 
-## Repository Structure
+## GitOps
+
+[Flux CD](https://github.com/fluxcd/flux2) deploys all manifests and configurations stored in Git to the Kubernetes cluster.  
+
+[Renovate](https://github.com/renovatebot/renovate) is configured to automatically check and update all dependencies and Helm charts in the repository.
+
+### Repository Structure
 
 A high-level overview of the repository layout:
 
