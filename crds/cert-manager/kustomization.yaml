@@ -2,5 +2,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  # renovate: datasource=github-releases depName=cert-manager/cert-manager
+  # renovate: datasource=docker depName=quay.io/jetstack/charts/cert-manager
   - https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.crds.yaml
