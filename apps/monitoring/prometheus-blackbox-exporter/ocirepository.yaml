@@ -1,0 +1,15 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: prometheus-blackbox-exporter
+  namespace: monitoring
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/prometheus-community/charts/prometheus-blackbox-exporter
+  ref:
+    tag: 11.8.0
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: extract

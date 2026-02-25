@@ -5,6 +5,7 @@ resources:
   - flux-system
   - kube-prometheus-stack
   - loki
+  - prometheus-blackbox-exporter
   - prometheus-smartctl-exporter
   - promtail
   - namespace.yaml

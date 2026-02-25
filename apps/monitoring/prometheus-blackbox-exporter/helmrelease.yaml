@@ -1,0 +1,97 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: prometheus-blackbox-exporter
+  namespace: monitoring
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chart:
+  chartRef:
+    kind: OCIRepository
+    name: prometheus-blackbox-exporter
+    namespace: monitoring
+  values:
+    pspEnabled: false
+    config:
+      modules:
+        http_2xx_higher_timeout:
+          prober: http
+          timeout: 30s
+          http:
+            valid_http_versions: ["HTTP/1.1", "HTTP/2.0", "HTTP/3"]
+            follow_redirects: true
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: blackbox.${DOMAIN}
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: blackbox-${DOMAIN/./-}-tls
+          hosts:
+            - blackbox.${DOMAIN}
+    serviceMonitor:
+      enabled: true
+      defaults:
+        interval: 15m
+        scrapeTimeout: 30s
+        follow_redirects: false
+      targets:
+        - name: gitlab
+          url: https://git.${DOMAIN}
+        - name: gitlab-s3
+          url: https://minio.git.${DOMAIN}
+        - name: gitlab-registry
+          url: https://registry.git.${DOMAIN}
+        - name: rook-ceph
+          url: https://rook-ceph.${DOMAIN}
+        - name: keycloak
+          url: https://auth.${DOMAIN}
+        - name: outline
+          url: https://outline.${DOMAIN}
+        - name: outline
+          url: https://minio.outline.${DOMAIN}
+        - name: vault
+          url: https://vault.${DOMAIN}
+        - name: ocis
+          url: https://ocis.${DOMAIN}
+        - name: drawio
+          url: https://drawio.${DOMAIN}
+        - name: grafana
+          url: https://grafana.${DOMAIN}
+        - name: prometheus
+          url: https://prometheus.${DOMAIN}
+        - name: pdf
+          url: https://pdf.${DOMAIN}
+        - name: alertmanager
+          url: https://alertmanager.${DOMAIN}
+        - name: backup-s3
+          url: https://backup.minio.${DOMAIN}
+    prometheusRule:
+      enabled: true
+      rules:
+        - alert: SSLCertExpiringSoon
+          expr: probe_ssl_earliest_cert_expiry - time() < 86400 * 29
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: |-
+              SSL certificate «{{ $labels.instance }}» expires soon
+            description: |-
+              SSL certificate will expire in {{ $value | humanizeDuration }} (instance {{ $labels.instance }})
+        - alert: BlackboxProbeFailed
+          expr: last_over_time(probe_success[15m]) == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: Host is unreachable
+            description: The host «{{ $labels.target }}» is currently unreachable
