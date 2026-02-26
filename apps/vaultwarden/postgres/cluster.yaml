@@ -6,7 +6,7 @@ metadata:
   namespace: vaultwarden
 spec:
   instances: 1
-  imageName: ghcr.io/cloudnative-pg/postgresql:18.2
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.3
   storage:
     storageClass: ceph-block
     size: 5Gi
