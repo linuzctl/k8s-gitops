@@ -17,3 +17,8 @@ spec:
     substituteFrom:
       - kind: Secret
         name: cluster-vars
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bentopdf
