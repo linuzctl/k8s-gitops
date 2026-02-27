@@ -5,6 +5,5 @@ resources:
   - cert-manager-webhook.yaml
   - clusterissuer.yaml
   - helmrelease.yaml
-  - namespace.yaml
   - ocirepository.yaml
   - secret.sops.yaml

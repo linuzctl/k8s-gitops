@@ -21,3 +21,8 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager
