@@ -11,3 +11,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: descheduler
