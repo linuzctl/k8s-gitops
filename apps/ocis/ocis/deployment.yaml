@@ -130,6 +130,8 @@ spec:
               value: "tika"
             - name: SEARCH_EXTRACTOR_TIKA_TIKA_URL
               value: "http://ocis-tika.ocis.svc.cluster.local:9998"
+            - name: SEARCH_EXTRACT_CONTENT_SIZE_LIMIT
+              value: "26214400"
             - name: FRONTEND_FULL_TEXT_SEARCH_ENABLED
               value: "true"
           ports:
