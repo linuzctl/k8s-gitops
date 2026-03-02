@@ -8,6 +8,8 @@ spec:
   interval: 1h
   path: ./apps/drawio
   prune: true
+  dependsOn:
+    - name: flux-system
   sourceRef:
     kind: GitRepository
     name: flux-system
