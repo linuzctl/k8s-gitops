@@ -11,3 +11,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubevirt.io: ""
+    pod-security.kubernetes.io/enforce: "privileged"
+  name: kubevirt
