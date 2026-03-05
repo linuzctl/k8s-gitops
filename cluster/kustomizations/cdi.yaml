@@ -13,3 +13,10 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cdi
+  labels:
+    cdi.kubevirt.io: ""
