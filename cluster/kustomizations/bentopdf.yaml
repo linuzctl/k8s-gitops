@@ -5,8 +5,6 @@ metadata:
   name: bentopdf
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: crds
   interval: 1h
   path: ./apps/bentopdf
   prune: true
