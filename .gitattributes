@@ -1,1 +1,2 @@
-*.sops.yaml diff=sopsdiffer
+cluster-vars.sops.yaml diff=sopsdiffer
+secret.sops.yaml diff=sopsdiffer
