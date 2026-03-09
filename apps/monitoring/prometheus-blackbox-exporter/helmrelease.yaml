@@ -55,7 +55,7 @@ spec:
           url: https://auth.${DOMAIN}
         - name: outline
           url: https://outline.${DOMAIN}
-        - name: outline
+        - name: outline-s3
           url: https://minio.outline.${DOMAIN}
         - name: vault
           url: https://vault.${DOMAIN}
