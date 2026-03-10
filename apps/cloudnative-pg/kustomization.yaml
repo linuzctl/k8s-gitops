@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - cloudnative-pg
   - plugin-barman-cloud
-  - namespace.yaml
 configMapGenerator:
   - name: grafana-dashboard-cnpg-dashboard
     namespace: cnpg-system
