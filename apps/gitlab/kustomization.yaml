@@ -7,4 +7,3 @@ resources:
   - gitlab-runner
   - minio
   - postgres
-  - namespace.yaml
