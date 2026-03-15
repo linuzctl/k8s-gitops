@@ -35,7 +35,7 @@ spec:
         backups:
           objectStorage:
             config:
-              secret: s3cmd-config
+              secret: gitlab-object-storage-s3cmd
               key: config
           cron:
             enabled: true
@@ -92,6 +92,7 @@ spec:
         object_store:
           connection:
             secret: gitlab-object-storage
+            key: config
           enabled: true
           proxy_download: false
         packages:
@@ -179,7 +180,7 @@ spec:
         readonly:
           enabled: false
       storage:
-        secret: registry-storage
+        secret: gitlab-registry-storage
         key: config
       ingress:
         tls:
