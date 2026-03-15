@@ -45,7 +45,6 @@ data:
   # available language codes and their rough percentage translated.
   DEFAULT_LANGUAGE: "en_US"
 
-
   # ––––––––––––––––––––––––––––––––––––––
   # –––––––––––––  DATABASE  –––––––––––––
   # ––––––––––––––––––––––––––––––––––––––
@@ -62,7 +61,6 @@ data:
   # if the database and the application are on the same machine.
   # PGSSLMODE: disable
 
-
   # ––––––––––––––––––––––––––––––––––––––
   # ––––––––––––––  REDIS  –––––––––––––––
   # ––––––––––––––––––––––––––––––––––––––
@@ -71,7 +69,6 @@ data:
   # encoded configuration object.
   # DOCS: https://docs.getoutline.com/s/hosting/doc/redis-LGM4BFXYp4
   REDIS_URL: "redis://outline-dragonfly.outline.svc.cluster.local:6379"
-
 
   # ––––––––––––––––––––––––––––––––––––––
   # –––––––––––  FILE STORAGE  –––––––––––
@@ -124,6 +121,10 @@ data:
   # false if you can be sure that SSL is terminated at an external loadbalancer.
   FORCE_HTTPS: "true"
 
+  # When behind a reverse proxy, the header to use for the client IP.
+  # The default value is "X-Forwarded-For", common values are "X-Real-IP"
+  # and "X-Client-IP".
+  # PROXY_IP_HEADER=
 
   # ––––––––––––––––––––––––––––––––––––––
   # ––––––––––  AUTHENTICATION  ––––––––––
@@ -176,7 +177,6 @@ data:
   # Space separated auth scopes.
   OIDC_SCOPES: "openid profile email"
 
-
   # ––––––––––––––––––––––––––––––––––––––
   # ––––––––––––––  EMAIL  –––––––––––––––
   # ––––––––––––––––––––––––––––––––––––––
@@ -189,7 +189,6 @@ data:
   # SMTP_USERNAME:
   # SMTP_PASSWORD:
   # SMTP_FROM_EMAIL:
-
 
   # ––––––––––––––––––––––––––––––––––––––
   # ––––––––––  RATE LIMITER  ––––––––––––
@@ -217,6 +216,11 @@ data:
   GITHUB_APP_NAME:
   GITHUB_APP_ID:
   GITHUB_APP_PRIVATE_KEY:
+
+  # The GitLab integration allows previewing issue and merge request links
+  # DOCS: in work...
+  GITLAB_CLIENT_ID:
+  GITLAB_CLIENT_SECRE:
 
   # The Linear integration allows previewing issue links as rich mentions
   LINEAR_CLIENT_ID:
@@ -248,7 +252,6 @@ data:
   # DOCS: https://docs.getoutline.com/s/hosting/doc/iframely-HwLF1EZ9mo
   IFRAMELY_URL: http://iframely.iframely.svc.cluster.local:8061
   IFRAMELY_API_KEY:
-
 
   # ––––––––––––––––––––––––––––––––––––––
   # –––––––––––––  DEBUGGING  ––––––––––––
