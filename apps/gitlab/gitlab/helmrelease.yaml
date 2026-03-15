@@ -200,13 +200,6 @@ spec:
               apiVersion: policy/v1
               kind: PodDisruptionBudget
               metadata:
-                name: gitlab-gitlab-pages
-                namespace: gitlab
-              $patch: delete
-          - patch: |-
-              apiVersion: policy/v1
-              kind: PodDisruptionBudget
-              metadata:
                 name: gitlab-gitlab-shell
                 namespace: gitlab
               $patch: delete
