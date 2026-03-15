@@ -16,6 +16,7 @@ spec:
   bootstrap:
     initdb:
       database: outline
+      owner: outline
   enablePDB: false
   plugins:
     - enabled: true
