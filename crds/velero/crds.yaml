@@ -8,7 +8,7 @@ spec:
   interval: 20m
   url: https://github.com/vmware-tanzu/helm-charts.git
   ref:
-    # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts chart=velero
+    # renovate: datasource=docker depName=ghcr.io/vmware-tanzu/charts/velero
     tag: velero-11.4.0
   ignore: |
     # exclude all
