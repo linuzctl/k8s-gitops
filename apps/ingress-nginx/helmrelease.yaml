@@ -11,15 +11,10 @@ spec:
   dependsOn:
     - name: cert-manager
       namespace: cert-manager
-  chart:
-    spec:
-      chart: ingress-nginx
-      version: 4.15.0
-      sourceRef:
-        kind: HelmRepository
-        name: ingress-nginx
-        namespace: flux-system
-      interval: 20m
+  chartRef:
+    kind: OCIRepository
+    name: ingress-nginx
+    namespace: ingress-nginx
   values:
     controller:
       allowSnippetAnnotations: true
