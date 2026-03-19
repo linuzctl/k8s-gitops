@@ -8,7 +8,7 @@ spec:
   interval: 30m
   url: https://github.com/dragonflydb/dragonfly-operator.git
   ref:
-    # renovate: datasource=github-releases depName=dragonflydb/dragonfly-operator
+    # renovate: datasource=docker depName=ghcr.io/dragonflydb/dragonfly-operator/helm/dragonfly-operator
     tag: v1.4.0
   ignore: |
     # exclude all
