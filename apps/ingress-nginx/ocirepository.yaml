@@ -9,4 +9,4 @@ spec:
   timeout: 3m
   url: oci://registry.k8s.io/ingress-nginx/charts/ingress-nginx
   ref:
-    tag: v4.15.0
+    tag: v4.15.1
