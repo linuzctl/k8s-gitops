@@ -25,3 +25,5 @@ spec:
       timeZone: Europe/Zurich
     serviceAccount:
       create: true
+    env:
+      LOG_LEVEL: Debug

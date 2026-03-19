@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - dragonfly.yaml
   - podmonitor.yaml
+  - secret.sops.yaml
