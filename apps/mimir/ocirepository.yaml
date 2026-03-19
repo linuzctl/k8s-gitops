@@ -9,4 +9,4 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/grafana/helm-charts/mimir-distributed
   ref:
-    tag: 6.0.5
+    tag: 6.0.6
