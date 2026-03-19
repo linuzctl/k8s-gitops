@@ -9,6 +9,10 @@ spec:
   args:
     - --cluster_mode=emulated
     - --default_lua_flags=allow-undeclared-keys
+  authentication:
+    passwordFromSecret:
+      name: gitlab-dragonfly-auth
+      key: password
   resources:
     requests:
       cpu: 500m

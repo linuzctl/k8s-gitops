@@ -37,6 +37,7 @@ spec:
       certificate:
         requestAutoCert: false
       buckets:
+        # GitLab
         - name: gitlab-artifacts-storage
           objectLock: false
           region: us-east-1
@@ -73,6 +74,7 @@ spec:
         - name: gitlab-registry-storage
           objectLock: false
           region: us-east-1
+        # GitLab Runner
         - name: gitlab-runner-cache
           objectLock: false
           region: us-east-1

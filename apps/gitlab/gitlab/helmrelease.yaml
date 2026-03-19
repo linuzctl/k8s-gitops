@@ -35,7 +35,7 @@ spec:
         backups:
           objectStorage:
             config:
-              secret: gitlab-object-storage-s3cmd
+              secret: s3cmd-config
               key: config
           cron:
             enabled: true
@@ -113,6 +113,15 @@ spec:
           password:
             key: password
             secret: gitlab-mail-password
+      pages:
+        enabled: true
+        objectStore:
+          enabled: true
+          bucket: gitlab-pages-storage
+          connection:
+            secret: objectstore-pages
+      registry:
+        bucket: gitlab-registry-storage
       edition: ce
       email:
         display_name: GitLab
@@ -152,12 +161,11 @@ spec:
       time_zone: Europe/Zurich
       minio:
         enabled: false
-      registry:
-        bucket: gitlab-registry-storage
       redis:
         host: gitlab-dragonfly.gitlab.svc.cluster.local
         auth:
-          enabled: false
+          secret: gitlab-dragonfly-auth
+          key: password
     nginx-ingress:
       enabled: false
     postgresql:
@@ -194,6 +202,13 @@ spec:
               kind: PodDisruptionBudget
               metadata:
                 name: gitlab-gitaly
+                namespace: gitlab
+              $patch: delete
+          - patch: |-
+              apiVersion: policy/v1
+              kind: PodDisruptionBudget
+              metadata:
+                name: gitlab-gitlab-pages
                 namespace: gitlab
               $patch: delete
           - patch: |-
