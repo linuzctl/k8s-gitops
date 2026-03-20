@@ -68,7 +68,7 @@ data:
   # The Redis URL for your environment you can either specify an ioredis compatible url or a Base64
   # encoded configuration object.
   # DOCS: https://docs.getoutline.com/s/hosting/doc/redis-LGM4BFXYp4
-  REDIS_URL: "redis://outline-dragonfly.outline.svc.cluster.local:6379"
+  # REDIS_URL:
 
   # ––––––––––––––––––––––––––––––––––––––
   # –––––––––––  FILE STORAGE  –––––––––––
@@ -202,7 +202,6 @@ data:
   # across all requests
   RATE_LIMITER_REQUESTS: "1000"
   RATE_LIMITER_DURATION_WINDOW: "60"
-
 
   # ––––––––––––––––––––––––––––––––––––––
   # –––––––––––  INTEGRATIONS  –––––––––––
