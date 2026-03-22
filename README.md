@@ -10,9 +10,9 @@ Cluster provisioning and lifecycle management are handled using a custom Ansible
 
 ## GitOps
 
-[Flux CD](https://github.com/fluxcd/flux2) deploys all manifests and configurations stored in Git to the Kubernetes cluster.
+[Flux CD](https://github.com/fluxcd/flux2) continuously deploys all manifests and configurations stored in Git to the Kubernetes cluster.
 
-[Renovate](https://github.com/renovatebot/renovate) is configured to automatically check and update all dependencies and Helm charts in the repository.
+[Renovate](https://github.com/renovatebot/renovate) is configured to automatically check for and update dependencies (container images, OCI repositories, Helm charts, etc.) in the repository.
 
 ### Repository Structure
 
