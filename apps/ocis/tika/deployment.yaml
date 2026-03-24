@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: tika
-          image: docker.io/apache/tika:3.2.3.0-full
+          image: docker.io/apache/tika:3.3.0.0-full
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
