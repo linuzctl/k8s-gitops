@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1h
   path: ./apps/rook-ceph
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
