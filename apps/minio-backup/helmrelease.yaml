@@ -49,6 +49,15 @@ spec:
         - name: gitlab-tmp-storage
           objectLock: false
           region: us-east-1
+        - name: loki-admin
+          objectLock: false
+          region: us-east-1
+        - name: loki-chunk
+          objectLock: false
+          region: us-east-1
+        - name: loki-ruler
+          objectLock: false
+          region: us-east-1
         - name: temp
           objectLock: false
           region: us-east-1
