@@ -58,6 +58,12 @@ spec:
         - name: loki-ruler
           objectLock: false
           region: us-east-1
+        - name: mimir-blocks
+          objectLock: false
+          region: us-east-1
+        - name: mimir-ruler
+          objectLock: false
+          region: us-east-1
         - name: temp
           objectLock: false
           region: us-east-1
