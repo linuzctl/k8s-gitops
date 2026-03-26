@@ -43,6 +43,12 @@ spec:
         - name: backup-velero
           objectLock: false
           region: us-east-1
+        - name: gitlab-backup-storage
+          objectLock: false
+          region: us-east-1
+        - name: gitlab-tmp-storage
+          objectLock: false
+          region: us-east-1
         - name: temp
           objectLock: false
           region: us-east-1
