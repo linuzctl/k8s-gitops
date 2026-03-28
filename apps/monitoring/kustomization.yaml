@@ -8,4 +8,3 @@ resources:
   - prometheus-blackbox-exporter
   - prometheus-smartctl-exporter
   - promtail
-  - namespace.yaml
