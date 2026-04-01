@@ -22,7 +22,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: drawio
-          image: jgraph/drawio:29.6.6
+          image: jgraph/drawio:29.6.7
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
