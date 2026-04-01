@@ -6,5 +6,4 @@ resources:
   - minio
   - outline
   - postgres
-  - namespace.yaml
   - schedule.yaml
