@@ -1,0 +1,31 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: infomaniak-webhook
+  namespace: cert-manager
+spec:
+  interval: 30m
+  url: https://github.com/Infomaniak/cert-manager-webhook-infomaniak
+  ref:
+    branch: master
+  ignore: |
+    /*
+    !/deploy/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: infomaniak-webhook
+  namespace: cert-manager
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: deploy/infomaniak-webhook
+      sourceRef:
+        kind: GitRepository
+        name: infomaniak-webhook
+  values:
+    secretsNames:
+      - infomaniak-api-credentials
