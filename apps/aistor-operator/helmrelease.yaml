@@ -16,6 +16,10 @@ spec:
         kind: HelmRepository
         name: minio
         namespace: flux-system
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   valuesFrom:
     - kind: Secret
       name: aistor-operator-values
