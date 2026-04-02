@@ -44,10 +44,11 @@
       versioningTemplate: 'redhat',
     },
     {
-      description: 'Process CRD dependencies',
+      description: 'Process CRD and GitRepository dependencies',
       customType: 'regex',
       managerFilePatterns: [
         '/crds/.+\\.ya?ml$/',
+        '/apps/.+/gitrepository\\.ya?ml$/',
       ],
       matchStrings: [
         'registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?v?(?<currentValue>[^-\\s]*)\n',
