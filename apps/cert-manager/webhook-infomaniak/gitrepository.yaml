@@ -8,6 +8,7 @@ spec:
   interval: 30m
   url: https://github.com/Infomaniak/cert-manager-webhook-infomaniak
   ref:
+    # renovate: datasource=github-releases depName=Infomaniak/cert-manager-webhook-infomaniak
     tag: v0.3.1
   ignore: |
     /*
