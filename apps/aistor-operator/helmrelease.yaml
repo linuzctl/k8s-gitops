@@ -24,8 +24,10 @@ spec:
     - kind: Secret
       name: aistor-operator-values
   values:
-    extraEnv:
-      - name: PROMETHEUS_NAMESPACE
-        value: "monitoring"
-      - name: PROMETHEUS_NAME
-        value: "kube-prometheus-stack-prometheus"
+    global:
+      operator:
+        extraEnv:
+          - name: PROMETHEUS_NAMESPACE
+            value: "monitoring"
+          - name: PROMETHEUS_NAME
+            value: "kube-prometheus-stack-prometheus"
