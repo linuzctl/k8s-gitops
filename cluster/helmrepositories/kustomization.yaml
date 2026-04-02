@@ -7,3 +7,4 @@ resources:
   - gitlab.yaml
   - metrics-server.yaml
   - minio-deprecated.yaml
+  - minio.yaml

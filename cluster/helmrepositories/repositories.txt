@@ -3,3 +3,4 @@ descheduler https://kubernetes-sigs.github.io/descheduler/
 gitlab https://charts.gitlab.io
 metrics-server https://kubernetes-sigs.github.io/metrics-server
 minio-deprecated https://operator.min.io/
+minio https://helm.min.io/
