@@ -15,6 +15,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: minio
+        namespace: flux-system
   valuesFrom:
     - kind: Secret
       name: aistor-operator-values
