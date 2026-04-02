@@ -6,4 +6,4 @@ resources:
   - descheduler.yaml
   - gitlab.yaml
   - metrics-server.yaml
-  - minio.yaml
+  - minio-deprecated.yaml

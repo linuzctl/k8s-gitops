@@ -2,4 +2,4 @@ csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/m
 descheduler https://kubernetes-sigs.github.io/descheduler/
 gitlab https://charts.gitlab.io
 metrics-server https://kubernetes-sigs.github.io/metrics-server
-minio https://operator.min.io/
+minio-deprecated https://operator.min.io/
