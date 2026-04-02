@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: aistor
-  namespace: aistor
+  name: aistor-operator
+  namespace: aistor-operator
 spec:
   interval: 30m
   driftDetection:
@@ -17,4 +17,4 @@ spec:
         name: minio
   valuesFrom:
     - kind: Secret
-      name: aistor-values
+      name: aistor-operator-values
