@@ -1,0 +1,24 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: aistor
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: crds
+  interval: 1h
+  path: ./apps/aistor
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: aistor
