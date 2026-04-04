@@ -90,8 +90,8 @@ spec:
           config:
             region: us-east-1
             s3ForcePathStyle: true
-            s3Url: ${BACKUP_S3_URL}
-            publicUrl: ${BACKUP_S3_URL}
+            s3Url: https://${BACKUP_S3_URL}
+            publicUrl: https://${BACKUP_S3_URL}
       volumeSnapshotLocation:
         - name: ceph-block
           provider: csi

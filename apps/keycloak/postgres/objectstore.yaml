@@ -7,7 +7,7 @@ metadata:
 spec:
   configuration:
     destinationPath: s3://backup-cnpg/
-    endpointURL: ${BACKUP_S3_URL}
+    endpointURL: https://${BACKUP_S3_URL}
     s3Credentials:
       accessKeyId:
         name: cnpg-s3-backup-credentials
