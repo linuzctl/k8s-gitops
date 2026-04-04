@@ -90,8 +90,8 @@ spec:
           config:
             region: us-east-1
             s3ForcePathStyle: true
-            s3Url: http://minio.minio-backup.svc.cluster.local
-            publicUrl: https://backup.minio.${DOMAIN}
+            s3Url: ${BACKUP_S3_URL}
+            publicUrl: ${BACKUP_S3_URL}
       volumeSnapshotLocation:
         - name: ceph-block
           provider: csi
