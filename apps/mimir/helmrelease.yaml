@@ -35,7 +35,7 @@ spec:
           storage:
             backend: s3
             s3:
-              endpoint: minio.minio-backup.svc.cluster.local
+              endpoint: ${BACKUP_S3_URL}
               region: us-east-1
               access_key_id: ${AWS_ACCESS_KEY_ID}
               secret_access_key: ${AWS_SECRET_ACCESS_KEY}
