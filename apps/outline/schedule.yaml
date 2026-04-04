@@ -11,7 +11,7 @@ spec:
     includedNamespaces:
       - outline
     snapshotMoveData: true
-    storageLocation: minio-backup
+    storageLocation: backup-aistor
     volumeSnapshotLocations:
       - ceph-block
   useOwnerReferencesInBackup: false

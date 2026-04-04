@@ -79,7 +79,7 @@ spec:
     configuration:
       features: EnableCSI
       backupStorageLocation:
-        - name: minio-backup
+        - name: backup-aistor
           provider: aws
           bucket: backup-velero
           default: true
