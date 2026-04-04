@@ -29,4 +29,4 @@ spec:
       isWALArchiver: true
       name: barman-cloud.cloudnative-pg.io
       parameters:
-        barmanObjectName: minio-backup
+        barmanObjectName: backup-aistor
