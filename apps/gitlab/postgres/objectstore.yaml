@@ -7,7 +7,7 @@ metadata:
 spec:
   configuration:
     destinationPath: s3://backup-cnpg/
-    endpointURL: http://minio.minio-backup.svc.cluster.local
+    endpointURL: ${BACKUP_S3_URL}
     s3Credentials:
       accessKeyId:
         name: cnpg-s3-backup-credentials
