@@ -1,0 +1,12 @@
+---
+apiVersion: sts.min.io/v1beta1
+kind: PolicyBinding
+metadata:
+  name: outline-aistor-adminjob-sa
+  namespace: outline
+spec:
+  application:
+    serviceaccount: outline-aistor-adminjob-sa
+    namespace: outline
+  policies:
+    - consoleAdmin

@@ -1,0 +1,57 @@
+---
+apiVersion: aistor.min.io/v1alpha1
+kind: AdminJob
+metadata:
+  name: outline-aistor-init-job
+  namespace: outline
+spec:
+  serviceAccountName: outline-aistor-adminjob-sa
+  objectStore:
+    name: outline-aistor
+    namespace: outline
+  insecure: true
+  execution: parallel
+  ttlSecondsAfterFinished: 3600
+  commands:
+    - name: disable-callhome
+      op: support/callhome
+      args:
+        action: "disable"
+    - name: create-bucket-data
+      op: make-bucket
+      args:
+        name: data
+    - name: create-user-outline
+      op: admin/user/add
+      args:
+        user: $(ACCESS_KEY)
+        password: $(SECRET_KEY)
+      envFrom:
+        - secretRef:
+            name: aistor-outline-user
+    - name: create-bucket-policy
+      op: admin/policy/create
+      args:
+        name: access-bucket-data
+        policy: /policies/bucket-policy.json
+      volumeMounts:
+        - name: policies
+          mountPath: /policies
+      volumes:
+        - name: policies
+          configMap:
+            name: outline-aistor-bucket-policy
+            items:
+              - key: bucket-policy.json
+                path: bucket-policy.json
+    - name: attach-policy-outline
+      op: admin/policy/attach
+      dependsOn:
+        - create-user-outline
+        - create-bucket-policy
+      args:
+        policy: access-bucket-data
+        user: $(ACCESS_KEY)
+      envFrom:
+        - secretRef:
+            name: aistor-outline-user
