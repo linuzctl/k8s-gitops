@@ -36,10 +36,8 @@ spec:
       services:
         console:
           name: outline-aistor-console
-          serviceType: ClusterIP
         minio:
           name: outline-aistor
-          serviceType: ClusterIP
       pvcProtection: false
       prometheusOperator: true
       prometheusOperatorScrapeMetricsPaths:
