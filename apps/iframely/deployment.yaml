@@ -26,6 +26,10 @@ spec:
         app.kubernetes.io/name: iframely
         app.kubernetes.io/instance: iframely
     spec:
+      securityContext:
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
         - name: iframely
           image: jolt/iframely:v2.5.0
