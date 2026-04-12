@@ -22,7 +22,7 @@ spec:
     crds: CreateReplace
   valuesFrom:
     - kind: Secret
-      name: aistor-operator-values
+      name: aistor-operator-helm-values
   values:
     global:
       operator:
