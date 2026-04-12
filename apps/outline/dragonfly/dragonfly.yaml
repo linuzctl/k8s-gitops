@@ -13,6 +13,7 @@ spec:
     passwordFromSecret:
       name: outline-dragonfly-auth
       key: password
+  networkPolicyEnabled: false
   resources:
     requests:
       cpu: 500m
