@@ -18,7 +18,7 @@ spec:
     crds: Skip
   valuesFrom:
     - kind: Secret
-      name: loki-storage-s3-config
+      name: loki-helm-values
   values:
     global:
       dnsService: coredns
