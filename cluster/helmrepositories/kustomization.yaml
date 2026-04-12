@@ -8,3 +8,4 @@ resources:
   - metrics-server.yaml
   - minio-deprecated.yaml
   - minio.yaml
+  - unpoller.yaml
