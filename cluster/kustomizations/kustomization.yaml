@@ -33,5 +33,6 @@ resources:
   - renovate.yaml
   - rook-ceph.yaml
   - spegel.yaml
+  - unpoller.yaml
   - vaultwarden.yaml
   - velero.yaml
