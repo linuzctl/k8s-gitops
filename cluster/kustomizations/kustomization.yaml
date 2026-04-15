@@ -23,7 +23,6 @@ resources:
   - kubevirt.yaml
   - metrics-server.yaml
   - mimir.yaml
-  - minio-operator.yaml
   - monitoring.yaml
   - multus.yaml
   - node-feature-discovery.yaml
