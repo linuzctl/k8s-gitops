@@ -1,0 +1,105 @@
+---
+apiVersion: aistor.min.io/v1alpha1
+kind: AdminJob
+metadata:
+  name: gitlab-aistor-init-job
+  namespace: gitlab
+spec:
+  serviceAccountName: gitlab-aistor-adminjob-sa
+  objectStore:
+    name: gitlab-aistor
+    namespace: gitlab
+  insecure: true
+  execution: parallel
+  ttlSecondsAfterFinished: 3600
+  commands:
+    - name: disable-callhome
+      op: support/callhome
+      args:
+        action: "disable"
+    - name: mb-gitlab-artifacts-storage
+      op: make-bucket
+      args:
+        name: gitlab-artifacts-storage
+    - name: mb-gitlab-backup-storage
+      op: make-bucket
+      args:
+        name: gitlab-backup-storage
+    - name: mb-gitlab-tmp-storage
+      op: make-bucket
+      args:
+        name: gitlab-tmp-storage
+    - name: mb-gitlab-ci-secure-files-storage
+      op: make-bucket
+      args:
+        name: gitlab-ci-secure-files-storage
+    - name: mb-gitlab-dependency-proxy
+      op: make-bucket
+      args:
+        name: gitlab-dependency-proxy
+    - name: mb-gitlab-external-diffs
+      op: make-bucket
+      args:
+        name: gitlab-external-diffs
+    - name: mb-gitlab-lfs-storage
+      op: make-bucket
+      args:
+        name: gitlab-lfs-storage
+    - name: mb-gitlab-packages-storage
+      op: make-bucket
+      args:
+        name: gitlab-packages-storage
+    - name: mb-gitlab-terraform-state-storage
+      op: make-bucket
+      args:
+        name: gitlab-terraform-state-storage
+    - name: mb-gitlab-uploads-storage
+      op: make-bucket
+      args:
+        name: gitlab-uploads-storage
+    - name: mb-gitlab-pages-storage
+      op: make-bucket
+      args:
+        name: gitlab-pages-storage
+    - name: mb-gitlab-registry-storage
+      op: make-bucket
+      args:
+        name: gitlab-registry-storage
+    - name: mb-gitlab-runner-cache
+      op: make-bucket
+      args:
+        name: gitlab-runner-cache
+    - name: create-user-gitlab
+      op: admin/user/add
+      args:
+        user: $(ACCESS_KEY)
+        password: $(SECRET_KEY)
+      envFrom:
+        - secretRef:
+            name: aistor-gitlab-user
+    - name: create-policy-gitlab
+      op: admin/policy/create
+      args:
+        name: access-bucket-data
+        policy: /policies/bucket-policy.json
+      volumeMounts:
+        - name: policies
+          mountPath: /policies
+      volumes:
+        - name: policies
+          configMap:
+            name: gitlab-aistor-bucket-policy
+            items:
+              - key: bucket-policy.json
+                path: bucket-policy.json
+    - name: attach-policy-gitlab
+      op: admin/policy/attach
+      dependsOn:
+        - create-user-gitlab
+        - create-policy-gitlab
+      args:
+        policy: access-bucket-data
+        user: $(ACCESS_KEY)
+      envFrom:
+        - secretRef:
+            name: aistor-gitlab-user

@@ -1,0 +1,12 @@
+---
+apiVersion: sts.min.io/v1beta1
+kind: PolicyBinding
+metadata:
+  name: gitlab-aistor-adminjob-sa
+  namespace: gitlab
+spec:
+  application:
+    serviceaccount: gitlab-aistor-adminjob-sa
+    namespace: gitlab
+  policies:
+    - consoleAdmin

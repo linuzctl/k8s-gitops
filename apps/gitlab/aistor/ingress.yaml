@@ -1,0 +1,54 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitlab-aistor
+  namespace: gitlab
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: aistor.git.${DOMAIN}
+      http:
+        paths:
+          - backend:
+              service:
+                name: gitlab-aistor
+                port:
+                  name: https-minio
+            path: /
+            pathType: Prefix
+  tls:
+    - secretName: aistor-git-${DOMAIN/./-}-tls
+      hosts:
+        - aistor.git.${DOMAIN}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitlab-aistor-console
+  namespace: gitlab
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: console.aistor.git.${DOMAIN}
+      http:
+        paths:
+          - backend:
+              service:
+                name: gitlab-aistor-console
+                port:
+                  name: https-console
+            path: /
+            pathType: Prefix
+  tls:
+    - secretName: console-aistor-git-${DOMAIN/./-}-tls
+      hosts:
+        - console.aistor.git.${DOMAIN}
