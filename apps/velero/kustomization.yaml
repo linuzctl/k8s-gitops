@@ -6,3 +6,23 @@ resources:
   - namespace.yaml
   - ocirepository.yaml
   - secret.sops.yaml
+configMapGenerator:
+  - files:
+      - dashboards/velero-overview.json
+    name: grafana-dashboard-velero-overview
+    namespace: velero
+generatorOptions:
+  disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: add
+        path: "/metadata/labels"
+        value:
+          grafana_dashboard: "1"
+      - op: add
+        path: "/metadata/annotations"
+        value:
+          kustomize.toolkit.fluxcd.io/substitute: disabled
+    target:
+      kind: ConfigMap
+      name: grafana-dashboard-velero-overview
