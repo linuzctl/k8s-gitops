@@ -45,8 +45,8 @@ spec:
       targets:
         - name: gitlab
           url: https://git.${DOMAIN}
-        - name: gitlab-s3
-          url: https://minio.git.${DOMAIN}
+        - name: gitlab-aistor
+          url: https://aistor.git.${DOMAIN}
         - name: gitlab-registry
           url: https://registry.git.${DOMAIN}
         - name: rook-ceph
@@ -55,8 +55,8 @@ spec:
           url: https://auth.${DOMAIN}
         - name: outline
           url: https://outline.${DOMAIN}
-        - name: outline-s3
-          url: https://minio.outline.${DOMAIN}
+        - name: outline-aistor
+          url: https://aistor.outline.${DOMAIN}
         - name: vault
           url: https://vault.${DOMAIN}
         - name: ocis
@@ -71,8 +71,8 @@ spec:
           url: https://pdf.${DOMAIN}
         - name: alertmanager
           url: https://alertmanager.${DOMAIN}
-        - name: backup-s3
-          url: https://backup.minio.${DOMAIN}
+        - name: prometheus-blackbox
+          url: https://blackbox.${DOMAIN}
     prometheusRule:
       enabled: true
       rules:
