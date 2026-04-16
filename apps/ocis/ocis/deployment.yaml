@@ -79,6 +79,26 @@ spec:
           volumeMounts:
             - name: apps
               mountPath: /apps
+        - name: progress-bars
+          image: owncloud/web-extensions:progress-bars-0.3.3
+          command:
+            - cp
+            - -R
+            - /var/lib/nginx/html/progress-bars/
+            - /apps
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
+        - name: advanced-search
+          image: owncloud/web-extensions:advanced-search-0.2.0
+          command:
+            - cp
+            - -R
+            - /var/lib/nginx/html/advanced-search/
+            - /apps
+          volumeMounts:
+            - name: apps
+              mountPath: /apps
       containers:
         - name: ocis
           image: owncloud/ocis:8.0.1
