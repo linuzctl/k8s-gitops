@@ -44,23 +44,23 @@ spec:
         follow_redirects: false
       targets:
         - name: gitlab
-          url: https://git.${DOMAIN}
+          url: https://git.${DOMAIN}/health_check
         - name: gitlab-aistor
-          url: https://aistor.git.${DOMAIN}
+          url: https://aistor.git.${DOMAIN}/minio/health/live
         - name: gitlab-registry
           url: https://registry.git.${DOMAIN}
         - name: rook-ceph
           url: https://rook-ceph.${DOMAIN}
         - name: keycloak
-          url: https://auth.${DOMAIN}
+          url: https://auth.${DOMAIN}/health/live
         - name: outline
           url: https://outline.${DOMAIN}
         - name: outline-aistor
-          url: https://aistor.outline.${DOMAIN}
+          url: https://aistor.outline.${DOMAIN}/minio/health/live
         - name: vault
-          url: https://vault.${DOMAIN}
+          url: https://vault.${DOMAIN}/api/alive
         - name: ocis
-          url: https://ocis.${DOMAIN}
+          url: https://ocis.${DOMAIN}/healthz
         - name: drawio
           url: https://drawio.${DOMAIN}
         - name: grafana
