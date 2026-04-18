@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - postgres
   - vaultwarden
-  - namespace.yaml
   - schedule.yaml
