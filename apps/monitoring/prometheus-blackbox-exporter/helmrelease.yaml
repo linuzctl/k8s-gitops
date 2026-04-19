@@ -52,7 +52,7 @@ spec:
         - name: rook-ceph
           url: https://rook-ceph.${DOMAIN}
         - name: keycloak
-          url: https://auth.${DOMAIN}/health/live
+          url: https://auth.${DOMAIN}
         - name: outline
           url: https://outline.${DOMAIN}
         - name: outline-aistor
