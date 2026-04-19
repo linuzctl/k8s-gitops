@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: gitlab-aistor-bucket-policy
+  name: gitlab-aistor-policy-gitlab
   namespace: gitlab
 data:
   bucket-policy.json: |
@@ -36,7 +36,26 @@ data:
             "arn:aws:s3:::gitlab-pages-storage",
             "arn:aws:s3:::gitlab-pages-storage/*",
             "arn:aws:s3:::gitlab-registry-storage",
-            "arn:aws:s3:::gitlab-registry-storage/*",
+            "arn:aws:s3:::gitlab-registry-storage/*"
+          ]
+        }
+      ]
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitlab-aistor-policy-gitlab-runner
+  namespace: gitlab
+data:
+  bucket-policy.json: |
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": ["s3:*"],
+          "Resource": [
             "arn:aws:s3:::gitlab-runner-cache",
             "arn:aws:s3:::gitlab-runner-cache/*"
           ]

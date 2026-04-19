@@ -76,11 +76,19 @@ spec:
         password: $(SECRET_KEY)
       envFrom:
         - secretRef:
-            name: aistor-gitlab-user
+            name: gitlab-aistor-gitlab-user
+    - name: create-user-gitlab-runner
+      op: admin/user/add
+      args:
+        user: $(ACCESS_KEY)
+        password: $(SECRET_KEY)
+      envFrom:
+        - secretRef:
+            name: gitlab-aistor-gitlab-runner-user
     - name: create-policy-gitlab
       op: admin/policy/create
       args:
-        name: access-bucket-data
+        name: policy-gitlab
         policy: /policies/bucket-policy.json
       volumeMounts:
         - name: policies
@@ -88,7 +96,22 @@ spec:
       volumes:
         - name: policies
           configMap:
-            name: gitlab-aistor-bucket-policy
+            name: gitlab-aistor-policy-gitlab
+            items:
+              - key: bucket-policy.json
+                path: bucket-policy.json
+    - name: create-policy-gitlab-runner
+      op: admin/policy/create
+      args:
+        name: policy-gitlab-runner
+        policy: /policies/bucket-policy.json
+      volumeMounts:
+        - name: policies
+          mountPath: /policies
+      volumes:
+        - name: policies
+          configMap:
+            name: gitlab-aistor-policy-gitlab-runner
             items:
               - key: bucket-policy.json
                 path: bucket-policy.json
@@ -98,8 +121,19 @@ spec:
         - create-user-gitlab
         - create-policy-gitlab
       args:
-        policy: access-bucket-data
+        policy: policy-gitlab
         user: $(ACCESS_KEY)
       envFrom:
         - secretRef:
-            name: aistor-gitlab-user
+            name: gitlab-aistor-gitlab-user
+    - name: attach-policy-gitlab-runner
+      op: admin/policy/attach
+      dependsOn:
+        - create-user-gitlab-runner
+        - create-policy-gitlab-runner
+      args:
+        policy: policy-gitlab-runner
+        user: $(ACCESS_KEY)
+      envFrom:
+        - secretRef:
+            name: gitlab-aistor-gitlab-runner-user
