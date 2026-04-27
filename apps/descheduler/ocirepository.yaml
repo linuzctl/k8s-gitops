@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: descheduler
+  namespace: descheduler
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/linuzctl/helm-charts/descheduler
+  ref:
+    tag: 0.35.1
