@@ -8,12 +8,11 @@ spec:
   interval: 30m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: metrics-server
-      version: 3.13.0
-      sourceRef:
-        kind: HelmRepository
-        name: metrics-server
-        namespace: flux-system
-      interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: descheduler
+    namespace: descheduler
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
