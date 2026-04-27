@@ -8,15 +8,10 @@ spec:
   interval: 20m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: csi-driver-nfs
-      version: 4.13.2
-      sourceRef:
-        kind: HelmRepository
-        name: csi-driver-nfs
-        namespace: flux-system
-      interval: 20m
+  chartRef:
+    kind: OCIRepository
+    name: csi-driver-nfs
+    namespace: csi-driver-nfs
   install:
     crds: Skip
   upgrade:
