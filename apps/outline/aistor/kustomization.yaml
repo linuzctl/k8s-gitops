@@ -5,4 +5,5 @@ resources:
   - init
   - helmrelease.yaml
   - ingress.yaml
+  - ocirepository.yaml
   - secret.sops.yaml

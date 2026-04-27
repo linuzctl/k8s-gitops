@@ -8,14 +8,10 @@ spec:
   interval: 30m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: aistor-objectstore
-      version: 1.0.14
-      sourceRef:
-        kind: HelmRepository
-        name: minio
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: aistor-objectstore
+    namespace: outline
   install:
     crds: Skip
   upgrade:
