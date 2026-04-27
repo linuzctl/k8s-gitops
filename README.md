@@ -35,6 +35,7 @@ A high-level overview of the repository layout:
 - Each application lives in its own directory under `apps/` and is managed by a Flux Kustomization object located in `cluster/kustomizations`.
 - This setup allows each application to be reconciled independently, so deleting or updating one app does not affect the others.
 - Exceptions occur when an application depends on another; in such cases, dependencies are explicitly specified in the Kustomization configuration.
+- All Helm charts used in this GitOps setup are pulled from OCI-compliant registries. If a chart maintainer does not publish an OCI-compliant chart, the chart will be tracked in the [helm-charts](https://github.com/linuzctl/helm-charts) repository.
 
 ## Secrets Management
 
