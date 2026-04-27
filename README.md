@@ -24,7 +24,6 @@ A high-level overview of the repository layout:
 ├── 📁 cluster               # Flux configuration
 │   ├── 📁 kustomizations    # Flux Kustomization objects for applications
 │   ├── 📁 flux-system       # Flux bootstrap components (GitOps controllers)
-│   ├── 📁 helmrepositories  # Helm repositories definitions for applications
 │   └── 📁 notifications     # Notification configurations
 └── 📁 crds                  # crds
 ```
