@@ -5,5 +5,4 @@ resources:
   - flux-system
   - kustomizations
   - notifications
-  - helmrepositories
   - cluster-vars.sops.yaml
