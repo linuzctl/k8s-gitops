@@ -7,6 +7,6 @@ metadata:
 spec:
   interval: 30m
   timeout: 3m
-  url: ghcr.io/linuzctl/helm-charts/gitlab-runner
+  url: oci://ghcr.io/linuzctl/helm-charts/gitlab-runner
   ref:
     tag: 0.88.1
