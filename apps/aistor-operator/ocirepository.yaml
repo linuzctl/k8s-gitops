@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: aistor-operator
+  namespace: aistor-operator
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/linuzctl/helm-charts/aistor-operator
+  ref:
+    tag: 5.6.2

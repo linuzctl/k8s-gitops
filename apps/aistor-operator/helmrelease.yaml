@@ -8,14 +8,10 @@ spec:
   interval: 30m
   driftDetection:
     mode: enabled
-  chart:
-    spec:
-      chart: aistor-operator
-      version: 5.6.2
-      sourceRef:
-        kind: HelmRepository
-        name: minio
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: aistor-operator
+    namespace: aistor-operator
   install:
     crds: CreateReplace
   upgrade:
