@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: gitlab-runner
+  namespace: gitlab
+spec:
+  interval: 30m
+  timeout: 3m
+  url: ghcr.io/linuzctl/helm-charts/gitlab-runner
+  ref:
+    tag: 0.88.1
