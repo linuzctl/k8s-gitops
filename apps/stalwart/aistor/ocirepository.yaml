@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: aistor-objectstore
+  namespace: stalwart
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/linuzctl/helm-charts/aistor-objectstore
+  ref:
+    tag: 1.0.14
