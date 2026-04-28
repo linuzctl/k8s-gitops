@@ -58,6 +58,11 @@ spec:
         retention_enabled: true
         delete_request_store: s3
         retention_delete_delay: 2h
+    monitoring:
+      dashboards:
+        enabled: true
+        labels:
+          grafana_dashboard: "1"
     minio:
       enabled: false
     deploymentMode: SingleBinary
