@@ -1,0 +1,57 @@
+---
+apiVersion: aistor.min.io/v1alpha1
+kind: AdminJob
+metadata:
+  name: stalwart-aistor-init-job
+  namespace: stalwart
+spec:
+  serviceAccountName: stalwart-aistor-adminjob-sa
+  objectStore:
+    name: stalwart-aistor
+    namespace: stalwart
+  insecure: true
+  execution: parallel
+  ttlSecondsAfterFinished: 3600
+  commands:
+    - name: disable-callhome
+      op: support/callhome
+      args:
+        action: "disable"
+    - name: create-bucket-data
+      op: make-bucket
+      args:
+        name: data
+    - name: create-user-stalwart
+      op: admin/user/add
+      args:
+        user: $(ACCESS_KEY)
+        password: $(SECRET_KEY)
+      envFrom:
+        - secretRef:
+            name: aistor-stalwart-user
+    - name: create-bucket-policy
+      op: admin/policy/create
+      args:
+        name: access-bucket-data
+        policy: /policies/bucket-policy.json
+      volumeMounts:
+        - name: policies
+          mountPath: /policies
+      volumes:
+        - name: policies
+          configMap:
+            name: stalwart-aistor-bucket-policy
+            items:
+              - key: bucket-policy.json
+                path: bucket-policy.json
+    - name: attach-policy-stalwart
+      op: admin/policy/attach
+      dependsOn:
+        - create-user-stalwart
+        - create-bucket-policy
+      args:
+        policy: access-bucket-data
+        user: $(ACCESS_KEY)
+      envFrom:
+        - secretRef:
+            name: aistor-stalwart-user

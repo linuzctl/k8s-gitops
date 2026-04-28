@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: stalwart-aistor
+  namespace: stalwart
+spec:
+  interval: 30m
+  driftDetection:
+    mode: enabled
+  chart:
+    spec:
+      chart: aistor-objectstore
+      version: 1.0.14
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
+  values:
+    secrets:
+      name: aistor-env-configuration
+      existingSecret: true
+    objectStore:
+      name: stalwart-aistor
+      pools:
+        - servers: 1
+          name: pool-0
+          volumesPerServer: 1
+          size: 10Gi
+      metrics:
+        enabled: true
+      services:
+        console:
+          name: stalwart-aistor-console
+        minio:
+          name: stalwart-aistor
+      pvcProtection: false
+      prometheusOperator: true
+      prometheusOperatorScrapeMetricsPaths:
+        - /minio/metrics/v3
+      env:
+        - name: MINIO_DOMAIN
+          value: https://aistor.stalwart.${DOMAIN}
+        - name: MINIO_BROWSER_REDIRECT_URL
+          value: https://console.aistor.stalwart.${DOMAIN}
+        - name: MINIO_PROMETHEUS_AUTH_TYPE
+          value: "public"
+        - name: MINIO_STS_SECURE
+          value: "on"
+        - name: MINIO_STS_TOKEN_REVOKE
+          value: "on"

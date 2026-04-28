@@ -1,0 +1,12 @@
+---
+apiVersion: sts.min.io/v1beta1
+kind: PolicyBinding
+metadata:
+  name: stalwart-aistor-adminjob-sa
+  namespace: stalwart
+spec:
+  application:
+    serviceaccount: stalwart-aistor-adminjob-sa
+    namespace: stalwart
+  policies:
+    - consoleAdmin

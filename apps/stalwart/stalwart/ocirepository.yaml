@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: stalwart
+  namespace: stalwart
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/linuzctl/helm-charts/stalwart
+  ref:
+    tag: 0.1.0

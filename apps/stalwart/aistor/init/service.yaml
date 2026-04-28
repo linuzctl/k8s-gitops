@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: stalwart
+spec:
+  ports:
+    - name: https-minio
+      port: 443
+      protocol: TCP
+      targetPort: 9000
+  selector:
+    aistor.min.io/objectStore: stalwart-aistor
+  type: ClusterIP

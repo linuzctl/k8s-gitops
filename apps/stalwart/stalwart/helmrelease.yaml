@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: stalwart
+  namespace: stalwart
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chartRef:
+    kind: OCIRepository
+    name: stalwart
+    namespace: stalwart
+  install:
+    crds: Skip
+  upgrade:
+    crds: Skip
+  values:
+    recoveryAdmin:
+      enabled: false
+    extraEnv:
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: stalwart-postgres-app
+            key: password
+    config:
+      "@type": "PostgreSql"
+      host: stalwart-postgres-rw.stalwart.svc.cluster.local
+      port: 5432
+      database: stalwart
+      authUsername: stalwart
+      authSecret:
+        "@type": "EnvironmentVariable"
+        variableName: DB_PASSWORD
+
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+      hosts:
+        - host: stalwart.${DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+              portName: https
+      tls:
+        - secretName: stalwart-${DOMAIN/./-}-tls
+          hosts:
+            - stalwart.${DOMAIN}
+    persistence:
+      enabled: false
+    certificate:
+      enabled: true
+      secretName: stalwart-${DOMAIN/./-}-tls

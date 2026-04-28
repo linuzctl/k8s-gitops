@@ -1,0 +1,54 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stalwart-aistor
+  namespace: stalwart
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: aistor.stalwart.${DOMAIN}
+      http:
+        paths:
+          - backend:
+              service:
+                name: stalwart-aistor
+                port:
+                  name: https-minio
+            path: /
+            pathType: Prefix
+  tls:
+    - secretName: aistor-stalwart-${DOMAIN/./-}-tls
+      hosts:
+        - aistor.stalwart.${DOMAIN}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stalwart-aistor-console
+  namespace: stalwart
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: console.aistor.stalwart.${DOMAIN}
+      http:
+        paths:
+          - backend:
+              service:
+                name: stalwart-aistor-console
+                port:
+                  name: https-console
+            path: /
+            pathType: Prefix
+  tls:
+    - secretName: console-aistor-stalwart-${DOMAIN/./-}-tls
+      hosts:
+        - console.aistor.stalwart.${DOMAIN}

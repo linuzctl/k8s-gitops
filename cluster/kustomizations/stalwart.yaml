@@ -1,0 +1,26 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: stalwart
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: ./apps/stalwart
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: cluster-vars
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stalwart
