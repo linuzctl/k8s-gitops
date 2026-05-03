@@ -20,6 +20,11 @@ spec:
     spec:
       automountServiceAccountToken: false
       restartPolicy: Always
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 999
+        fsGroup: 999
       containers:
         - name: drawio
           image: jgraph/drawio:29.7.9
@@ -31,34 +36,33 @@ spec:
           env:
             - name: TZ
               value: Europe/Zurich
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           livenessProbe:
             httpGet:
               port: 8080
               path: /
-              scheme: HTTP
             initialDelaySeconds: 12
             failureThreshold: 5
-            successThreshold: 1
             timeoutSeconds: 5
             periodSeconds: 15
           readinessProbe:
             httpGet:
               port: 8080
               path: /
-              scheme: HTTP
             initialDelaySeconds: 10
             failureThreshold: 4
-            successThreshold: 2
             timeoutSeconds: 5
             periodSeconds: 12
           startupProbe:
             httpGet:
               port: 8080
               path: /
-              scheme: HTTP
             initialDelaySeconds: 10
             failureThreshold: 60
-            successThreshold: 1
             timeoutSeconds: 3
             periodSeconds: 5
           resources:
