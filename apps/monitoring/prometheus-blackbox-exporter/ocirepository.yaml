@@ -9,7 +9,7 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/prometheus-community/charts/prometheus-blackbox-exporter
   ref:
-    tag: 11.9.1
+    tag: 11.9.2
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: extract
