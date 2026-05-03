@@ -16,6 +16,7 @@ resources:
   - drawio.yaml
   - external-snapshotter.yaml
   - falco.yaml
+  - gatekeeper.yaml
   - gitlab.yaml
   - iframely.yaml
   - ingress-nginx.yaml
