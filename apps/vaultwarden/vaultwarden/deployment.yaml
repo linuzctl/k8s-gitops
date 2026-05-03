@@ -26,11 +26,21 @@ spec:
         app.kubernetes.io/name: vaultwarden
         app.kubernetes.io/instance: vaultwarden
     spec:
-      serviceAccountName: vaultwarden
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - image: docker.io/vaultwarden/server:1.35.8-alpine
           imagePullPolicy: IfNotPresent
           name: vaultwarden
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           envFrom:
             - configMapRef:
                 name: vaultwarden

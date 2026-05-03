@@ -6,8 +6,5 @@ resources:
   - deployment.yaml
   - ingress.yaml
   - persistentvolumeclaim.yaml
-  - role.yaml
-  - rolebinding.yaml
   - secret.sops.yaml
   - service.yaml
-  - serviceaccount.yaml
