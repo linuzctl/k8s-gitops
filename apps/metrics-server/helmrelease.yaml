@@ -10,8 +10,8 @@ spec:
     mode: enabled
   chartRef:
     kind: OCIRepository
-    name: descheduler
-    namespace: descheduler
+    name: metrics-server
+    namespace: metrics-server
   install:
     crds: Skip
   upgrade:
