@@ -12,6 +12,10 @@ spec:
     kind: OCIRepository
     name: cilium
     namespace: kube-system
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   values:
     k8sServiceHost: ${CLUSTER_DOMAIN}
     k8sServicePort: 6443
@@ -35,6 +39,8 @@ spec:
       masquerade: true
     cni:
       exclusive: false
+    bandwidthManager:
+      enabled: true
     hubble:
       enabled: true
       metrics:
