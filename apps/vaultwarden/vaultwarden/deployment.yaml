@@ -33,7 +33,7 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-        - image: docker.io/vaultwarden/server:1.35.8-alpine
+        - image: docker.io/vaultwarden/server:1.36.0-alpine
           imagePullPolicy: IfNotPresent
           name: vaultwarden
           securityContext:
