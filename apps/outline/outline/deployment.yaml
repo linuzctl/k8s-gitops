@@ -26,6 +26,12 @@ spec:
         app.kubernetes.io/name: outline
         app.kubernetes.io/instance: outline
     spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
         - name: outline
           image: outlinewiki/outline:1.7.1
@@ -51,6 +57,12 @@ spec:
                 secretKeyRef:
                   name: aistor-outline-user
                   key: SECRET_KEY
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           ports:
             - name: http
               containerPort: 3000
