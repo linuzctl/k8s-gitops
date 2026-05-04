@@ -42,6 +42,8 @@ spec:
             - secretRef:
                 name: outline-server-secret
           env:
+            - name: TZ
+              value: Europe/Zurich
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
