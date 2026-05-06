@@ -19,7 +19,6 @@ spec:
         app.kubernetes.io/name: bentopdf
     spec:
       automountServiceAccountToken: false
-      restartPolicy: Always
       containers:
         - name: bentopdf
           image: ghcr.io/alam00000/bentopdf:2.8.4
