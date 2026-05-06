@@ -19,10 +19,19 @@ spec:
         app.kubernetes.io/name: bentopdf
     spec:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
       containers:
         - name: bentopdf
           image: ghcr.io/alam00000/bentopdf:2.8.4
           imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           ports:
             - name: http
               containerPort: 8080
