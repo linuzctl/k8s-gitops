@@ -27,13 +27,18 @@ spec:
         app.kubernetes.io/instance: iframely
     spec:
       securityContext:
-        runAsGroup: 1000
         runAsNonRoot: true
         runAsUser: 1000
+        runAsGroup: 1000
       containers:
         - name: iframely
           image: jolt/iframely:v2.5.0
           imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           ports:
             - name: http
               containerPort: 8061
