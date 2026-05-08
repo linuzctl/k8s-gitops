@@ -17,8 +17,6 @@ spec:
   upgrade:
     crds: Skip
   values:
-    recoveryAdmin:
-      enabled: false
     extraEnv:
       - name: DB_PASSWORD
         valueFrom:
@@ -34,7 +32,6 @@ spec:
       authSecret:
         "@type": "EnvironmentVariable"
         variableName: DB_PASSWORD
-
     ingress:
       enabled: true
       className: nginx
@@ -51,8 +48,6 @@ spec:
         - secretName: stalwart-${DOMAIN/./-}-tls
           hosts:
             - stalwart.${DOMAIN}
-    persistence:
-      enabled: false
     certificate:
       enabled: true
       secretName: stalwart-${DOMAIN/./-}-tls
