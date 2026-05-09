@@ -12,6 +12,8 @@ Cluster provisioning and lifecycle management are handled using a custom Ansible
 
 [Flux CD](https://github.com/fluxcd/flux2) continuously deploys all manifests and configurations stored in Git to the Kubernetes cluster.
 
+Flux is deployed and lifecycle-managed via the [Flux Operator](https://github.com/controlplaneio-fluxcd/flux-operator), which manages the installation, upgrades, and reconciliation of Flux components inside the cluster.
+
 [Renovate](https://github.com/renovatebot/renovate) is configured to automatically check for and update dependencies (container images, OCI repositories, Helm charts, etc.) in the repository.
 
 ### Repository Structure
@@ -23,7 +25,7 @@ A high-level overview of the repository layout:
 ├── 📁 apps                  # applications
 ├── 📁 cluster               # Flux configuration
 │   ├── 📁 kustomizations    # Flux Kustomization objects for applications
-│   ├── 📁 flux-system       # Flux bootstrap components (GitOps controllers)
+│   ├── 📁 flux-system       # Flux-Operator (GitOps controllers)
 │   └── 📁 notifications     # Notification configurations
 └── 📁 crds                  # crds
 ```
