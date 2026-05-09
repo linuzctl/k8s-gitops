@@ -26,7 +26,8 @@
   },
   flux: {
     managerFilePatterns: [
-      '/apps/.+/(ocirepository)\\.ya?ml$/',
+      '/apps/.+/ocirepository\\.ya?ml$/',
+      '/cluster/flux-system/.+/ocirepository\\.ya?ml$/',
     ],
   },
   customManagers: [
