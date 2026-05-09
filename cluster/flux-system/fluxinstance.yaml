@@ -42,7 +42,7 @@ spec:
                   name: cluster-vars
         target:
           kind: Kustomization
-      # source: https://fluxcd.io/flux/installation/configuration/vertical-scaling/#increase-the-number-of-workers-and-limits
+      # source: https://fluxoperator.dev/docs/instance/customization/#increase-concurrency-and-resources-limits
       - patch: |
           - op: add
             path: /spec/template/spec/containers/0/args/-
@@ -50,31 +50,16 @@ spec:
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --requeue-dependency=5s
-        target:
-          kind: Deployment
-          name: "(kustomize-controller|helm-controller|source-controller)"
-      - patch: |
-          apiVersion: apps/v1
-          kind: Deployment
-          metadata:
-            name: all
-          spec:
-            template:
-              spec:
-                containers:
-                  - name: manager
-                    resources:
-                      limits:
-                        cpu: 2000m
-                        memory: 2Gi
+          - op: replace
+            path: /spec/template/spec/containers/0/resources/limits
+            value:
+              cpu: 2000m
+              memory: 2048Mi
         target:
           kind: Deployment
           name: "(kustomize-controller|helm-controller|source-controller)"
       # source: https://fluxcd.io/flux/installation/configuration/vertical-scaling/#enable-in-memory-kustomize-builds
       - patch: |
-          - op: add
-            path: /spec/template/spec/containers/0/args/-
-            value: --concurrent=20
           - op: replace
             path: /spec/template/spec/volumes/0
             value:
