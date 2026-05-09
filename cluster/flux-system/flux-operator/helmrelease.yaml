@@ -41,6 +41,9 @@ spec:
               - profile
               - email
               - offline_access
+            impersonation:
+              username: claims.preferred_username
+              groups: claims.roles
       ingress:
         enabled: true
         className: nginx
