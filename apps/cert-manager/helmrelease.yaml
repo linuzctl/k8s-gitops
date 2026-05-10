@@ -31,3 +31,8 @@ spec:
       servicemonitor:
         enabled: true
         namespace: monitoring
+    config:
+      enableGatewayAPI: true
+      enableGatewayAPIListenerSet: true
+      featureGates:
+        ListenerSets: true
