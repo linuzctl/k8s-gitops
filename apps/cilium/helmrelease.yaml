@@ -39,6 +39,10 @@ spec:
       masquerade: true
     cni:
       exclusive: false
+    routingMode: native
+    loadBalancer:
+      mode: hybrid
+      dsrDispatch: geneve
     bandwidthManager:
       enabled: true
     hubble:
