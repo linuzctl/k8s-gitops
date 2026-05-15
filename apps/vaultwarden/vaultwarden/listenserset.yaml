@@ -1,0 +1,22 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  parentRef:
+    namespace: envoy-gateway-system
+    name: envoy-gateway
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: vault
+      hostname: vault.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: vault-${DOMAIN/./-}-tls

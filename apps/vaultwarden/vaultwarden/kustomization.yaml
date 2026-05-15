@@ -4,7 +4,8 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - deployment.yaml
-  - ingress.yaml
+  - httproute.yaml
+  - listenserset.yaml
   - persistentvolumeclaim.yaml
   - secret.sops.yaml
   - service.yaml
