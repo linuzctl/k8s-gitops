@@ -23,7 +23,6 @@ resources:
   - keycloak.yaml
   - kubevirt.yaml
   - metrics-server.yaml
-  - mimir.yaml
   - monitoring.yaml
   - multus.yaml
   - node-feature-discovery.yaml
