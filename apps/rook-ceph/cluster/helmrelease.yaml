@@ -15,19 +15,16 @@ spec:
   values:
     toolbox:
       enabled: true
-    ingress:
+    route:
       dashboard:
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
         host:
           name: rook-ceph.${DOMAIN}
           path: /
-          pathType: Prefix
-        tls:
-          - secretName: rook-ceph-${DOMAIN/./-}-tls
-            hosts:
-              - rook-ceph.${DOMAIN}
-        ingressClassName: nginx
+          pathType: PathPrefix
+        parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: ListenerSet
+            name: rook-ceph
     cephClusterSpec:
       cephConfig:
         global:
