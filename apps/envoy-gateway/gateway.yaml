@@ -1,0 +1,29 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: envoy-gateway
+  namespace: envoy-gateway-system
+spec:
+  allowedListeners:
+    namespaces:
+      from: All
+  gatewayClassName: envoy-gateway
+  infrastructure:
+    annotations:
+      lbipam.cilium.io/ips: envoy-gateway-lb
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: ssh
+      allowedRoutes:
+        namespaces:
+          from: All
+        kinds:
+          - kind: TCPRoute
+      port: 22
+      protocol: TCP

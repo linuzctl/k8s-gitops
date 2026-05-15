@@ -5,7 +5,9 @@ resources:
   - cert-manager
   - cloudnative-pg
   - dragonfly-operator
+  - envoy-gateway
   - external-snapshotter
+  - gateway-api
   - keycloak
   - kube-prometheus-stack
   - node-feature-discovery

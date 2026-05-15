@@ -1,0 +1,8 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: envoy-gateway-lb
+spec:
+  blocks:
+    - cidr: ${ENVOY_GATEWAY_NGINX_IP}/32
