@@ -2,7 +2,15 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: ingress-nginx
+  name: ingress-nginx-lb
 spec:
   blocks:
-    - cidr: "${INGRESS_NGINX_IP}"
+    - cidr: "${INGRESS_NGINX_IP}/32"
+---
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: envoy-gateway-lb
+spec:
+  blocks:
+    - cidr: ${ENVOY_GATEWAY_IP}/32

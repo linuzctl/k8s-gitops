@@ -28,4 +28,4 @@ spec:
       service:
         enabled: true
         annotations:
-          loadbalancer.cilium.io/ipam: ingress-nginx
+          loadbalancer.cilium.io/ipam: ingress-nginx-lb
