@@ -1,0 +1,15 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: thanos
+  namespace: thanos
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/thanos-community/helm-charts/thanos
+  ref:
+    tag: 0.11.0
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: extract

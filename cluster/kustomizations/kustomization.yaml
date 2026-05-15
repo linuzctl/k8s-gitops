@@ -34,6 +34,7 @@ resources:
   - rook-ceph.yaml
   - spegel.yaml
   - stalwart.yaml
+  - thanos.yaml
   - unpoller.yaml
   - vaultwarden.yaml
   - velero.yaml

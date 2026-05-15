@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: thanos
+  namespace: thanos
+spec:
+  interval: 30m
+  driftDetection:
+    mode: enabled
+  chartRef:
+    kind: OCIRepository
+    name: thanos
+    namespace: thanos
+  values:
+    global:
+      serviceMonitor:
+        enabled: true
+        namespace: monitoring
+      objstore:
+        createSecret: false
+        secretName: thanos-objstore
+        secretKey: objstore.yml
+    query:
+      replicaCount: 1
+    storegateway:
+      replicaCount: 1
+    receive:
+      replicaCount: 1
