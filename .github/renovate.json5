@@ -80,9 +80,9 @@
       matchStrings: [
         'version:\\s*"?(?<currentValue>[0-9.]+)"?'
       ],
-      datasourceTemplate: 'github-releases',
-      depNameTemplate: 'fluxcd/flux2',
-      versioningTemplate: 'semver'
+      datasourceTemplate: 'docker',
+      depNameTemplate: 'ghcr.io/fluxcd/flux-manifests',
+      versioningTemplate: 'semver',
     },
   ],
   packageRules: [
