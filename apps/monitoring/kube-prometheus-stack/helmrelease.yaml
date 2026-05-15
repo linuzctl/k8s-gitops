@@ -117,9 +117,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         remoteWrite:
-          - url: http://mimir-gateway.mimir.svc.cluster.local:80/api/v1/push
-            headers:
-              X-Scope-OrgID: monitoring
+          - url: http://thanos-receive.thanos.svc.cluster.local:10908/api/v1/receive
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         retention: 14d

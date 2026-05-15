@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasource-thanos
+  namespace: thanos
+  labels:
+    grafana_datasource: "1"
+data:
+  datasource.yaml: |-
+    apiVersion: 1
+    datasources:
+      - name: Thanos
+        type: prometheus
+        uid: thanos
+        url:  http://thanos-query.thanos.svc.cluster.local:9090
