@@ -21,6 +21,8 @@ spec:
     hostname: https://auth.${DOMAIN}
   proxy:
     headers: xforwarded
+  ingress:
+    enabled: false
   networkPolicy:
     enabled: false
   additionalOptions:
