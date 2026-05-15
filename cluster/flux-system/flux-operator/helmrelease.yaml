@@ -29,6 +29,8 @@ spec:
     installCRDs: true
     web:
       enabled: true
+      networkPolicy:
+        create: false
       config:
         baseURL: https://flux.${DOMAIN}
         authentication:
