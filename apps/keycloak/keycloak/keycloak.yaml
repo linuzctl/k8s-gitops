@@ -21,12 +21,6 @@ spec:
     hostname: https://auth.${DOMAIN}
   proxy:
     headers: xforwarded
-  ingress:
-    enabled: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    className: nginx
-    tlsSecret: auth-${DOMAIN/./-}-tls
   networkPolicy:
     enabled: false
   additionalOptions:
