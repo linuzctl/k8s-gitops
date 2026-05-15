@@ -18,7 +18,7 @@ spec:
     route:
       dashboard:
         host:
-          name: rook-ceph.${DOMAIN}
+          host: rook-ceph.${DOMAIN}
           path: /
           pathType: PathPrefix
         parentRefs:
