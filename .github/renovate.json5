@@ -71,6 +71,19 @@
       datasourceTemplate: '{{#if datasource}}github-tags{{else}}github-releases{{/if}}',
       versioningTemplate: 'semver',
     },
+    {
+      description: 'Update Flux2 version',
+      customType: 'regex',
+      managerFilePatterns: [
+        '/cluster/flux-system/fluxinstance\\.ya?ml$/',
+      ],
+      matchStrings: [
+        'version:\\s*"?(?<currentValue>[0-9.]+)"?'
+      ],
+      datasourceTemplate: 'github-releases',
+      depNameTemplate: 'fluxcd/flux2',
+      versioningTemplate: 'semver'
+    },
   ],
   packageRules: [
     {
