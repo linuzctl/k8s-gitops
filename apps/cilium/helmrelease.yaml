@@ -72,17 +72,6 @@ spec:
             enabled: true
       ui:
         enabled: true
-        ingress:
-          enabled: true
-          className: nginx
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-prod
-          hosts:
-            - hubble.${DOMAIN}
-          tls:
-            - secretName: hubble-${DOMAIN/./-}-tls
-              hosts:
-                - hubble.${DOMAIN}
     prometheus:
       enabled: true
       serviceMonitor:
