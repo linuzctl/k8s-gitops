@@ -1,0 +1,24 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: flux-operator
+  namespace: flux-system
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  parentRef:
+    namespace: envoy-gateway-system
+    name: envoy-gateway
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: flux-operator
+      hostname: flux.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: flux-${DOMAIN/./-}-tls

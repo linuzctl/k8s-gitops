@@ -46,17 +46,12 @@ spec:
             impersonation:
               username: claims.preferred_username
               groups: claims.roles
-      ingress:
+      httpRoute:
         enabled: true
-        className: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-        hosts:
-          - host: flux.${DOMAIN}
-            paths:
-              - path: /
-                pathType: ImplementationSpecific
-        tls:
-          - secretName: flux-${DOMAIN/./-}-tls
-            hosts:
-              - flux.${DOMAIN}
+        parentRefs:
+          - name: flux-operator
+            namespace: flux-system
+            kind: ListenerSet
+            group: gateway.networking.k8s.io
+        hostnames:
+          - flux.${DOMAIN}
