@@ -1,0 +1,33 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: stalwart-aistor
+  namespace: stalwart
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  parentRef:
+    namespace: envoy-gateway-system
+    name: envoy-gateway
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: stalwart-aistor
+      hostname: aistor.stalwart.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: aistor-stalwart-${DOMAIN/./-}-tls
+    - name: stalwart-aistor-console
+      hostname: console.aistor.stalwart.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: console-aistor-stalwart-${DOMAIN/./-}-tls
