@@ -41,9 +41,6 @@ spec:
           strategy:
             type: Recreate
         minReplicas: 1
-        ingress:
-          tls:
-            secretName: git-${DOMAIN/./-}-tls
     gitlab-runner:
       install: false
     global:
@@ -135,12 +132,7 @@ spec:
           name: registry.git.${DOMAIN}
       ingress:
         configureCertmanager: false
-        enabled: true
-        class: nginx
-        tls:
-          enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
+        enabled: false
       smtp:
         enabled: true
         address: mail.${DOMAIN}
@@ -178,9 +170,6 @@ spec:
       storage:
         secret: gitlab-registry-storage
         key: config
-      ingress:
-        tls:
-          secretName: registry-git-${DOMAIN/./-}-tls
   postRenderers:
     - kustomize:
         patches:
