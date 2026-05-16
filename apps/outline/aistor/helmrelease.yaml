@@ -34,6 +34,8 @@ spec:
           name: outline-aistor-console
         minio:
           name: outline-aistor
+      certificates:
+        disableAutoCert: true
       pvcProtection: false
       prometheusOperator: true
       prometheusOperatorScrapeMetricsPaths:
@@ -45,7 +47,3 @@ spec:
           value: https://console.aistor.outline.${DOMAIN}
         - name: MINIO_PROMETHEUS_AUTH_TYPE
           value: "public"
-        - name: MINIO_STS_SECURE
-          value: "on"
-        - name: MINIO_STS_TOKEN_REVOKE
-          value: "on"

@@ -1,0 +1,40 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: outline-aistor
+  namespace: outline
+spec:
+  parentRefs:
+    - name: outline-aistor
+      kind: ListenerSet
+      group: gateway.networking.k8s.io
+      sectionName: outline-aistor
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: outline-aistor
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: outline-aistor-console
+  namespace: outline
+spec:
+  parentRefs:
+    - name: outline-aistor
+      kind: ListenerSet
+      group: gateway.networking.k8s.io
+      sectionName: outline-aistor-console
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: outline-aistor-console
+          port: 9090

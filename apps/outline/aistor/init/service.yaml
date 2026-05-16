@@ -6,8 +6,8 @@ metadata:
   namespace: outline
 spec:
   ports:
-    - name: https-minio
-      port: 443
+    - name: http-minio
+      port: 80
       protocol: TCP
       targetPort: 9000
   selector:
