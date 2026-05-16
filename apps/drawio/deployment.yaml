@@ -27,7 +27,7 @@ spec:
         fsGroup: 999
       containers:
         - name: drawio
-          image: jgraph/drawio:30.0.1
+          image: jgraph/drawio:30.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
