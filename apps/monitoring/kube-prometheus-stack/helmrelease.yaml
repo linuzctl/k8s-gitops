@@ -20,20 +20,6 @@ spec:
     alertmanager:
       alertmanagerSpec:
         forceEnableClusterMode: true
-      ingress:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-        ingressClassName: nginx
-        hosts:
-          - alertmanager.${DOMAIN}
-        pathType: Prefix
-        paths:
-          - /
-        tls:
-          - secretName: alertmanager-${DOMAIN/./-}-tls
-            hosts:
-              - alertmanager.${DOMAIN}
     kubeControllerManager:
       enabled: false
     kubeEtcd:
@@ -47,18 +33,6 @@ spec:
       enabled: true
       defaultDashboardsTimezone: browser
       envFromSecret: kube-prometheus-stack-grafana-sso
-      ingress:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-        hosts:
-          - grafana.${DOMAIN}
-        path: /
-        tls:
-          - secretName: grafana-${DOMAIN/./-}-tls
-            hosts:
-              - grafana.${DOMAIN}
       grafana.ini:
         analytics:
           check_for_updates: false
@@ -99,20 +73,6 @@ spec:
       serviceMonitor:
         enabled: true
     prometheus:
-      ingress:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
-        hosts:
-          - prometheus.${DOMAIN}
-        pathType: Prefix
-        paths:
-          - /
-        tls:
-          - secretName: prometheus-${DOMAIN/./-}-tls
-            hosts:
-              - prometheus.${DOMAIN}
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false

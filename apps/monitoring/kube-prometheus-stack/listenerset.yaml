@@ -1,0 +1,37 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  parentRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy-gateway
+    namespace: envoy-gateway-system
+  listeners:
+    - name: kube-prometheus-stack-alertmanager
+      hostname: alertmanager.${DOMAIN}
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: alertmanager-${DOMAIN/./-}-tls
+    - name: kube-prometheus-stack-grafana
+      hostname: grafana.${DOMAIN}
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: grafana-${DOMAIN/./-}-tls
+    - name: kube-prometheus-stack-prometheus
+      hostname: prometheus.${DOMAIN}
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: prometheus-${DOMAIN/./-}-tls
