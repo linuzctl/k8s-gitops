@@ -32,22 +32,6 @@ spec:
       authSecret:
         "@type": "EnvironmentVariable"
         variableName: DB_PASSWORD
-    ingress:
-      enabled: true
-      className: nginx
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-        nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-      hosts:
-        - host: stalwart.${DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
-              portName: https
-      tls:
-        - secretName: stalwart-${DOMAIN/./-}-tls
-          hosts:
-            - stalwart.${DOMAIN}
     certificate:
       enabled: true
       secretName: stalwart-${DOMAIN/./-}-tls
