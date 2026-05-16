@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - init
   - helmrelease.yaml
-  - ingress.yaml
+  - httproute.yaml
+  - listenerset.yaml
   - ocirepository.yaml
   - secret.sops.yaml

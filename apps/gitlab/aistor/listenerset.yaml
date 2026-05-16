@@ -1,0 +1,33 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: gitlab-aistor
+  namespace: gitlab
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  parentRef:
+    namespace: envoy-gateway-system
+    name: envoy-gateway
+    kind: Gateway
+    group: gateway.networking.k8s.io
+  listeners:
+    - name: gitlab-aistor
+      hostname: aistor.gitlab.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: aistor-gitlab-${DOMAIN/./-}-tls
+    - name: gitlab-aistor-console
+      hostname: console.aistor.gitlab.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: console-aistor-gitlab-${DOMAIN/./-}-tls
