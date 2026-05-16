@@ -5,6 +5,6 @@ resources:
   - init
   - helmrelease.yaml
   - httproute.yaml
-  - listenserset.yaml
+  - listenerset.yaml
   - ocirepository.yaml
   - secret.sops.yaml
