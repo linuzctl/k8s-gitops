@@ -14,20 +14,20 @@ spec:
     group: gateway.networking.k8s.io
   listeners:
     - name: gitlab-aistor
-      hostname: aistor.gitlab.${DOMAIN}
+      hostname: aistor.git.${DOMAIN}
       protocol: HTTPS
       port: 443
       tls:
         mode: Terminate
         certificateRefs:
           - kind: Secret
-            name: aistor-gitlab-${DOMAIN/./-}-tls
+            name: aistor-git-${DOMAIN/./-}-tls
     - name: gitlab-aistor-console
-      hostname: console.aistor.gitlab.${DOMAIN}
+      hostname: console.aistor.git.${DOMAIN}
       protocol: HTTPS
       port: 443
       tls:
         mode: Terminate
         certificateRefs:
           - kind: Secret
-            name: console-aistor-gitlab-${DOMAIN/./-}-tls
+            name: console-aistor-git-${DOMAIN/./-}-tls
