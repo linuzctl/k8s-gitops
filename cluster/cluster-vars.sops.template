@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-vars
+  namespace: flux-system
+type: Opaque
+stringData:
+  DOMAIN:
+  CLUSTER_DOMAIN:
+  CLUSTER_DOMAIN_TLS:
+  ACME_EMAIL:
+  CIDR_SERVICE:
+  CIDR_PODS:
+  COREDNS_IP:
+  ENVOY_GATEWAY_IP:
+  NFS_IP:
+  NFS_SHARE:
+  BACKUP_S3_URL:
