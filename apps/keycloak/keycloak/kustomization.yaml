@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - httproute.yaml
   - keycloak.yaml
-  - listenserset.yaml
+  - listenerset.yaml

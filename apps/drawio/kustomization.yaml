@@ -5,4 +5,4 @@ resources:
   - deployment.yaml
   - httproute.yaml
   - service.yaml
-  - listenserset.yaml
+  - listenerset.yaml

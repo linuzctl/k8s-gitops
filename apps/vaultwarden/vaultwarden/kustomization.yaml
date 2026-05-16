@@ -5,7 +5,7 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - httproute.yaml
-  - listenserset.yaml
+  - listenerset.yaml
   - persistentvolumeclaim.yaml
   - secret.sops.yaml
   - service.yaml
