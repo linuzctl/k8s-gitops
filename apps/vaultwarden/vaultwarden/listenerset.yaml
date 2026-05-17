@@ -4,6 +4,8 @@ kind: ListenerSet
 metadata:
   name: vaultwarden
   namespace: vaultwarden
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   parentRef:
     group: gateway.networking.k8s.io

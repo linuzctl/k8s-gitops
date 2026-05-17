@@ -4,6 +4,8 @@ kind: ListenerSet
 metadata:
   name: rook-ceph
   namespace: rook-ceph
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   parentRef:
     group: gateway.networking.k8s.io
