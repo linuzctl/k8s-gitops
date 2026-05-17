@@ -32,6 +32,10 @@ spec:
       authSecret:
         "@type": "EnvironmentVariable"
         variableName: DB_PASSWORD
+    httpRoute:
+      enabled: true
+      hostnames:
+        - stalwart.${DOMAIN}
     certificate:
       enabled: true
       secretName: stalwart-${DOMAIN/./-}-tls
