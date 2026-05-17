@@ -1,4 +1,4 @@
-# csi-driver-nfs
+# dragonfly-operator
 
 Dragonfly Operator is a Kubernetes operator used to deploy and manage Dragonfly instances inside a Kubernetes clusters.
 
