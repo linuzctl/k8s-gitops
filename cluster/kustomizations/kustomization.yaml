@@ -27,6 +27,7 @@ resources:
   - multus.yaml
   - node-feature-discovery.yaml
   - ocis.yaml
+  - openbao.yaml
   - outline.yaml
   - reloader.yaml
   - renovate.yaml

@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: openbao
+  namespace: openbao
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/openbao/charts/openbao
+  ref:
+    tag: 0.28.2
