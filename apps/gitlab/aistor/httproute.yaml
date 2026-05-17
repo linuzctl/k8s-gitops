@@ -6,9 +6,9 @@ metadata:
   namespace: gitlab
 spec:
   parentRefs:
-    - name: gitlab-aistor
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: gitlab-aistor
       sectionName: gitlab-aistor
   rules:
     - matches:
@@ -26,9 +26,9 @@ metadata:
   namespace: gitlab
 spec:
   parentRefs:
-    - name: gitlab-aistor
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: gitlab-aistor
       sectionName: gitlab-aistor-console
   rules:
     - matches:

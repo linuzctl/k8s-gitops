@@ -6,9 +6,9 @@ metadata:
   namespace: outline
 spec:
   parentRefs:
-    - name: outline-aistor
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: outline-aistor
       sectionName: outline-aistor
   rules:
     - matches:
@@ -26,9 +26,9 @@ metadata:
   namespace: outline
 spec:
   parentRefs:
-    - name: outline-aistor
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: outline-aistor
       sectionName: outline-aistor-console
   rules:
     - matches:

@@ -6,9 +6,9 @@ metadata:
   namespace: ocis
 spec:
   parentRefs:
-    - name: ocis
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: ocis
   rules:
     - matches:
         - path:

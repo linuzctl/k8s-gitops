@@ -6,9 +6,9 @@ metadata:
   namespace: bentopdf
 spec:
   parentRefs:
-    - name: bentopdf
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: bentopdf
   rules:
     - matches:
         - path:

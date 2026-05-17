@@ -6,10 +6,10 @@ metadata:
   namespace: bentopdf
 spec:
   parentRef:
-    namespace: envoy-gateway-system
-    name: envoy-gateway
-    kind: Gateway
     group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy-gateway
+    namespace: envoy-gateway-system
   listeners:
     - name: bentopdf
       hostname: pdf.${DOMAIN}

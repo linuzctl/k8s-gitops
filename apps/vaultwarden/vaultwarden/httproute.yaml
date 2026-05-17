@@ -6,9 +6,9 @@ metadata:
   namespace: vaultwarden
 spec:
   parentRefs:
-    - name: vaultwarden
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: vaultwarden
   rules:
     - matches:
         - path:

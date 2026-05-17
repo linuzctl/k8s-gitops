@@ -6,9 +6,9 @@ metadata:
   namespace: keycloak
 spec:
   parentRefs:
-    - name: keycloak
+    - group: gateway.networking.k8s.io
       kind: ListenerSet
-      group: gateway.networking.k8s.io
+      name: keycloak
   rules:
     - matches:
         - path:
