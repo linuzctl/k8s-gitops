@@ -36,6 +36,10 @@ spec:
       enabled: true
       hostnames:
         - stalwart.${DOMAIN}
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: ListenerSet
+          name: stalwart
     certificate:
       enabled: true
       secretName: stalwart-${DOMAIN/./-}-tls
