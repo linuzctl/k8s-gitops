@@ -66,4 +66,4 @@ If you plan to build something similar:
 - Take time to understand what each component does
 - Adapt ideas to your own requirements and constraints
 
-Getting inspired by how others design and operate their infrastructure is always valid — just make sure you understand why things are done a certain way before adopting them.
+Getting inspired by how others design and operate their infrastructure is always valid - just make sure you understand why things are done a certain way before adopting them.
