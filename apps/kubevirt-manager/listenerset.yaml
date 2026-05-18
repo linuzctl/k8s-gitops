@@ -1,0 +1,23 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: kubevirt-manager
+  namespace: kubevirt-manager
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  parentRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy-gateway
+    namespace: envoy-gateway-system
+  listeners:
+    - name: kubevirt-manager
+      hostname: kubevirt-manager.${DOMAIN}
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: kubevirt-manager-${DOMAIN/-/.}-tls

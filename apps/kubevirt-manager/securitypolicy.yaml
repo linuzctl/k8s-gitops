@@ -1,0 +1,17 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: kubevirt-manager-oidc
+  namespace: kubevirt-manager
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: kubevirt-manager
+  oidc:
+    provider:
+      issuer: https://auth.${DOMAIN}/realms/auth
+    clientID: envoy-gateway-sso
+    clientSecret:
+      name: kubevirt-manager-sso-client-secret

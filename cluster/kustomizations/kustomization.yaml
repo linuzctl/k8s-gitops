@@ -22,6 +22,7 @@ resources:
   - iframely.yaml
   - keycloak.yaml
   - kubevirt.yaml
+  - kubevirt-manager.yaml
   - metrics-server.yaml
   - monitoring.yaml
   - multus.yaml

@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://github.com/kubevirt-manager/kubevirt-manager/releases/download/v1.5.4/bundled-v1.5.4.yaml
+  - https://github.com/kubevirt-manager/kubevirt-manager/releases/download/v1.5.4/servicemonitor-v1.5.4.yaml
+  - httproute.yaml
+  - listenerset.yaml
+  - secret.sops.yaml
+  - securitypolicy.yaml
+patches:
+  - patch: |
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: kubevirt-manager
+      $patch: delete
