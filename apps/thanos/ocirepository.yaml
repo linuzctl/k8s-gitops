@@ -9,7 +9,7 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/thanos-community/helm-charts/thanos
   ref:
-    tag: 0.12.1
+    tag: 0.12.4
   layerSelector:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: extract
