@@ -9,4 +9,4 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/linuzctl/helm-charts/descheduler
   ref:
-    tag: 0.35.1
+    tag: 0.36.0
