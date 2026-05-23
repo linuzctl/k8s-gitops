@@ -21,14 +21,6 @@ spec:
         certificateRefs:
           - kind: Secret
             name: alertmanager-${DOMAIN/./-}-tls
-    - name: kube-prometheus-stack-grafana
-      hostname: grafana.${DOMAIN}
-      port: 443
-      protocol: HTTPS
-      tls:
-        certificateRefs:
-          - kind: Secret
-            name: grafana-${DOMAIN/./-}-tls
     - name: kube-prometheus-stack-prometheus
       hostname: prometheus.${DOMAIN}
       port: 443
