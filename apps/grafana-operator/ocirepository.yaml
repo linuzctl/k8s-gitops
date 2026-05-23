@@ -1,0 +1,15 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: grafana-operator
+  namespace: grafana-operator
+spec:
+  interval: 30m
+  timeout: 3m
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: 5.23.0
+  url: oci://ghcr.io/grafana/helm-charts/grafana-operator
