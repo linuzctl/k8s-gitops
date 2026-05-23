@@ -130,8 +130,9 @@ spec:
           name: minio.git.${DOMAIN}
         registry:
           name: registry.git.${DOMAIN}
+      gatewayApi:
+        enabled: false
       ingress:
-        configureCertmanager: false
         enabled: false
       smtp:
         enabled: true
