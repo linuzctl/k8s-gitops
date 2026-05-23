@@ -132,6 +132,9 @@ spec:
           name: registry.git.${DOMAIN}
       gatewayApi:
         enabled: false
+        installEnvoy: false
+        configureCertmanager: false
+        httpToHttpsRedirect: false
       ingress:
         enabled: false
       smtp:
