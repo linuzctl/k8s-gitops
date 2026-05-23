@@ -1,0 +1,64 @@
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: kube-prometheus-stack-prometheus
+  namespace: grafana
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  datasource:
+    type: prometheus
+    name: prometheus
+    isDefault: true
+    access: proxy
+    url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: thanos
+  namespace: grafana
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  datasource:
+    type: prometheus
+    name: thanos
+    isDefault: false
+    access: proxy
+    url: http://thanos-query.thanos.svc.cluster.local:9090
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: loki
+  namespace: grafana
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  datasource:
+    type: loki
+    name: loki
+    isDefault: false
+    access: proxy
+    url: http://loki.monitoring.svc.cluster.local:3100
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: kube-prometheus-stack-alertmanager
+  namespace: grafana
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  datasource:
+    type: alertmanager
+    name: alertmanager
+    isDefault: false
+    access: proxy
+    url: http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093

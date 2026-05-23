@@ -1,0 +1,94 @@
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+  namespace: grafana
+  labels:
+    dashboards: grafana
+spec:
+  config:
+    analytics:
+      check_for_updates: "false"
+      check_for_plugin_updates: "false"
+      feedback_links_enabled: "false"
+      reporting_enabled: "false"
+    log:
+      mode: "console"
+    auth:
+      disable_login_form: "false"
+    metrics:
+      enabled: "true"
+    news:
+      news_feed_enabled: "false"
+    auth.generic_oauth:
+      enabled: "true"
+      name: "Keycloak SSO"
+      auto_login: "true"
+      allow_sign_up: "true"
+      client_id: $${AUTH_CLIENT_ID}
+      client_secret: $${AUTH_CLIENT_SECRET}
+      scopes: "openid email profile offline_access roles"
+      email_attribute_path: email
+      login_attribute_path: username
+      name_attribute_path: full_name
+      groups_attribute_path: groups
+      auth_url: https://auth.${DOMAIN}/realms/auth/protocol/openid-connect/auth
+      token_url: https://auth.${DOMAIN}/realms/auth/protocol/openid-connect/token
+      signout_redirect_url: https://auth.${DOMAIN}/realms/auth/protocol/openid-connect/logout
+      role_attribute_path: contains(resource_access.grafana.roles[*], 'grafanaadmin') && 'GrafanaAdmin' || contains(resource_access.grafana.roles[*], 'admin') && 'Admin' || contains(resource_access.grafana.roles[*], 'editor') && 'Editor' || 'Viewer'
+    server:
+      root_url: https://grafana.${DOMAIN}
+  deployment:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: grafana
+              env:
+                - name: AUTH_CLIENT_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: grafana-oauth
+                      key: client-id
+                - name: AUTH_CLIENT_SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      name: grafana-oauth
+                      key: client-secret
+              volumeMounts:
+                - name: provisioning-config
+                  mountPath: /etc/grafana/provisioning/dashboards
+                - name: dashboards
+                  mountPath: /var/lib/grafana/dashboards
+            - name: k8s-sidecar
+              image: ghcr.io/kiwigrid/k8s-sidecar:2.7.3
+              env:
+                - name: LABEL
+                  value: "grafana_dashboard"
+                - name: LABEL_VALUE
+                  value: "1"
+                - name: FOLDER
+                  value: /var/lib/grafana/dashboards
+                - name: NAMESPACE
+                  value: ALL
+                - name: RESOURCE
+                  value: configmap
+              volumeMounts:
+                - mountPath: /var/lib/grafana/dashboards
+                  name: dashboards
+          volumes:
+            - name: dashboards
+              emptyDir: {}
+            - name: provisioning-config
+              configMap:
+                name: provisioning-config
+  httpRoute:
+    spec:
+      parentRefs:
+        - group: gateway.networking.k8s.io
+          kind: ListenerSet
+          name: grafana
+          namespace: grafana
+      hostnames:
+        - grafana.${DOMAIN}

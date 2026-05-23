@@ -19,6 +19,7 @@ resources:
   - falco.yaml
   - gatekeeper.yaml
   - gitlab.yaml
+  - grafana.yaml
   - grafana-operator.yaml
   - iframely.yaml
   - keycloak.yaml
