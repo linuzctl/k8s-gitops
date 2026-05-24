@@ -11,7 +11,6 @@ spec:
     namespace: outline
   insecure: true
   execution: parallel
-  ttlSecondsAfterFinished: 3600
   commands:
     - name: disable-callhome
       op: support/callhome
