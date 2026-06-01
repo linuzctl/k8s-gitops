@@ -34,7 +34,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: outline
-          image: outlinewiki/outline:1.7.1
+          image: outlinewiki/outline:1.8.0
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
