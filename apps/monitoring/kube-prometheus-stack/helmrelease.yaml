@@ -30,6 +30,7 @@ spec:
       enabled: false
     grafana:
       enabled: false
+      forceDeployDashboards: true
     prometheus:
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
