@@ -17,67 +17,27 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    bpf:
+      masquerade: true
+    cni:
+      exclusive: false
+    envoy:
+      enabled: false
+    externalIPs:
+      enabled: true
+    ipam:
+      operator:
+        clusterPoolIPv4MaskSize: 16
+        clusterPoolIPv4PodCIDRList:
+          - ${CLUSTER_CIDR_PODS}
     k8sServiceHost: ${CLUSTER_DOMAIN}
     k8sServicePort: 6443
     kubeProxyReplacement: true
     l2announcements:
       enabled: true
-      leaseDuration: 3s
-      leaseRenewDeadline: 1s
-      leaseRetryPeriod: 200ms
-    envoy:
-      enabled: false
-    operator:
-      replicas: 2
-    nodeinit:
-      enabled: true
     nodePort:
       enabled: true
-    externalIPs:
+    nodeinit:
       enabled: true
-    bpf:
-      masquerade: true
-    cni:
-      exclusive: false
-    routingMode: native
-    ipv4NativeRoutingCIDR: ${CIDR_PODS}
-    loadBalancer:
-      mode: hybrid
-      dsrDispatch: geneve
-    bandwidthManager:
-      enabled: true
-    hubble:
-      enabled: true
-      metrics:
-        enabled:
-          - dns:query
-          - drop
-          - flow
-          - http
-          - icmp
-          - port-distribution
-          - tcp
-        serviceMonitor:
-          enabled: true
-        dashboards:
-          enabled: true
-          annotations:
-            grafana_folder: Cilium
-      observe:
-        enabled: true
-      relay:
-        enabled: true
-        prometheus:
-          serviceMonitor:
-            enabled: true
-      ui:
-        enabled: true
-    prometheus:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-        trustCRDsExist: true
-    dashboards:
-      enabled: true
-      annotations:
-        grafana_folder: Cilium
+    operator:
+      replicas: 2
