@@ -2,23 +2,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: rook-ceph
+  name: ceph-csi-operator
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: ceph-csi-operator
   interval: 1h
-  path: ./apps/rook-ceph
+  path: ./apps/ceph-csi-operator
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: cluster-vars
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: rook-ceph
+  name: ceph-csi-operator

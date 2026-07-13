@@ -5,6 +5,7 @@ resources:
   - aistor-operator.yaml
   - bentopdf.yaml
   - cdi.yaml
+  - ceph-csi-operator.yaml
   - cert-manager.yaml
   - cilium.yaml
   - cloudnative-pg.yaml

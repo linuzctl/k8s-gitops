@@ -1,0 +1,12 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: ceph-csi-operator
+  namespace: ceph-csi-operator-system
+spec:
+  interval: 30m
+  timeout: 3m
+  url: oci://ghcr.io/linuzctl/helm-charts/ceph-csi-operator
+  ref:
+    tag: 1.0.4

@@ -1,0 +1,14 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ceph-csi-operator
+  namespace: ceph-csi-operator-system
+spec:
+  interval: 20m
+  driftDetection:
+    mode: enabled
+  chartRef:
+    kind: OCIRepository
+    name: ceph-csi-operator
+    namespace: ceph-csi-operator-system
