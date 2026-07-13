@@ -9,4 +9,4 @@ spec:
   timeout: 3m
   url: oci://registry.k8s.io/nfd/charts/node-feature-discovery
   ref:
-    tag: 0.18.3
+    tag: 0.19.0
