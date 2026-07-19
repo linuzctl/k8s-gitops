@@ -9,4 +9,4 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/linuzctl/helm-charts/aistor-objectstore
   ref:
-    tag: 1.0.14
+    tag: 1.0.16
