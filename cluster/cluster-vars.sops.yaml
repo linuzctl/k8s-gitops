@@ -5,28 +5,28 @@ metadata:
   namespace: flux-system
 type: Opaque
 stringData:
-  DOMAIN: ENC[AES256_GCM,data:jKzWFwwkjT4=,iv:K7BZgJeFuTNRL5h7jbJkUhEs8SQRo9HDxfauqgfXRjQ=,tag:CN18sq07EQEIemsTDm4TKQ==,type:str]
-  CLUSTER_DOMAIN: ENC[AES256_GCM,data:iKXdLSSav+vgMtOYrj+A6Xo=,iv:Np82q/dEFWUY9OE2Nwi1HD38q7pHvbQYzQIbLpstY3A=,tag:Do6O5OOgyeHhYPGz7lYY8A==,type:str]
-  CLUSTER_CIDR_PODS: ENC[AES256_GCM,data:7auDUCtbDVE4LEiX,iv:hoDuYCVDHz/bf5rp/vTF1l5jgm+57k7e/iZghgpp5tI=,tag:5KvioC/HZnw/7787IsmUCg==,type:str]
-  CLUSTER_CIDR_SERVICE: ENC[AES256_GCM,data:mH12f2F3PdwIffJt,iv:kCX9Hai7bON/wLblgdT2urik0KTrVpHz9iZepl4N0d0=,tag:AF4E63tSGmSYSzEHSsGs4g==,type:str]
-  ACME_EMAIL: ENC[AES256_GCM,data:x7bf+7nLihLvzBMCuA==,iv:5Ym7p0+m/KFZpNhSrj9unWgM8FAo0WSQZWr3Q9TIMGg=,tag:WA4SJEnEWD3OP8SxQBcYTQ==,type:str]
-  COREDNS_IP: ENC[AES256_GCM,data:+eisJd/YSdpujQ==,iv:0EA/YG8fs2kDY5QnQA2coCde7wo54cf6FW7C/bNEwXQ=,tag:ZL4pWnpcVQiVkHxg7N9Kug==,type:str]
-  ENVOY_GATEWAY_IP: ENC[AES256_GCM,data:d9hFqYQ5JV6gKAI=,iv:B3YKpmdDXQ6/p8mpJPFYsrZ2SBMz2YtZ0+6Ndrc8v3E=,tag:GwTZMGFWCSiPLGSTxRGgPg==,type:str]
-  NFS_IP: ENC[AES256_GCM,data:9qZwst7hfaYZpWw=,iv:OMzf4JXRS0GaI3fCVQjw2x5weVUAw1w7VmRyGfX448I=,tag:GrUTlv4fh7dtXXUZn8AyNw==,type:str]
-  NFS_SHARE: ENC[AES256_GCM,data:vtY+f1wOcrPp,iv:mSHzBhQgS3z/8MdWg97s2WbT8rgvBTVxbOhSwNkejv4=,tag:6E74l/3P1YcjFG5u3s+j+g==,type:str]
-  BACKUP_S3_URL: ENC[AES256_GCM,data:H4iULiq4xv+5zjXjejeS212/,iv:CTq3di08EPZM+5M+ZsKFx+fmPPstt8skxaAYjItHwOY=,tag:w/5saGEm/SbgFONMBVHdzg==,type:str]
+  DOMAIN: ENC[AES256_GCM,data:hWa8BK35bCI=,iv:irEY6NdQeCfTBumkGqoeK3YpSxCdbnTGCUMhTRc+OpE=,tag:5DhrGJnZezbBriJ5+fWe+Q==,type:str]
+  CLUSTER_DOMAIN: ENC[AES256_GCM,data:hT/nh5PPHBGRI4wFcMqxYDTJrqg=,iv:WZFAntvX68E+YhWJjVKu/q8PwCeSTloV+Xo2b2GrSGk=,tag:iQO7Yty6YB8Jcp/kvlvhgA==,type:str]
+  CLUSTER_CIDR_PODS: ENC[AES256_GCM,data:jGIaOjROweqRGYlE,iv:i0pw/sGNPa+e7uSLvkU0FxRLnf72x3XSOrPnyZCP84U=,tag:URWSup8lWDJ6dMBQwKEjxA==,type:str]
+  CLUSTER_CIDR_SERVICE: ENC[AES256_GCM,data:zuxPpyvFyYRDAI2n,iv:8My8gIBIitvtBJI/tcfmzD2BE5O+hynR/COhcTXDoTM=,tag:Gvikg9qIJgoaj8kbT5mlVw==,type:str]
+  ACME_EMAIL: ENC[AES256_GCM,data:FbA9pzlt4bO4p+X1HA==,iv:L+sFcPjxzxfUrAUoLV02vTJNmD2ya/tzqNYv7zH/6ac=,tag:xIxj3sQimrIJu4yph1HYnw==,type:str]
+  COREDNS_IP: ENC[AES256_GCM,data:I2hWC1l5MM6TGg==,iv:N2StALtZA1D9QrCOPXk7wTKvqsnWNs0umPo7EYet8bc=,tag:lHOlVVzUN+6F2wV0aAqW7w==,type:str]
+  ENVOY_GATEWAY_IP: ENC[AES256_GCM,data:aTFrEn+WfgHw2TQ=,iv:7fg20HemVYhXcMNmg9eWqJCeShs3qBA3UWJ3Pc+abr4=,tag:AAgpdH7sbL94P653WL7FGA==,type:str]
+  NFS_IP: ENC[AES256_GCM,data:yGuVhxhD6demmc8=,iv:JcgDg9ppdcW121LKgYeJ1jDSkV24mSLpzRnphI7OD1Y=,tag:Vv7OYdkRLOU479I4OC4IDg==,type:str]
+  NFS_SHARE: ENC[AES256_GCM,data:cycZbNEGRP4d,iv:PBWHfwCwzm22IcLCBt+z1raCF1IfWdOaao6nOE7XTqE=,tag:4WrafEJzx6xvGoAixXFJSw==,type:str]
+  BACKUP_S3_URL: ENC[AES256_GCM,data:NOMTRiE42rhUOkwPb85aG20b,iv:fQK3HMX4kAIV9jOMm5wdcjEJlsc0ZkRyzVVaU07LdZg=,tag:ERB/QduB6ZZzu8zakID/sQ==,type:str]
 sops:
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNSHROTEE5eWNaYTc1eStW
-        MVBSNnJ3SE9BTlAvM1lXRXJFRStUekF4SUJFCm1pTHlUZC9xN3FIbnJmbE1YL0pE
-        YUhoQzVFMDU5a3F1dUgxQ3Q0bGFwVm8KLS0tIFgzaVc5Z3NJMStac1NXNXFodUdE
-        aWJMdGxHNk5XRjh6b2gwNUZPNnRkWVkKOVO3vg1qz9LgN4Er+mkZENgBd/Q162sv
-        I8mp3H/om7O4AasJ0w216mgBYzed7dcSkQC17DnhCpuFyL9WAlaIqA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPclVKdm95R05sYURUU2o1
+        ZjJOYmp3elhOVnV1ZjBJcHFTcUszMytGUkJNCjc5Mk1od0FsUEtmSkNiRHlWblNI
+        ZFJqTWFLSVI4aDlxYVVmNFhRSjA4eEkKLS0tIFdLdUptUWh6bEZSTWZvbi9UL2hI
+        NERxcEFOMnBPeHhtdFF2UlZNRUgzQ00K2kYOZZv+uKd2/YcDd7Tzqq3a8HvEy/47
+        7xT9RGxutNwlQohjzFEb+QGCC6hQbwq8Don2UtbtfS2EJkLCriPznQ==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1etdt8rdcykvfu5q4f8t3vp4uxg3c03xlh4l98egdfdluslfxeaks25angd
   encrypted_regex: ^(data|stringData)$
-  lastmodified: "2026-07-12T22:04:28Z"
-  mac: ENC[AES256_GCM,data:/+yKVynYd+KEFiGWC1+d5qtM+ePt5SoEzBD6/PiWiPS633sqbMYEIJdQ/mSKBGDJDtGxzoZf0ohVrHETJbS0xDIlGPhoai0TquB/0AKgfAnonb0Dk0creYzkaYFTmLyMWAsdrVxipFDvp/Tx24SbS35DFrgx7Ut2JpGDsFK1bHQ=,iv:I6BPz1I8z8Z5hqVy+LXk2ZPNywy3U9EjBMY69zd6f9M=,tag:d/PP3wXHVeU+urIxz8qD6g==,type:str]
-  version: 3.13.2
+  lastmodified: "2026-07-25T22:04:21Z"
+  mac: ENC[AES256_GCM,data:6X4HrfbESooRk925q33PF7PwVEqPwXlDil8v2wHKpy087nbCTrEpRwipObenNMac9DKPTqCK4bLbTMLlUZY3LYoZ2DurM/3tM3302rq6KExR4olzgcdkBncynbaf+VoUw8veMPv71Rr8svCPR968XzPPLizojCiznc+zyxiotmQ=,iv:BaeUHpxASRattixlpmg76JXii+G4qWBPM1FOhELK06U=,tag:l6R2BF43Yopc8EIFjPt5dQ==,type:str]
+  version: 3.13.3

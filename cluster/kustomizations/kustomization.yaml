@@ -4,41 +4,41 @@ kind: Kustomization
 resources:
   - aistor-operator.yaml
   - bentopdf.yaml
-  - cdi.yaml
-  - ceph-csi-operator.yaml
+  #- cdi.yaml
+  #- ceph-csi-operator.yaml
   - cert-manager.yaml
   - cilium.yaml
   - cloudnative-pg.yaml
   - coredns.yaml
   - crds.yaml
-  - csi-driver-nfs.yaml
+  #- csi-driver-nfs.yaml
   - descheduler.yaml
   - dragonfly-operator.yaml
   - drawio.yaml
   - envoy-gateway.yaml
   - external-snapshotter.yaml
-  - falco.yaml
-  - gatekeeper.yaml
-  - gitlab.yaml
-  - grafana.yaml
-  - grafana-operator.yaml
-  - iframely.yaml
-  - keycloak.yaml
-  - kubevirt.yaml
-  - kubevirt-manager.yaml
-  - metrics-server.yaml
-  - monitoring.yaml
-  - multus.yaml
-  - node-feature-discovery.yaml
-  - ocis.yaml
-  - openbao.yaml
-  - outline.yaml
-  - reloader.yaml
-  - renovate.yaml
-  - rook-ceph.yaml
-  - spegel.yaml
-  - stalwart.yaml
-  - thanos.yaml
-  - unpoller.yaml
-  - vaultwarden.yaml
+  #- falco.yaml
+  #- gatekeeper.yaml
+  #- gitlab.yaml
+  #- grafana.yaml
+  #- grafana-operator.yaml
+  #- iframely.yaml
+  #- keycloak.yaml
+  #- kubevirt.yaml
+  #- kubevirt-manager.yaml
+  #- metrics-server.yaml
+  #- monitoring.yaml
+  #- multus.yaml
+  #- node-feature-discovery.yaml
+  #- ocis.yaml
+  #- openbao.yaml
+  #- outline.yaml
+  #- reloader.yaml
+  #- renovate.yaml
+  #- rook-ceph.yaml
+  #- spegel.yaml
+  #- stalwart.yaml
+  #- thanos.yaml
+  #- unpoller.yaml
+  #- vaultwarden.yaml
   - velero.yaml
