@@ -27,7 +27,7 @@ spec:
       enabled: true
     ipam:
       operator:
-        clusterPoolIPv4MaskSize: 16
+        clusterPoolIPv4MaskSize: 24
         clusterPoolIPv4PodCIDRList:
           - ${CLUSTER_CIDR_PODS}
     k8sServiceHost: ${CLUSTER_DOMAIN}
