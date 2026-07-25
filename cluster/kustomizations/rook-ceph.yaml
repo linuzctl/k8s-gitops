@@ -5,8 +5,8 @@ metadata:
   name: rook-ceph
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: ceph-csi-operator
+  #dependsOn:
+  #  - name: ceph-csi-operator
   interval: 1h
   path: ./apps/rook-ceph
   prune: true
