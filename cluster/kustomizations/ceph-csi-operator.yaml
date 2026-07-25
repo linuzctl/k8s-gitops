@@ -15,4 +15,4 @@ spec:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ceph-csi-operator
+  name: ceph-csi-operator-system
