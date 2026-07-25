@@ -25,7 +25,7 @@ A high-level overview of the repository layout:
 ├── 📁 apps                  # applications
 ├── 📁 cluster               # Flux configuration
 │   ├── 📁 kustomizations    # Flux Kustomization objects for applications
-│   ├── 📁 flux-system       # Flux-Operator (GitOps controllers)
+│   ├── 📁 flux-system       # Flux-Operator (GitOps controller)
 │   └── 📁 notifications     # Notification configurations
 └── 📁 crds                  # crds
 ```
