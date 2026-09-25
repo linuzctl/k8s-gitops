@@ -9,4 +9,4 @@ spec:
   timeout: 3m
   url: oci://ghcr.io/linuzctl/helm-charts/ceph-csi-operator
   ref:
-    tag: 1.0.4
+    tag: 1.0.5
